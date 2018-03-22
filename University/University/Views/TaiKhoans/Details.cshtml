@@ -1,0 +1,35 @@
+﻿@model University.Models.Data.TaiKhoan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TaiKhoan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.matKhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.matKhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loaiTaiKhoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loaiTaiKhoan)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tenDangNhap }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
