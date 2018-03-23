@@ -196,6 +196,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NganhHocsController.cs" />
     <Compile Include="Controllers\TaiKhoansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -393,6 +394,11 @@
     <Content Include="Views\TaiKhoans\Edit.cshtml" />
     <Content Include="Views\TaiKhoans\Index.cshtml" />
     <Content Include="Views\TaiKhoans\Login.cshtml" />
+    <Content Include="Views\NganhHocs\Create.cshtml" />
+    <Content Include="Views\NganhHocs\Delete.cshtml" />
+    <Content Include="Views\NganhHocs\Details.cshtml" />
+    <Content Include="Views\NganhHocs\Edit.cshtml" />
+    <Content Include="Views\NganhHocs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -422,7 +428,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56398</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
