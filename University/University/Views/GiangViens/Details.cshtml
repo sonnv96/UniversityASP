@@ -1,0 +1,74 @@
+﻿@model University.Models.Data.GiangVien
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GiangVien</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenGiangVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenGiangVien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.queQuan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.queQuan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngaySinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaySinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.namBatDau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.namBatDau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eMail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eMail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaiViet.tieuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaiViet.tieuDe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaiKhoan.matKhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan.matKhau)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maGiangVien }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

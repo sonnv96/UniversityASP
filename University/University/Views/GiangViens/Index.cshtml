@@ -1,0 +1,69 @@
+﻿@model IEnumerable<University.Models.Data.GiangVien>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tenGiangVien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.queQuan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngaySinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.namBatDau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eMail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaiViet.tieuDe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaiKhoan.matKhau)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tenGiangVien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.queQuan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngaySinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.namBatDau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eMail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaiViet.tieuDe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaiKhoan.matKhau)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.maGiangVien }) |
+            @Html.ActionLink("Details", "Details", new { id=item.maGiangVien }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.maGiangVien })
+        </td>
+    </tr>
+}
+
+</table>

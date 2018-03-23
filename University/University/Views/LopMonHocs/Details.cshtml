@@ -1,0 +1,58 @@
+﻿@model University.Models.Data.LopMonHoc
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LopMonHoc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuongToiDa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuongToiDa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuongDangKy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuongDangKy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiangVien.tenGiangVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiangVien.tenGiangVien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonHoc.tenMonHoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonHoc.tenMonHoc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maLop }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

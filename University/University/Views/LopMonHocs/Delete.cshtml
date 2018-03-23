@@ -1,0 +1,64 @@
+﻿@model University.Models.Data.LopMonHoc
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>LopMonHoc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuongToiDa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuongToiDa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuongDangKy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuongDangKy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiangVien.tenGiangVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiangVien.tenGiangVien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonHoc.tenMonHoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonHoc.tenMonHoc)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

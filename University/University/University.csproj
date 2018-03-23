@@ -195,8 +195,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChuyenNganhsController.cs" />
+    <Compile Include="Controllers\GiangViensController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LopMonHocsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MonHocsController.cs" />
     <Compile Include="Controllers\NganhHocsController.cs" />
     <Compile Include="Controllers\TaiKhoansController.cs" />
     <Compile Include="Global.asax.cs">
@@ -405,6 +408,21 @@
     <Content Include="Views\ChuyenNganhs\Details.cshtml" />
     <Content Include="Views\ChuyenNganhs\Edit.cshtml" />
     <Content Include="Views\ChuyenNganhs\Index.cshtml" />
+    <Content Include="Views\MonHocs\Create.cshtml" />
+    <Content Include="Views\MonHocs\Delete.cshtml" />
+    <Content Include="Views\MonHocs\Details.cshtml" />
+    <Content Include="Views\MonHocs\Edit.cshtml" />
+    <Content Include="Views\MonHocs\Index.cshtml" />
+    <Content Include="Views\LopMonHocs\Create.cshtml" />
+    <Content Include="Views\LopMonHocs\Delete.cshtml" />
+    <Content Include="Views\LopMonHocs\Details.cshtml" />
+    <Content Include="Views\LopMonHocs\Edit.cshtml" />
+    <Content Include="Views\LopMonHocs\Index.cshtml" />
+    <Content Include="Views\GiangViens\Create.cshtml" />
+    <Content Include="Views\GiangViens\Delete.cshtml" />
+    <Content Include="Views\GiangViens\Details.cshtml" />
+    <Content Include="Views\GiangViens\Edit.cshtml" />
+    <Content Include="Views\GiangViens\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
