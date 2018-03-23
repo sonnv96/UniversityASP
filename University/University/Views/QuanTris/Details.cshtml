@@ -1,4 +1,4 @@
-﻿@model University.Models.Data.GiangVien
+﻿@model University.Models.Data.QuanTri
 
 @{
     ViewBag.Title = "Details";
@@ -7,15 +7,15 @@
 <h2>Details</h2>
 
 <div>
-    <h4>GiangVien</h4>
+    <h4>QuanTri</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.tenGiangVien)
+            @Html.DisplayNameFor(model => model.tenQuanTri)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tenGiangVien)
+            @Html.DisplayFor(model => model.tenQuanTri)
         </dd>
 
         <dt>
@@ -35,22 +35,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.namBatDau)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.namBatDau)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.eMail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.eMail)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.BaiViet.tieuDe)
         </dt>
 
@@ -59,16 +43,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TaiKhoan.tenDangNhap)
+            @Html.DisplayNameFor(model => model.TaiKhoan.matKhau)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TaiKhoan.tenDangNhap)
+            @Html.DisplayFor(model => model.TaiKhoan.matKhau)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.maGiangVien }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maQuanTri }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

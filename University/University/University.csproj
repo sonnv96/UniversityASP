@@ -201,6 +201,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MonHocsController.cs" />
     <Compile Include="Controllers\NganhHocsController.cs" />
+    <Compile Include="Controllers\QuanTrisController.cs" />
     <Compile Include="Controllers\TaiKhoansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -423,6 +424,11 @@
     <Content Include="Views\GiangViens\Details.cshtml" />
     <Content Include="Views\GiangViens\Edit.cshtml" />
     <Content Include="Views\GiangViens\Index.cshtml" />
+    <Content Include="Views\QuanTris\Create.cshtml" />
+    <Content Include="Views\QuanTris\Delete.cshtml" />
+    <Content Include="Views\QuanTris\Details.cshtml" />
+    <Content Include="Views\QuanTris\Edit.cshtml" />
+    <Content Include="Views\QuanTris\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
