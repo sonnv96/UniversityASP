@@ -124,11 +124,16 @@ namespace University.Controllers
             }
             base.Dispose(disposing);
         }
+        public ActionResult DangNhap()
+        {
+
+            return View();
+        }
 
 
         [HttpPost]
 
-        public ActionResult Login(TaiKhoan taikhoan)
+        public ActionResult DangNhap(TaiKhoan taikhoan)
         {
             if (ModelState.IsValid)
             {

@@ -1,8 +1,15 @@
-﻿<h1>Đăng nhập</h1>
+﻿@model University.Models.Data.TaiKhoan
+
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+
+<h1>Đăng nhập</h1>
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" href="~/Content/home.min.css" />
+<link rel="stylesheet" href="~/Content/Sass/mycss.min.css" />
 <!------ Include the above in your HEAD tag ---------->
 <div class="container">
     <div class="row">
@@ -99,3 +106,5 @@
 
     });
 </script>
+
+

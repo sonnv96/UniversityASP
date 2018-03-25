@@ -398,7 +398,6 @@
     <Content Include="Views\TaiKhoans\Details.cshtml" />
     <Content Include="Views\TaiKhoans\Edit.cshtml" />
     <Content Include="Views\TaiKhoans\Index.cshtml" />
-    <Content Include="Views\TaiKhoans\Login.cshtml" />
     <Content Include="Views\NganhHocs\Create.cshtml" />
     <Content Include="Views\NganhHocs\Delete.cshtml" />
     <Content Include="Views\NganhHocs\Details.cshtml" />
@@ -429,6 +428,7 @@
     <Content Include="Views\QuanTris\Details.cshtml" />
     <Content Include="Views\QuanTris\Edit.cshtml" />
     <Content Include="Views\QuanTris\Index.cshtml" />
+    <Content Include="Views\TaiKhoans\DangNhap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
