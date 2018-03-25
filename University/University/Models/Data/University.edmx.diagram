@@ -4,32 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d897faff4a11445595ba21d8c2b180d8" Name="Diagram1">
-        <EntityTypeShape EntityType="UniversityModel.BaiViet" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityModel.BangDiem" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityModel.ChuyenNganh" Width="1.5" PointX="3.75" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityModel.DanhSachLop" Width="1.5" PointX="10.5" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityModel.GiangVien" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityModel.LopMonHoc" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityModel.MonHoc" Width="1.5" PointX="6" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityModel.NganhHoc" Width="1.5" PointX="1.5" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityModel.QuanTri" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityModel.SinhVien" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniversityModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <AssociationConnector Association="UniversityModel.FK_GiangVien_BaiViet" ManuallyRouted="false" />
-        <AssociationConnector Association="UniversityModel.FK_QuanTri_BaiViet" ManuallyRouted="false" />
-        <AssociationConnector Association="UniversityModel.FK_BangDiem_MonHoc" ManuallyRouted="false" />
-        <AssociationConnector Association="UniversityModel.FK_BangDiem_SinhVien" ManuallyRouted="false" />
-        <AssociationConnector Association="UniversityModel.FK_ChuyenNganh_NganhHoc" ManuallyRouted="false" />
-        <AssociationConnector Association="UniversityModel.FK_MonHoc_ChuyenNganh" ManuallyRouted="false" />
-        <AssociationConnector Association="UniversityModel.FK_DanhSachLop_LopMonHoc" ManuallyRouted="false" />
-        <AssociationConnector Association="UniversityModel.FK_DanhSachLop_SinhVien" ManuallyRouted="false" />
-        <AssociationConnector Association="UniversityModel.FK_GiangVien_TaiKhoan" ManuallyRouted="false" />
-        <AssociationConnector Association="UniversityModel.FK_LopMonHoc_GiangVien" ManuallyRouted="false" />
-        <AssociationConnector Association="UniversityModel.FK_LopMonHoc_MonHoc" ManuallyRouted="false" />
-        <AssociationConnector Association="UniversityModel.FK_QuanTri_TaiKhoan" ManuallyRouted="false" />
-        <AssociationConnector Association="UniversityModel.FK_SinhVien_TaiKhoan" ManuallyRouted="false" />
+      <Diagram DiagramId="d897faff4a11445595ba21d8c2b180d8" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="UniversityModel.BangDiem" Width="1.5" PointX="7.5" PointY="8.125" />
+        <EntityTypeShape EntityType="UniversityModel.ChuyenNganh" Width="1.5" PointX="0.75" PointY="16.125" />
+        <EntityTypeShape EntityType="UniversityModel.GiangVien" Width="1.5" PointX="3" PointY="11.75" />
+        <EntityTypeShape EntityType="UniversityModel.Khoa" Width="1.5" PointX="1.5" PointY="19.375" />
+        <EntityTypeShape EntityType="UniversityModel.Lop" Width="1.5" PointX="0.75" PointY="3.375" />
+        <EntityTypeShape EntityType="UniversityModel.LopMonHoc" Width="1.5" PointX="5.25" PointY="11.25" />
+        <EntityTypeShape EntityType="UniversityModel.MonHoc" Width="1.5" PointX="3" PointY="16.125" />
+        <EntityTypeShape EntityType="UniversityModel.QuanTri" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="UniversityModel.SinhVien" Width="1.5" PointX="3" PointY="3.375" />
+        <EntityTypeShape EntityType="UniversityModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="6" />
+        <AssociationConnector Association="UniversityModel.FK_BangDiem_LopMonHoc" />
+        <AssociationConnector Association="UniversityModel.FK_BangDiem_SinhVien" />
+        <AssociationConnector Association="UniversityModel.FK_ChuyenNganh_Khoa" />
+        <AssociationConnector Association="UniversityModel.FK_MonHoc_ChuyenNganh" />
+        <AssociationConnector Association="UniversityModel.FK_GiangVien_TaiKhoan" />
+        <AssociationConnector Association="UniversityModel.FK_LopMonHoc_GiangVien" />
+        <AssociationConnector Association="UniversityModel.FK_SinhVien_Lop" />
+        <AssociationConnector Association="UniversityModel.FK_LopMonHoc_MonHoc" />
+        <AssociationConnector Association="UniversityModel.FK_QuanTri_TaiKhoan" />
+        <AssociationConnector Association="UniversityModel.FK_SinhVien_TaiKhoan" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
