@@ -17,7 +17,6 @@ namespace University.Models.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MonHoc()
         {
-            this.BangDiems = new HashSet<BangDiem>();
             this.LopMonHocs = new HashSet<LopMonHoc>();
         }
     
@@ -25,9 +24,8 @@ namespace University.Models.Data
         public string tenMonHoc { get; set; }
         public string maChuyenNganh { get; set; }
         public Nullable<int> soTinChi { get; set; }
+        public string trangThai { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BangDiem> BangDiems { get; set; }
         public virtual ChuyenNganh ChuyenNganh { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LopMonHoc> LopMonHocs { get; set; }

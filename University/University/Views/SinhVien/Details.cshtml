@@ -1,0 +1,99 @@
+﻿@model University.Models.Data.SinhVien
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SinhVien</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenSinhVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenSinhVien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.queQuan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.queQuan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngaySinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaySinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.namNhapHoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.namNhapHoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maChuyenNganh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maChuyenNganh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eMail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eMail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gioiTinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gioiTinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lop.tenLop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lop.tenLop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaiKhoan.matKhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan.matKhau)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maSinhVien }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

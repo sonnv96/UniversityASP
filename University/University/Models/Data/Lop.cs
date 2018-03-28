@@ -12,13 +12,19 @@ namespace University.Models.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class DanhSachLop
+    public partial class Lop
     {
-        public string maLop { get; set; }
-        public string maSinhVien { get; set; }
-        public string tenLop { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Lop()
+        {
+            this.SinhViens = new HashSet<SinhVien>();
+        }
     
-        public virtual LopMonHoc LopMonHoc { get; set; }
-        public virtual SinhVien SinhVien { get; set; }
+        public string maLop { get; set; }
+        public string tenLop { get; set; }
+        public string trangThai { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SinhVien> SinhViens { get; set; }
     }
 }

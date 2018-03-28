@@ -215,6 +215,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SinhVien_ChuyenNganh">
+          <End Role="ChuyenNganh" Type="Self.ChuyenNganh" Multiplicity="0..1" />
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuyenNganh">
+              <PropertyRef Name="maChuyenNganh" />
+            </Principal>
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="maChuyenNganh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SinhVien_ChuyenNganh1">
+          <End Role="ChuyenNganh" Type="Self.ChuyenNganh" Multiplicity="0..1" />
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuyenNganh">
+              <PropertyRef Name="maChuyenNganh" />
+            </Principal>
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="maChuyenNganh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SinhVien_Lop">
           <End Role="Lop" Type="Self.Lop" Multiplicity="0..1" />
           <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
@@ -282,6 +306,14 @@
             <End Role="TaiKhoan" EntitySet="TaiKhoan" />
             <End Role="QuanTri" EntitySet="QuanTri" />
           </AssociationSet>
+          <AssociationSet Name="FK_SinhVien_ChuyenNganh" Association="Self.FK_SinhVien_ChuyenNganh">
+            <End Role="ChuyenNganh" EntitySet="ChuyenNganh" />
+            <End Role="SinhVien" EntitySet="SinhVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SinhVien_ChuyenNganh1" Association="Self.FK_SinhVien_ChuyenNganh1">
+            <End Role="ChuyenNganh" EntitySet="ChuyenNganh" />
+            <End Role="SinhVien" EntitySet="SinhVien" />
+          </AssociationSet>
           <AssociationSet Name="FK_SinhVien_Lop" Association="Self.FK_SinhVien_Lop">
             <End Role="Lop" EntitySet="Lop" />
             <End Role="SinhVien" EntitySet="SinhVien" />
@@ -295,7 +327,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UniversityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="UniversityEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="UniversityEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BangDiems" EntityType="UniversityModel.BangDiem" />
           <EntitySet Name="ChuyenNganhs" EntityType="UniversityModel.ChuyenNganh" />
           <EntitySet Name="GiangViens" EntityType="UniversityModel.GiangVien" />
@@ -321,6 +353,14 @@
           <AssociationSet Name="FK_MonHoc_ChuyenNganh" Association="UniversityModel.FK_MonHoc_ChuyenNganh">
             <End Role="ChuyenNganh" EntitySet="ChuyenNganhs" />
             <End Role="MonHoc" EntitySet="MonHocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SinhVien_ChuyenNganh" Association="UniversityModel.FK_SinhVien_ChuyenNganh">
+            <End Role="ChuyenNganh" EntitySet="ChuyenNganhs" />
+            <End Role="SinhVien" EntitySet="SinhViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SinhVien_ChuyenNganh1" Association="UniversityModel.FK_SinhVien_ChuyenNganh1">
+            <End Role="ChuyenNganh" EntitySet="ChuyenNganhs" />
+            <End Role="SinhVien" EntitySet="SinhViens" />
           </AssociationSet>
           <AssociationSet Name="FK_GiangVien_TaiKhoan" Association="UniversityModel.FK_GiangVien_TaiKhoan">
             <End Role="TaiKhoan" EntitySet="TaiKhoans" />
@@ -371,6 +411,8 @@
           <Property Name="trangThai" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Khoa" Relationship="UniversityModel.FK_ChuyenNganh_Khoa" FromRole="ChuyenNganh" ToRole="Khoa" />
           <NavigationProperty Name="MonHocs" Relationship="UniversityModel.FK_MonHoc_ChuyenNganh" FromRole="ChuyenNganh" ToRole="MonHoc" />
+          <NavigationProperty Name="SinhViens" Relationship="UniversityModel.FK_SinhVien_ChuyenNganh" FromRole="ChuyenNganh" ToRole="SinhVien" />
+          <NavigationProperty Name="SinhViens1" Relationship="UniversityModel.FK_SinhVien_ChuyenNganh1" FromRole="ChuyenNganh" ToRole="SinhVien" />
         </EntityType>
         <EntityType Name="GiangVien">
           <Key>
@@ -466,6 +508,8 @@
           <Property Name="trangThai" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="maLop" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BangDiems" Relationship="UniversityModel.FK_BangDiem_SinhVien" FromRole="SinhVien" ToRole="BangDiem" />
+          <NavigationProperty Name="ChuyenNganh" Relationship="UniversityModel.FK_SinhVien_ChuyenNganh" FromRole="SinhVien" ToRole="ChuyenNganh" />
+          <NavigationProperty Name="ChuyenNganh1" Relationship="UniversityModel.FK_SinhVien_ChuyenNganh1" FromRole="SinhVien" ToRole="ChuyenNganh" />
           <NavigationProperty Name="Lop" Relationship="UniversityModel.FK_SinhVien_Lop" FromRole="SinhVien" ToRole="Lop" />
           <NavigationProperty Name="TaiKhoan" Relationship="UniversityModel.FK_SinhVien_TaiKhoan" FromRole="SinhVien" ToRole="TaiKhoan" />
         </EntityType>
@@ -525,6 +569,30 @@
               <PropertyRef Name="maChuyenNganh" />
             </Principal>
             <Dependent Role="MonHoc">
+              <PropertyRef Name="maChuyenNganh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SinhVien_ChuyenNganh">
+          <End Type="UniversityModel.ChuyenNganh" Role="ChuyenNganh" Multiplicity="0..1" />
+          <End Type="UniversityModel.SinhVien" Role="SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuyenNganh">
+              <PropertyRef Name="maChuyenNganh" />
+            </Principal>
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="maChuyenNganh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SinhVien_ChuyenNganh1">
+          <End Type="UniversityModel.ChuyenNganh" Role="ChuyenNganh" Multiplicity="0..1" />
+          <End Type="UniversityModel.SinhVien" Role="SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChuyenNganh">
+              <PropertyRef Name="maChuyenNganh" />
+            </Principal>
+            <Dependent Role="SinhVien">
               <PropertyRef Name="maChuyenNganh" />
             </Dependent>
           </ReferentialConstraint>
@@ -606,7 +674,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UniversityModelStoreContainer" CdmEntityContainer="UniversityEntities">
+        <EntityContainerMapping StorageEntityContainer="UniversityModelStoreContainer" CdmEntityContainer="UniversityEntities1">
           <EntitySetMapping Name="BangDiems">
             <EntityTypeMapping TypeName="UniversityModel.BangDiem">
               <MappingFragment StoreEntitySet="BangDiem">

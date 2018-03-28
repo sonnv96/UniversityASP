@@ -18,14 +18,21 @@ namespace University.Models.Data
         public ChuyenNganh()
         {
             this.MonHocs = new HashSet<MonHoc>();
+            this.SinhViens = new HashSet<SinhVien>();
+            this.SinhViens1 = new HashSet<SinhVien>();
         }
     
         public string maChuyenNganh { get; set; }
         public string tenChuyenNganh { get; set; }
-        public string maNganh { get; set; }
+        public string maKhoa { get; set; }
+        public string trangThai { get; set; }
     
-        public virtual NganhHoc NganhHoc { get; set; }
+        public virtual Khoa Khoa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MonHoc> MonHocs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SinhVien> SinhViens { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SinhVien> SinhViens1 { get; set; }
     }
 }

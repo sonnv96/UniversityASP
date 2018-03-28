@@ -12,23 +12,19 @@ namespace University.Models.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class BaiViet
+    public partial class Khoa
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BaiViet()
+        public Khoa()
         {
-            this.GiangViens = new HashSet<GiangVien>();
-            this.QuanTris = new HashSet<QuanTri>();
+            this.ChuyenNganhs = new HashSet<ChuyenNganh>();
         }
     
-        public string maBaiViet { get; set; }
-        public string tieuDe { get; set; }
-        public string noiDung { get; set; }
-        public Nullable<System.DateTime> ngayDang { get; set; }
+        public string maKhoa { get; set; }
+        public string tenKhoa { get; set; }
+        public string trangThai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GiangVien> GiangViens { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<QuanTri> QuanTris { get; set; }
+        public virtual ICollection<ChuyenNganh> ChuyenNganhs { get; set; }
     }
 }

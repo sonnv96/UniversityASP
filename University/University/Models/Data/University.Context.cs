@@ -13,10 +13,10 @@ namespace University.Models.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class UniversityEntities : DbContext
+    public partial class UniversityEntities1 : DbContext
     {
-        public UniversityEntities()
-            : base("name=UniversityEntities")
+        public UniversityEntities1()
+            : base("name=UniversityEntities1")
         {
         }
     
@@ -25,17 +25,15 @@ namespace University.Models.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<BaiViet> BaiViets { get; set; }
         public virtual DbSet<BangDiem> BangDiems { get; set; }
         public virtual DbSet<ChuyenNganh> ChuyenNganhs { get; set; }
-        public virtual DbSet<DanhSachLop> DanhSachLops { get; set; }
         public virtual DbSet<GiangVien> GiangViens { get; set; }
+        public virtual DbSet<Khoa> Khoas { get; set; }
+        public virtual DbSet<Lop> Lops { get; set; }
         public virtual DbSet<LopMonHoc> LopMonHocs { get; set; }
         public virtual DbSet<MonHoc> MonHocs { get; set; }
-        public virtual DbSet<NganhHoc> NganhHocs { get; set; }
         public virtual DbSet<QuanTri> QuanTris { get; set; }
         public virtual DbSet<SinhVien> SinhViens { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
     }
 }

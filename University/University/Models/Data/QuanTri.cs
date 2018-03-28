@@ -19,9 +19,8 @@ namespace University.Models.Data
         public string queQuan { get; set; }
         public Nullable<System.DateTime> ngaySinh { get; set; }
         public string tenDangNhap { get; set; }
-        public string maBaiViet { get; set; }
+        public string trangThai { get; set; }
     
-        public virtual BaiViet BaiViet { get; set; }
         public virtual TaiKhoan TaiKhoan { get; set; }
     }
 }

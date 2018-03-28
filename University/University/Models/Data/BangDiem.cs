@@ -15,15 +15,13 @@ namespace University.Models.Data
     public partial class BangDiem
     {
         public string maSinhVien { get; set; }
-        public string maMonMoc { get; set; }
-        public int namHoc { get; set; }
-        public int hocKy { get; set; }
+        public string maLopMonHoc { get; set; }
         public string trangThai { get; set; }
-        public Nullable<int> thucHanh { get; set; }
-        public Nullable<int> giuaKy { get; set; }
-        public Nullable<int> cuoiKy { get; set; }
+        public Nullable<decimal> thucHanh { get; set; }
+        public Nullable<decimal> giuaKy { get; set; }
+        public Nullable<decimal> cuoiKy { get; set; }
     
-        public virtual MonHoc MonHoc { get; set; }
+        public virtual LopMonHoc LopMonHoc { get; set; }
         public virtual SinhVien SinhVien { get; set; }
     }
 }

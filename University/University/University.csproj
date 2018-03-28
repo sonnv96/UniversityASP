@@ -52,6 +52,12 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -194,32 +200,27 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ChuyenNganhsController.cs" />
-    <Compile Include="Controllers\GiangViensController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LopMonHocsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MonHocsController.cs" />
-    <Compile Include="Controllers\NganhHocsController.cs" />
-    <Compile Include="Controllers\QuanTrisController.cs" />
+    <Compile Include="Controllers\SinhVienController.cs" />
     <Compile Include="Controllers\TaiKhoansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Data\BaiViet.cs">
-      <DependentUpon>University.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Data\BangDiem.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Data\ChuyenNganh.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Data\DanhSachLop.cs">
+    <Compile Include="Models\Data\GiangVien.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Data\GiangVien.cs">
+    <Compile Include="Models\Data\Khoa.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Data\Lop.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Data\LopMonHoc.cs">
@@ -228,16 +229,10 @@
     <Compile Include="Models\Data\MonHoc.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Data\NganhHoc.cs">
-      <DependentUpon>University.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Data\QuanTri.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Data\SinhVien.cs">
-      <DependentUpon>University.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Data\sysdiagram.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Data\TaiKhoan.cs">
@@ -260,6 +255,7 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ModelviewSinhVien.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -270,6 +266,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Sass\mycss.css">
       <DependentUpon>mycss.scss</DependentUpon>
     </Content>
@@ -279,6 +276,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Models\Data\University.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>University.edmx</DependentUpon>
@@ -288,16 +288,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>University.edmx</DependentUpon>
       <LastGenOutput>University.cs</LastGenOutput>
-    </Content>
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\Data\University.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>University.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Data\University.edmx.diagram">
-      <DependentUpon>University.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -326,6 +316,13 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <EntityDeploy Include="Models\Data\University.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>University.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Data\University.edmx.diagram">
+      <DependentUpon>University.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -429,6 +426,11 @@
     <Content Include="Views\QuanTris\Edit.cshtml" />
     <Content Include="Views\QuanTris\Index.cshtml" />
     <Content Include="Views\TaiKhoans\DangNhap.cshtml" />
+    <Content Include="Views\SinhVien\Create.cshtml" />
+    <Content Include="Views\SinhVien\Delete.cshtml" />
+    <Content Include="Views\SinhVien\Details.cshtml" />
+    <Content Include="Views\SinhVien\Edit.cshtml" />
+    <Content Include="Views\SinhVien\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

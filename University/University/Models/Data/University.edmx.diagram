@@ -4,21 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d897faff4a11445595ba21d8c2b180d8" Name="Diagram1" ZoomLevel="55">
-        <EntityTypeShape EntityType="UniversityModel.BangDiem" Width="1.5" PointX="7.5" PointY="8.125" />
-        <EntityTypeShape EntityType="UniversityModel.ChuyenNganh" Width="1.5" PointX="0.75" PointY="16.125" />
-        <EntityTypeShape EntityType="UniversityModel.GiangVien" Width="1.5" PointX="3" PointY="11.75" />
-        <EntityTypeShape EntityType="UniversityModel.Khoa" Width="1.5" PointX="1.5" PointY="19.375" />
-        <EntityTypeShape EntityType="UniversityModel.Lop" Width="1.5" PointX="0.75" PointY="3.375" />
-        <EntityTypeShape EntityType="UniversityModel.LopMonHoc" Width="1.5" PointX="5.25" PointY="11.25" />
-        <EntityTypeShape EntityType="UniversityModel.MonHoc" Width="1.5" PointX="3" PointY="16.125" />
-        <EntityTypeShape EntityType="UniversityModel.QuanTri" Width="1.5" PointX="3" PointY="8.625" />
-        <EntityTypeShape EntityType="UniversityModel.SinhVien" Width="1.5" PointX="3" PointY="3.375" />
-        <EntityTypeShape EntityType="UniversityModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="6" />
+      <Diagram DiagramId="a49f194eb58a4f448231a78229c05569" Name="Diagram1" ZoomLevel="111">
+        <EntityTypeShape EntityType="UniversityModel.BangDiem" Width="1.5" PointX="8.25" PointY="7.375" />
+        <EntityTypeShape EntityType="UniversityModel.ChuyenNganh" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="UniversityModel.GiangVien" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="UniversityModel.Khoa" Width="1.5" PointX="1.5" PointY="11.625" />
+        <EntityTypeShape EntityType="UniversityModel.Lop" Width="1.5" PointX="3.75" PointY="11.625" />
+        <EntityTypeShape EntityType="UniversityModel.LopMonHoc" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="UniversityModel.MonHoc" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="UniversityModel.QuanTri" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="UniversityModel.SinhVien" Width="1.5" PointX="6" PointY="9.5" />
+        <EntityTypeShape EntityType="UniversityModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="6.25" />
         <AssociationConnector Association="UniversityModel.FK_BangDiem_LopMonHoc" />
         <AssociationConnector Association="UniversityModel.FK_BangDiem_SinhVien" />
         <AssociationConnector Association="UniversityModel.FK_ChuyenNganh_Khoa" />
         <AssociationConnector Association="UniversityModel.FK_MonHoc_ChuyenNganh" />
+        <AssociationConnector Association="UniversityModel.FK_SinhVien_ChuyenNganh" />
+        <AssociationConnector Association="UniversityModel.FK_SinhVien_ChuyenNganh1" />
         <AssociationConnector Association="UniversityModel.FK_GiangVien_TaiKhoan" />
         <AssociationConnector Association="UniversityModel.FK_LopMonHoc_GiangVien" />
         <AssociationConnector Association="UniversityModel.FK_SinhVien_Lop" />

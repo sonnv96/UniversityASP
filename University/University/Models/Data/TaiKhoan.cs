@@ -24,7 +24,8 @@ namespace University.Models.Data
     
         public string tenDangNhap { get; set; }
         public string matKhau { get; set; }
-        public Nullable<int> loaiTaiKhoan { get; set; }
+        public string loaiTaiKhoan { get; set; }
+        public string trangThai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GiangVien> GiangViens { get; set; }

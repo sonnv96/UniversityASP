@@ -18,7 +18,6 @@ namespace University.Models.Data
         public SinhVien()
         {
             this.BangDiems = new HashSet<BangDiem>();
-            this.DanhSachLops = new HashSet<DanhSachLop>();
         }
     
         public string maSinhVien { get; set; }
@@ -26,15 +25,18 @@ namespace University.Models.Data
         public string queQuan { get; set; }
         public Nullable<System.DateTime> ngaySinh { get; set; }
         public Nullable<int> namNhapHoc { get; set; }
-        public string maNganh { get; set; }
+        public string maChuyenNganh { get; set; }
         public string eMail { get; set; }
         public string tenDangNhap { get; set; }
         public Nullable<int> gioiTinh { get; set; }
+        public string trangThai { get; set; }
+        public string maLop { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BangDiem> BangDiems { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DanhSachLop> DanhSachLops { get; set; }
+        public virtual ChuyenNganh ChuyenNganh { get; set; }
+        public virtual ChuyenNganh ChuyenNganh1 { get; set; }
+        public virtual Lop Lop { get; set; }
         public virtual TaiKhoan TaiKhoan { get; set; }
     }
 }

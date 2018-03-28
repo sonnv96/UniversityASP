@@ -13,7 +13,7 @@ namespace University.Controllers
 {
     public class TaiKhoansController : Controller
     {
-        private UniversityEntities db = new UniversityEntities();
+        private UniversityEntities1 db = new UniversityEntities1();
 
         // GET: TaiKhoans
         public ActionResult Index()
@@ -137,7 +137,7 @@ namespace University.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (UniversityEntities db = new UniversityEntities())
+                using (UniversityEntities1 db = new UniversityEntities1())
                 {
                     var obj = db.TaiKhoans.Where(a => a.tenDangNhap.Equals(taikhoan.tenDangNhap) && a.matKhau.Equals(taikhoan.matKhau)).FirstOrDefault();
 
@@ -147,16 +147,16 @@ namespace University.Controllers
                         Session["loaiTaiKhoan"] = obj.loaiTaiKhoan.ToString();
 
 
-                        if (obj.loaiTaiKhoan == 1)
+                        if (obj.loaiTaiKhoan == "Sinh vien")
                         {
                             return RedirectToAction("Index", "");
                         }
-                        else if (obj.loaiTaiKhoan == 2)
+                        else if (obj.loaiTaiKhoan == "Giang Vien")
                         {
                             return RedirectToAction("Index", "");
                         }
 
-                        return RedirectToAction("loadtatca", "TieuDe");
+                        return RedirectToAction("Index", "TieuDe");
                     }
                     else
                     {
@@ -166,12 +166,21 @@ namespace University.Controllers
             }
             return View(taikhoan);
         }
-       
+        public void ThongtinSV()
+        {
+            string id = Session["Username"].ToString();
+         
+            ViewBag.thongtin = db.TaiKhoans.ToList().Where(x => x.tenDangNhap == id);
+           
+
+        }
+
+
         public ActionResult LogOff()
         {
             Session.Clear();
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login", "TaiKhoan");
+            return RedirectToAction("DangNhap", "TaiKhoans");
         }
 
     }

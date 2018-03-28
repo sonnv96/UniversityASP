@@ -17,18 +17,25 @@ namespace University.Models.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LopMonHoc()
         {
-            this.DanhSachLops = new HashSet<DanhSachLop>();
+            this.BangDiems = new HashSet<BangDiem>();
         }
     
-        public string maLop { get; set; }
+        public string maLopMonHoc { get; set; }
+        public string tenLopMonHoc { get; set; }
         public string maMonHoc { get; set; }
         public Nullable<int> soLuongToiDa { get; set; }
         public Nullable<int> soLuongDangKy { get; set; }
         public string maGiangVien { get; set; }
         public string trangThai { get; set; }
+        public Nullable<int> namHoc { get; set; }
+        public Nullable<int> hocKy { get; set; }
+        public string phongHoc { get; set; }
+        public Nullable<int> tietHocTu { get; set; }
+        public Nullable<int> tietHocDen { get; set; }
+        public Nullable<int> ngayHoc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DanhSachLop> DanhSachLops { get; set; }
+        public virtual ICollection<BangDiem> BangDiems { get; set; }
         public virtual GiangVien GiangVien { get; set; }
         public virtual MonHoc MonHoc { get; set; }
     }
