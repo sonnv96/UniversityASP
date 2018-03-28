@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using University.Models.Data;
 using University.Models;
+using PagedList;
 
 namespace University.Controllers
 {
@@ -133,10 +134,10 @@ namespace University.Controllers
             }
             base.Dispose(disposing);
         }
-        public ActionResult TTSV()
+        public ActionResult TTSV(int page = 1, int pageSize = 10)
         {
             string id = Session["UserName"].ToString();
-            ViewBag.hoso = db.TaiKhoans.ToList().Where(x => x.tenDangNhap == id);
+          
             var list = from tk in db.TaiKhoans
                        join sv in db.SinhViens
                        on tk.tenDangNhap equals sv.tenDangNhap
@@ -165,8 +166,36 @@ namespace University.Controllers
 
 
 
-            return View(list.ToList().Where(x=>x.tendangnhap == id).FirstOrDefault());
+            return View(list.ToList().Where(x=>x.tendangnhap == id).ToPagedList(page, pageSize));
 
+        }
+        public ActionResult Xemdiem(int page = 1, int pageSize = 10)
+        {
+
+            string id = Session["UserName"].ToString();
+
+            var listdiem = from tk in db.TaiKhoans
+                       join sv in db.SinhViens
+                       on tk.tenDangNhap equals sv.tenDangNhap
+                       join bd in db.BangDiems
+                       on sv.maSinhVien equals bd.maSinhVien
+                       join lmh in db.LopMonHocs
+                       on bd.maLopMonHoc equals lmh.maLopMonHoc
+                       select new ModelViewDiem()
+                       {
+                           masv = sv.maSinhVien,
+                           tensv = sv.tenSinhVien,
+                           tendangnhap = tk.tenDangNhap,
+                           ngaysinh = Convert.ToDateTime(sv.ngaySinh),
+                           gioitinh = Convert.ToInt32(sv.gioiTinh),
+                           giuaki = Convert.ToInt32(bd.giuaKy),
+                           cuoiki = Convert.ToInt32(bd.cuoiKy),
+                           thuhanh = Convert.ToInt32(bd.thucHanh),
+                           mamonhoc = lmh.maMonHoc
+
+
+                       };
+            return View(listdiem.ToList().Where(x=>x.tendangnhap == id).ToPagedList(page, pageSize));
         }
     }
 }

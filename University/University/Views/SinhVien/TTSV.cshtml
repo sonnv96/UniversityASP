@@ -1,0 +1,46 @@
+﻿@model PagedList.IPagedList<University.Models.ModelviewSinhVien>
+@using PagedList.Mvc;
+@{
+    @{
+        ViewBag.Title = "TTSV";
+        Layout = "~/Views/HomePage/Home.cshtml";
+    }
+        
+
+    <h2>TTSV</h2>
+
+    <table class="table " style="width:95%">
+        <tr style="background:orange">
+            <th>Mã Sinh Viên</th>
+            <th>Họ Tên</th>
+            <th>Tên đăng nhập</th>
+            <th>Quê quán</th>
+            <th>Ngày Sinh</th>
+            <th>Lớp</th>
+            <th>Giới tính</th>
+            <th>Năm nhập học</th>
+            <th>Email</th>
+            <th>Ngành</th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.masv</td>
+                <td>@item.tensv</td>
+                <td>@item.tendangnhap</td>
+                <td>@String.Format("{0:d/M/yyyy}", item.ngaysinh)</td>
+                <td>@item.tenlop</td>
+                <td>@item.tennganh</td>
+                <td>@item.quequan</td>
+                <td>@item.gioitinh</td>
+                <td>@item.namnhaphoc</td>
+                <td>@item.Email</td>
+
+
+            </tr>
+        }
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        

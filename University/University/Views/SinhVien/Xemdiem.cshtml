@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<University.Models.ModelViewDiem>
+@using PagedList.Mvc;
+@{
+    @{ 
+    ViewBag.Title = "Xemdiem";
+    Layout = "~/Views/HomePage/Home.cshtml";
+    }
+
+<h2>Xemdiem</h2>
+
+
+
+
+<table class="table " style="width:95%">
+    <tr style="background:orange">
+        <th>Mã Sinh Viên</th>
+        <th>Họ Tên</th>
+        <th>Tên đăng nhập</th>
+        <th>Giới tính</th>
+        <th>Ngày Sinh</th>
+        <th>Môn học</th>
+        <th>Giữa kỳ</th>
+        <th>Cuối kỳ</th>
+        <th>Thực hành</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+
+    <tr>
+        <td>@item.masv</td>
+        <td>@item.tensv</td>
+        <td>@item.tendangnhap</td>
+        <td>@item.gioitinh</td>
+        <td>@String.Format("{0:d/M/yyyy}", item.ngaysinh)</td>
+        <td>@item.mamonhoc</td>
+        <td>@item.giuaki</td>
+        <td>@item.cuoiki</td>
+        <td>@item.thuhanh</td>
+
+
+
+    </tr>
+    }
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+

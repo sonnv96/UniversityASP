@@ -147,9 +147,9 @@ namespace University.Controllers
                         Session["loaiTaiKhoan"] = obj.loaiTaiKhoan.ToString();
 
 
-                        if (obj.loaiTaiKhoan == "Sinh vien")
+                        if (obj.loaiTaiKhoan == "SinhVien")
                         {
-                            return RedirectToAction("Index", "");
+                            return RedirectToAction("Index", "SinhVien");
                         }
                         else if (obj.loaiTaiKhoan == "Giang Vien")
                         {
