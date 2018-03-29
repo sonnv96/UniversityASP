@@ -16,6 +16,7 @@
           <Property Name="thucHanh" Type="decimal" Precision="18" Scale="3" />
           <Property Name="giuaKy" Type="decimal" Precision="18" Scale="3" />
           <Property Name="cuoiKy" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="thuongKy" Type="decimal" Precision="18" Scale="3" />
         </EntityType>
         <EntityType Name="ChuyenNganh">
           <Key>
@@ -38,6 +39,7 @@
           <Property Name="eMail" Type="varchar" MaxLength="128" />
           <Property Name="tenDangNhap" Type="varchar" MaxLength="32" />
           <Property Name="trangThai" Type="nvarchar" MaxLength="128" />
+          <Property Name="hinhAnh" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="Khoa">
           <Key>
@@ -69,9 +71,8 @@
           <Property Name="namHoc" Type="int" />
           <Property Name="hocKy" Type="int" />
           <Property Name="phongHoc" Type="varchar" MaxLength="128" />
-          <Property Name="tietHocTu" Type="int" />
-          <Property Name="tietHocDen" Type="int" />
           <Property Name="ngayHoc" Type="int" />
+          <Property Name="tietHoc" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="MonHoc">
           <Key>
@@ -106,9 +107,10 @@
           <Property Name="maChuyenNganh" Type="varchar" MaxLength="16" />
           <Property Name="eMail" Type="varchar" MaxLength="128" />
           <Property Name="tenDangNhap" Type="varchar" MaxLength="32" />
-          <Property Name="gioiTinh" Type="int" />
+          <Property Name="gioiTinh" Type="nvarchar" MaxLength="128" />
           <Property Name="trangThai" Type="nvarchar" MaxLength="128" />
           <Property Name="maLop" Type="varchar" MaxLength="16" />
+          <Property Name="hinhAnh" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -398,6 +400,7 @@
           <Property Name="thucHanh" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="giuaKy" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="cuoiKy" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="thuongKy" Type="Decimal" Precision="18" Scale="3" />
           <NavigationProperty Name="LopMonHoc" Relationship="UniversityModel.FK_BangDiem_LopMonHoc" FromRole="BangDiem" ToRole="LopMonHoc" />
           <NavigationProperty Name="SinhVien" Relationship="UniversityModel.FK_BangDiem_SinhVien" FromRole="BangDiem" ToRole="SinhVien" />
         </EntityType>
@@ -426,6 +429,7 @@
           <Property Name="eMail" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="tenDangNhap" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="trangThai" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="hinhAnh" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TaiKhoan" Relationship="UniversityModel.FK_GiangVien_TaiKhoan" FromRole="GiangVien" ToRole="TaiKhoan" />
           <NavigationProperty Name="LopMonHocs" Relationship="UniversityModel.FK_LopMonHoc_GiangVien" FromRole="GiangVien" ToRole="LopMonHoc" />
         </EntityType>
@@ -461,9 +465,8 @@
           <Property Name="namHoc" Type="Int32" />
           <Property Name="hocKy" Type="Int32" />
           <Property Name="phongHoc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="tietHocTu" Type="Int32" />
-          <Property Name="tietHocDen" Type="Int32" />
           <Property Name="ngayHoc" Type="Int32" />
+          <Property Name="tietHoc" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BangDiems" Relationship="UniversityModel.FK_BangDiem_LopMonHoc" FromRole="LopMonHoc" ToRole="BangDiem" />
           <NavigationProperty Name="GiangVien" Relationship="UniversityModel.FK_LopMonHoc_GiangVien" FromRole="LopMonHoc" ToRole="GiangVien" />
           <NavigationProperty Name="MonHoc" Relationship="UniversityModel.FK_LopMonHoc_MonHoc" FromRole="LopMonHoc" ToRole="MonHoc" />
@@ -504,9 +507,10 @@
           <Property Name="maChuyenNganh" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="eMail" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="tenDangNhap" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="gioiTinh" Type="Int32" />
+          <Property Name="gioiTinh" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="trangThai" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="maLop" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="hinhAnh" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BangDiems" Relationship="UniversityModel.FK_BangDiem_SinhVien" FromRole="SinhVien" ToRole="BangDiem" />
           <NavigationProperty Name="ChuyenNganh" Relationship="UniversityModel.FK_SinhVien_ChuyenNganh" FromRole="SinhVien" ToRole="ChuyenNganh" />
           <NavigationProperty Name="ChuyenNganh1" Relationship="UniversityModel.FK_SinhVien_ChuyenNganh1" FromRole="SinhVien" ToRole="ChuyenNganh" />
@@ -669,7 +673,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -678,6 +682,7 @@
           <EntitySetMapping Name="BangDiems">
             <EntityTypeMapping TypeName="UniversityModel.BangDiem">
               <MappingFragment StoreEntitySet="BangDiem">
+                <ScalarProperty Name="thuongKy" ColumnName="thuongKy" />
                 <ScalarProperty Name="cuoiKy" ColumnName="cuoiKy" />
                 <ScalarProperty Name="giuaKy" ColumnName="giuaKy" />
                 <ScalarProperty Name="thucHanh" ColumnName="thucHanh" />
@@ -700,6 +705,7 @@
           <EntitySetMapping Name="GiangViens">
             <EntityTypeMapping TypeName="UniversityModel.GiangVien">
               <MappingFragment StoreEntitySet="GiangVien">
+                <ScalarProperty Name="hinhAnh" ColumnName="hinhAnh" />
                 <ScalarProperty Name="trangThai" ColumnName="trangThai" />
                 <ScalarProperty Name="tenDangNhap" ColumnName="tenDangNhap" />
                 <ScalarProperty Name="eMail" ColumnName="eMail" />
@@ -732,9 +738,8 @@
           <EntitySetMapping Name="LopMonHocs">
             <EntityTypeMapping TypeName="UniversityModel.LopMonHoc">
               <MappingFragment StoreEntitySet="LopMonHoc">
+                <ScalarProperty Name="tietHoc" ColumnName="tietHoc" />
                 <ScalarProperty Name="ngayHoc" ColumnName="ngayHoc" />
-                <ScalarProperty Name="tietHocDen" ColumnName="tietHocDen" />
-                <ScalarProperty Name="tietHocTu" ColumnName="tietHocTu" />
                 <ScalarProperty Name="phongHoc" ColumnName="phongHoc" />
                 <ScalarProperty Name="hocKy" ColumnName="hocKy" />
                 <ScalarProperty Name="namHoc" ColumnName="namHoc" />
@@ -774,6 +779,7 @@
           <EntitySetMapping Name="SinhViens">
             <EntityTypeMapping TypeName="UniversityModel.SinhVien">
               <MappingFragment StoreEntitySet="SinhVien">
+                <ScalarProperty Name="hinhAnh" ColumnName="hinhAnh" />
                 <ScalarProperty Name="maLop" ColumnName="maLop" />
                 <ScalarProperty Name="trangThai" ColumnName="trangThai" />
                 <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />

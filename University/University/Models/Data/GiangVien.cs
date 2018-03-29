@@ -28,6 +28,7 @@ namespace University.Models.Data
         public string eMail { get; set; }
         public string tenDangNhap { get; set; }
         public string trangThai { get; set; }
+        public string hinhAnh { get; set; }
     
         public virtual TaiKhoan TaiKhoan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

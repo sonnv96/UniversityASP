@@ -14,7 +14,7 @@ namespace University.Models
  
         public DateTime ngaysinh { get; set; }
         public string tenlop { get; set; }
-        public int gioitinh { get; set; }
+        public string gioitinh { get; set; }
         public decimal thuhanh { get; set; }
         public decimal giuaki { get; set; }
         public decimal cuoiki { get; set; }

@@ -257,13 +257,13 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModelViewDiem.cs" />
+    <Compile Include="Models\ModelViewLichHoc.cs" />
     <Compile Include="Models\ModelviewSinhVien.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Assets\font-awesome.css" />
-    <Content Include="Content\Assets\font-awesome.min.css" />
     <Content Include="Content\Assets\jquery.easy-pie-chart.css" />
     <Content Include="Content\Bootstrap\bootstrap-grid.css" />
     <Content Include="Content\Bootstrap\bootstrap-grid.min.css" />
@@ -288,6 +288,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\mp2.jpg" />
+    <Content Include="Images\mp.jpg" />
     <Content Include="Models\Data\University.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>University.edmx</DependentUpon>
@@ -417,6 +419,9 @@
     <Content Include="Views\GiangVien\Details.cshtml" />
     <Content Include="Views\GiangVien\Edit.cshtml" />
     <Content Include="Views\GiangVien\Index.cshtml" />
+    <Content Include="Views\HomePage\_Slider.cshtml" />
+    <Content Include="Views\HomePage\_Search.cshtml" />
+    <Content Include="Views\SinhVien\XemThoiKhoaBieu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

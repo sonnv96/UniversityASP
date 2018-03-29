@@ -30,9 +30,8 @@ namespace University.Models.Data
         public Nullable<int> namHoc { get; set; }
         public Nullable<int> hocKy { get; set; }
         public string phongHoc { get; set; }
-        public Nullable<int> tietHocTu { get; set; }
-        public Nullable<int> tietHocDen { get; set; }
         public Nullable<int> ngayHoc { get; set; }
+        public string tietHoc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BangDiem> BangDiems { get; set; }

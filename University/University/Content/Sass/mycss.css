@@ -16,10 +16,21 @@ body {
   body #wapper .container-fluid ::before {
     display: table;
     content: none; }
+  body .title {
+    background-color: #800000;
+    height: 150px; }
+    body .title h1 {
+      margin: auto;
+      color: #ffffff; }
 
 .container-fluid {
   margin: 0px;
-  padding: 0px; }
+  padding: 0px;
+  background-color: #333333; }
+  .container-fluid .navbar-light .navbar-brand {
+    color: #ffffff; }
+  .container-fluid .navbar-light #navbarSupportedContent ul li .nav-link {
+    color: #ffffff; }
 
 footer {
   position: absolute;

@@ -14,7 +14,7 @@ namespace University.Models
         public string quequan { get; set; }
         public DateTime ngaysinh { get; set; }
         public string tenlop { get; set; }
-        public int gioitinh { get; set; }
+        public string gioitinh { get; set; }
         public string trangthai { get; set; }
         public int namnhaphoc { get; set; }
         public string Email { get; set; }

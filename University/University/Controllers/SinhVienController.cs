@@ -153,7 +153,7 @@ namespace University.Controllers
                            quequan = sv.queQuan,
                            ngaysinh = (DateTime)sv.ngaySinh,
                            tenlop = l.tenLop,
-                           gioitinh = (Int32)sv.gioiTinh,
+                           gioitinh = sv.gioiTinh,
                            tennganh = cn.tenChuyenNganh,
                            Email = sv.eMail,
                            trangthai = sv.trangThai,
@@ -187,10 +187,10 @@ namespace University.Controllers
                            tensv = sv.tenSinhVien,
                            tendangnhap = tk.tenDangNhap,
                            ngaysinh = (DateTime)sv.ngaySinh,
-                           gioitinh = (Int32)sv.gioiTinh,
-                           giuaki = (Int32)bd.giuaKy,
-                           cuoiki = (Int32)bd.cuoiKy,
-                           thuhanh = (Int32)bd.thucHanh,
+                           gioitinh = sv.gioiTinh,
+                           giuaki = (Decimal)bd.giuaKy,
+                           cuoiki = (Decimal)bd.cuoiKy,
+                           thuhanh = (Decimal)bd.thucHanh,
                            mamonhoc = lmh.maMonHoc
 
 
@@ -207,5 +207,40 @@ namespace University.Controllers
 
             return View();
         }
+        public ActionResult XemThoiKhoaBieu(int page = 1, int pageSize = 10, int nam = 0, int hocki = 0 )
+        {
+
+            string id = Session["UserName"].ToString();
+
+            var listdiem = from tk in db.TaiKhoans
+                           join sv in db.SinhViens
+                           on tk.tenDangNhap equals sv.tenDangNhap
+                           join bd in db.BangDiems
+                           on sv.maSinhVien equals bd.maSinhVien
+                           join lmh in db.LopMonHocs
+                           on bd.maLopMonHoc equals lmh.maLopMonHoc
+                           join gv in db.GiangViens
+                           on lmh.maGiangVien equals gv.maGiangVien
+                           join mh in db.MonHocs
+                           on lmh.maMonHoc equals mh.maMonHoc
+                           select new ModelViewLichHoc()
+                           {
+                               masv = sv.maSinhVien,
+                               tensv = sv.tenSinhVien,
+                               tendangnhap = tk.tenDangNhap,
+                               namhoc = (Int32)lmh.namHoc,
+                               hocki = (Int32)lmh.hocKy,
+                               ngayhoc = (Int32)lmh.ngayHoc,
+                               monhoc = mh.tenMonHoc,
+                               tiethoc = lmh.tietHoc,
+                               giangvien = gv.tenGiangVien,
+                               phonghoc = lmh.phongHoc,
+
+
+
+                           };
+            return View(listdiem.ToList().Where(x => x.tendangnhap == id && x.namhoc == nam && x.hocki ==hocki).ToPagedList(page, pageSize));
+        }
+
     }
 }

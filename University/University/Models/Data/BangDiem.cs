@@ -20,6 +20,7 @@ namespace University.Models.Data
         public Nullable<decimal> thucHanh { get; set; }
         public Nullable<decimal> giuaKy { get; set; }
         public Nullable<decimal> cuoiKy { get; set; }
+        public Nullable<decimal> thuongKy { get; set; }
     
         public virtual LopMonHoc LopMonHoc { get; set; }
         public virtual SinhVien SinhVien { get; set; }

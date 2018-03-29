@@ -14,6 +14,7 @@
     height: 100%;
 
     #wapper {
+        
 
         :before, :after {
             box-sizing: inherit;
@@ -26,19 +27,44 @@
             }
         }
     }
+    .title
+        {
+        background-color: #800000;
+        height:150px;
+       h1 {
+           margin:auto;
+           color:#ffffff;
+        }
+    }
 }
 
 .container-fluid {
     margin: 0px;
     padding: 0px;
-}
-footer {
-        position:absolute;
-        width:100%;
-    
+    background-color: #333333;
+
+    .navbar-light {
+        .navbar-brand {
+            color: #ffffff;
+        }
+
+        #navbarSupportedContent {
+            ul {
+                li {
+                    .nav-link {
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+    }
+
+    footer {
+        position: absolute;
+        width: 100%;
         background: #5b6e84;
         color: #fff;
         padding: 10px 0;
         bottom: 0;
-    
-}
+    }
