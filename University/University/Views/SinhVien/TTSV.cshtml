@@ -26,20 +26,20 @@
         @foreach (var item in Model)
         {
 
-            <tr>
-                <td>@item.masv</td>
-                <td>@item.tensv</td>
-                <td>@item.tendangnhap</td>
-               
-                <td>@item.tenlop</td>
-                <td>@item.tennganh</td>
-                <td>@item.quequan</td>
-                
-                
-                <td>@item.Email</td>
+        <tr>
+            <td>@item.masv</td>
+            <td>@item.tensv</td>
+            <td>@item.tendangnhap</td>
+            <td>@item.quequan</td>
+            <td>@String.Format("{0:d/M/yyyy}", item.ngaysinh)</td>
+            <td>@item.tenlop</td>
+            <td>@item.gioitinh</td>
+            <td>@item.namnhaphoc</td>
+            <td>@item.Email</td>
+            <td>@item.tennganh</td>
 
 
-            </tr>
+        </tr>
         }
     </table>
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
