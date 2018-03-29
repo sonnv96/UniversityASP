@@ -149,7 +149,7 @@ namespace University.Controllers
 
                         if (obj.loaiTaiKhoan == "SinhVien")
                         {
-                            return RedirectToAction("Index", "SinhVien");
+                            return RedirectToAction("TTSV", "SinhVien");
                         }
                         else if (obj.loaiTaiKhoan == "Giang Vien")
                         {

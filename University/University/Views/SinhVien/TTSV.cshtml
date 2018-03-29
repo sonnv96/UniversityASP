@@ -1,11 +1,11 @@
 ﻿@model PagedList.IPagedList<University.Models.ModelviewSinhVien>
 @using PagedList.Mvc;
-@{
+
     @{
         ViewBag.Title = "TTSV";
         Layout = "~/Views/HomePage/Home.cshtml";
     }
-        
+
 
     <h2>TTSV</h2>
 
@@ -30,12 +30,12 @@
                 <td>@item.masv</td>
                 <td>@item.tensv</td>
                 <td>@item.tendangnhap</td>
-                <td>@String.Format("{0:d/M/yyyy}", item.ngaysinh)</td>
+               
                 <td>@item.tenlop</td>
                 <td>@item.tennganh</td>
                 <td>@item.quequan</td>
-                <td>@item.gioitinh</td>
-                <td>@item.namnhaphoc</td>
+                
+                
                 <td>@item.Email</td>
 
 
@@ -44,3 +44,4 @@
     </table>
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
         
+

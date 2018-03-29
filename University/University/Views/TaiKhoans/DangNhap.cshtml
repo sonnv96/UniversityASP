@@ -5,110 +5,70 @@
     Layout = "~/Views/HomePage/Home.cshtml";
 }
 
-<h1>Đăng nhập</h1>
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" href="~/Content/Sass/mycss.min.css" />
-<!------ Include the above in your HEAD tag ---------->
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-login">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="#" class="active" id="login-form-link">Login</a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a href="#" id="register-form-link">Register</a>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            @using (Html.BeginForm("DangNhap", "TaiKhoans", FormMethod.Post, new { id = "login-form", Styles = "display: block;" }))
-    {
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true)
 
-                        <div class="form-group">
-                            <input type="text" name="tenDangNhap" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="matKhau" id="password" tabindex="2" class="form-control" placeholder="Password">
-                        </div>
-                        <div class="form-group text-center">
-                            <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                            <label for="remember"> Remember Me</label>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-6 col-sm-offset-3">
-                                    <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="text-center">
-                                        <a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-}
-                            <form id="register-form" action="https://phpoll.com/register/process" method="post" role="form" style="display: none;">
-                                <div class="form-group">
-                                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-sm-offset-3">
-                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+ 
+    <link rel="shortcut icon" href="img/favicon.html">
+    <title>FlatLab - Flat & Responsive Bootstrap Admin Template</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/Bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/Bootstrap/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="~/Content/Assets/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/Assets/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/Content/Bootstrap/owl.carousel.css" type="text/css">
+    <link href="~/Content/Bootstrap/style-responsive.css" rel="stylesheet" />
+    <link href="~/Content/Bootstrap/login-form.css" rel="stylesheet">
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="card card-container">
+          
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+
+            @using (Html.BeginForm("DangNhap", "TaiKhoans", FormMethod.Post, new { @class = "form-signin" }))
+            {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+
+
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="text" name="tenDangNhap" class="form-control" placeholder="Tên Đăng Nhập" required autofocus>
+            <input type="password" name="matKhau" class="form-control" placeholder="Mật Khẩu" required>
+
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" name="login">Sign in</button>
+            }
+        <a href="#" class="forgot-password">
+            Forgot the password?
+        </a>
         </div>
     </div>
-</div>
-<script>
+   
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 
-    $(function () {
+</body>
 
-        $('#login-form-link').click(function (e) {
-            $("#login-form").delay(100).fadeIn(100);
-            $("#register-form").fadeOut(100);
-            $('#register-form-link').removeClass('active');
-            $(this).addClass('active');
-            e.preventDefault();
-        });
-        $('#register-form-link').click(function (e) {
-            $("#register-form").delay(100).fadeIn(100);
-            $("#login-form").fadeOut(100);
-            $('#login-form-link').removeClass('active');
-            $(this).addClass('active');
-            e.preventDefault();
-        });
+</html>
 
-    });
-</script>
+
+
+
+
+
+
 
 

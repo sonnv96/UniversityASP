@@ -151,13 +151,13 @@ namespace University.Controllers
                            tensv = sv.tenSinhVien,
                            tendangnhap = tk.tenDangNhap,
                            quequan = sv.queQuan,
-                           ngaysinh = Convert.ToDateTime(sv.ngaySinh),
+                           ngaysinh = (DateTime)sv.ngaySinh,
                            tenlop = l.tenLop,
-                           gioitinh = Convert.ToInt32(sv.gioiTinh),
+                           gioitinh = (Int32)sv.gioiTinh,
                            tennganh = cn.tenChuyenNganh,
                            Email = sv.eMail,
                            trangthai = sv.trangThai,
-                           namnhaphoc = Convert.ToInt32(sv.namNhapHoc)
+                           namnhaphoc = (Int32)sv.namNhapHoc
                        };
 
 
@@ -186,16 +186,26 @@ namespace University.Controllers
                            masv = sv.maSinhVien,
                            tensv = sv.tenSinhVien,
                            tendangnhap = tk.tenDangNhap,
-                           ngaysinh = Convert.ToDateTime(sv.ngaySinh),
-                           gioitinh = Convert.ToInt32(sv.gioiTinh),
-                           giuaki = Convert.ToInt32(bd.giuaKy),
-                           cuoiki = Convert.ToInt32(bd.cuoiKy),
-                           thuhanh = Convert.ToInt32(bd.thucHanh),
+                           ngaysinh = (DateTime)sv.ngaySinh,
+                           gioitinh = (Int32)sv.gioiTinh,
+                           giuaki = (Int32)bd.giuaKy,
+                           cuoiki = (Int32)bd.cuoiKy,
+                           thuhanh = (Int32)bd.thucHanh,
                            mamonhoc = lmh.maMonHoc
 
 
                        };
             return View(listdiem.ToList().Where(x=>x.tendangnhap == id).ToPagedList(page, pageSize));
+        }
+        public ActionResult SinhVien()
+        {
+          
+            if(Session["UserName"]  == null)
+            {
+                return RedirectToAction("DangNhap", "TaiKhoans");
+            }
+
+            return View();
         }
     }
 }
