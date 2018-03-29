@@ -15,8 +15,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
- 
+
+
     <link rel="shortcut icon" href="img/favicon.html">
     <title>FlatLab - Flat & Responsive Bootstrap Admin Template</title>
     <!-- Bootstrap core CSS -->
@@ -34,29 +34,43 @@
 <body>
     <div class="container">
         <div class="card card-container">
-          
+
             <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" class="profile-name-card"></p>
-
-            @using (Html.BeginForm("DangNhap", "TaiKhoans", FormMethod.Post, new { @class = "form-signin" }))
+            @if (TempData["taikhoan"] != null)
             {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-
-
-
-            <span id="reauth-email" class="reauth-email"></span>
-            <input type="text" name="tenDangNhap" class="form-control" placeholder="Tên Đăng Nhập" required autofocus>
-            <input type="password" name="matKhau" class="form-control" placeholder="Mật Khẩu" required>
-
-            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" name="login">Sign in</button>
+                <script>
+                    alert("Tài khoản hoặc mật khẩu không đúng");
+                </script>
             }
-        <a href="#" class="forgot-password">
-            Forgot the password?
-        </a>
+            @if ((string)Session["loaiTaiKhoan"] == "SinhVien" || (string)Session["loaiTaiKhoan"] == "GiangVien")
+            {
+                <script>
+                    window.location.href = 'http://localhost:56398/SinhVien/TTSV';
+                </script>
+            }
+            else
+            {
+                using (Html.BeginForm("DangNhap", "TaiKhoans", FormMethod.Post, new { @class = "form-signin" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+
+
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <input type="text" name="tenDangNhap" class="form-control" placeholder="Tên Đăng Nhập" required autofocus>
+                    <input type="password" name="matKhau" class="form-control" placeholder="Mật Khẩu" required>
+
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" name="login">Sign in</button>
+                }
+            }
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
         </div>
     </div>
-   
+
     <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 

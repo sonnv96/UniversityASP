@@ -263,6 +263,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Assets\font-awesome.css" />
+    <Content Include="Content\Assets\font-awesome.min.css" />
     <Content Include="Content\Assets\jquery.easy-pie-chart.css" />
     <Content Include="Content\Bootstrap\bootstrap-grid.css" />
     <Content Include="Content\Bootstrap\bootstrap-grid.min.css" />
