@@ -11,7 +11,8 @@ namespace University.Models
         public string masv { get; set; }
         public string tendangnhap { get; set; }
         public string tensv { get; set; }
- 
+        public string hinhanh { get; set; }
+
         public DateTime ngaysinh { get; set; }
         public string tenlop { get; set; }
         public string gioitinh { get; set; }

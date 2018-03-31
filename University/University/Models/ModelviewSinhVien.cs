@@ -18,6 +18,7 @@ namespace University.Models
         public string trangthai { get; set; }
         public int namnhaphoc { get; set; }
         public string Email { get; set; }
+        public string hinhanh { get; set; }
         public string tennganh { get; set; }
 
     }

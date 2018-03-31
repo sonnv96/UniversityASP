@@ -10,7 +10,7 @@ namespace University.Models
         public string masv { get; set; }
         public string tendangnhap { get; set; }
         public string tensv { get; set; }
-
+        public string hinhanh { get; set; }
         public int   namhoc { get; set; }
         public int hocki { get; set; }
         public int ngayhoc { get; set; }

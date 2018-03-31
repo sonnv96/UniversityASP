@@ -157,7 +157,9 @@ namespace University.Controllers
                            tennganh = cn.tenChuyenNganh,
                            Email = sv.eMail,
                            trangthai = sv.trangThai,
-                           namnhaphoc = (Int32)sv.namNhapHoc
+                           namnhaphoc = (Int32)sv.namNhapHoc,
+                             hinhanh = sv.hinhAnh
+                             
                        };
 
 
@@ -191,8 +193,9 @@ namespace University.Controllers
                            giuaki = (Decimal)bd.giuaKy,
                            cuoiki = (Decimal)bd.cuoiKy,
                            thuhanh = (Decimal)bd.thucHanh,
-                           mamonhoc = lmh.maMonHoc
-
+                           mamonhoc = lmh.maMonHoc,
+                           hinhanh = sv.hinhAnh
+                           
 
                        };
             return View(listdiem.ToList().Where(x=>x.tendangnhap == id).ToPagedList(page, pageSize));
@@ -211,8 +214,8 @@ namespace University.Controllers
         {
 
             string id = Session["UserName"].ToString();
-
-            var listdiem = from tk in db.TaiKhoans
+          
+            var listtkb = from tk in db.TaiKhoans
                            join sv in db.SinhViens
                            on tk.tenDangNhap equals sv.tenDangNhap
                            join bd in db.BangDiems
@@ -235,11 +238,41 @@ namespace University.Controllers
                                tiethoc = lmh.tietHoc,
                                giangvien = gv.tenGiangVien,
                                phonghoc = lmh.phongHoc,
-
+                              
 
 
                            };
-            return View(listdiem.ToList().Where(x => x.tendangnhap == id && x.namhoc == nam && x.hocki ==hocki).ToPagedList(page, pageSize));
+            //IEnumerable<ModelViewLichHoc> values =
+
+            //          Enum.GetValues(typeof(ModelViewLichHoc))
+
+            //          .Cast<ModelViewLichHoc>();
+
+            //IEnumerable<SelectListItem> items =
+
+            //    from value in values
+
+            //    select new SelectListItem
+
+            //    {
+
+            //        Text = value.ToString(),
+
+            //        Value = value.ToString(),
+
+            //        Selected = value == ,
+
+            //    };
+
+            //ViewBag.MovieType = items;
+
+
+
+
+            //ViewBag.Day = items;
+
+
+            return View(listtkb.ToList().Where(x => x.tendangnhap == id && x.namhoc == nam && x.hocki ==hocki).ToPagedList(page, pageSize));
         }
 
     }

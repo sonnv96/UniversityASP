@@ -7,41 +7,30 @@
     }
 
 
-    <h2>TTSV</h2>
+    <h2 class="">Thông tin sinh viên</h2>
 
-    <table class="table " style="width:95%">
-        <tr style="background:orange">
-            <th>Mã Sinh Viên</th>
-            <th>Họ Tên</th>
-            <th>Tên đăng nhập</th>
-            <th>Quê quán</th>
-            <th>Ngày Sinh</th>
-            <th>Lớp</th>
-            <th>Giới tính</th>
-            <th>Năm nhập học</th>
-            <th>Email</th>
-            <th>Ngành</th>
+     @foreach (var item in Model)
+     {
 
-        </tr>
-        @foreach (var item in Model)
-        {
+    <div class="row">
+        <div class="col-md-6">
+        <img class="" src="~/images/@item.hinhanh" alt="Generic placeholder image"></div>
+        <div class="col-md-6">
+            <p class="noidung">Mã số Sinh Viên: <b>@item.masv</b>(@item.trangthai)</p>
+            <p class="noidung">Họ và Tên: <b>@item.tensv</b></p>
+            <p class="noidung">Email: <b>@item.Email</b></p>
+            <p class="noidung">Giới Tính: <b>@item.gioitinh</b></p>
+            <p class="noidung">Ngày Sinh: <b>@item.ngaysinh</b></p>
+            <p class="noidung">Quê quán: <b>@item.quequan</b></p>
+            <p class="noidung">Lớp học: <b>@item.tenlop</b></p>
+            <p class="noidung">Ngành học: <b>@item.tennganh</b></p>
+            <p class="noidung">Năm nhập học: <b>@item.namnhaphoc</b></p>
 
-        <tr>
-            <td>@item.masv</td>
-            <td>@item.tensv</td>
-            <td>@item.tendangnhap</td>
-            <td>@item.quequan</td>
-            <td>@String.Format("{0:d/M/yyyy}", item.ngaysinh)</td>
-            <td>@item.tenlop</td>
-            <td>@item.gioitinh</td>
-            <td>@item.namnhaphoc</td>
-            <td>@item.Email</td>
-            <td>@item.tennganh</td>
+        </div>
+      
 
-
-        </tr>
-        }
-    </table>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
         
+</div>
+     }
+
 

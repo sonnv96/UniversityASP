@@ -68,3 +68,36 @@
         padding: 10px 0;
         bottom: 0;
     }
+
+    //Trang thông tin sinh viên
+
+.row {
+    margin: 50px;
+
+    img {
+
+        /*@media (min-width: 576px) {
+            width: 400px;
+            height: 270px;
+        }
+        // Medium devices (tablets, 768px and up)
+        @media (min-width: 768px) {
+            width: 700px;
+            height: 370px;
+        }
+        // Large devices (desktops, 992px and up)
+        @media (min-width: 992px) {
+            width: 800px;
+            height: 370px;
+        }
+        // Extra large devices (large desktops, 1200px and up)
+        @media (min-width: 1200px) {
+            width: 80%;
+            height: 370px;
+        }*/
+        width: 80%;
+        height: 100%;
+
+       
+    }
+}
