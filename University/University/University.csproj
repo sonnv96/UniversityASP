@@ -263,8 +263,11 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Assets\font-awesome.css" />
-    <Content Include="Content\Assets\jquery.easy-pie-chart.css" />
+    <Content Include="Content\Assets\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\Assets\font-awesome\fonts\fontawesome-webfontba72.html" />
+    <Content Include="Content\Assets\font-awesome\fonts\fontawesome-webfontba72.svg" />
+    <Content Include="Content\Assets\jquery-easy-pie-chart\jquery.easy-pie-chart.css" />
+    <Content Include="Content\Assets\jquery-easy-pie-chart\jquery.easy-pie-chart.js" />
     <Content Include="Content\Bootstrap\bootstrap-grid.css" />
     <Content Include="Content\Bootstrap\bootstrap-grid.min.css" />
     <Content Include="Content\Bootstrap\bootstrap-reboot.css" />
@@ -275,7 +278,39 @@
     <Content Include="Content\Bootstrap\login-form.css" />
     <Content Include="Content\Bootstrap\owl.carousel.css" />
     <Content Include="Content\Bootstrap\PagedList.css" />
+    <Content Include="Content\Bootstrap\slidebars.css" />
     <Content Include="Content\Bootstrap\style-responsive.css" />
+    <Content Include="Content\Bootstrap\style.css" />
+    <Content Include="Content\Css\bootstrap-reset.css" />
+    <Content Include="Content\Css\bootstrap.min.css" />
+    <Content Include="Content\Css\gallery.css" />
+    <Content Include="Content\Css\huong-style.css" />
+    <Content Include="Content\Css\image-crop.css" />
+    <Content Include="Content\Css\invoice-print.css" />
+    <Content Include="Content\Css\jquery.steps.css" />
+    <Content Include="Content\Css\login-form.css" />
+    <Content Include="Content\Css\owl.carousel.css" />
+    <Content Include="Content\Css\slidebars.css" />
+    <Content Include="Content\Css\soon.css" />
+    <Content Include="Content\Css\style-responsive.css" />
+    <Content Include="Content\Css\style.css" />
+    <Content Include="Content\Css\table-responsive.css" />
+    <Content Include="Content\Css\tasks.css" />
+    <Content Include="Content\Css\yamm.css" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\common-scripts.js" />
+    <Content Include="Content\js\count.js" />
+    <Content Include="Content\js\easy-pie-chart.js" />
+    <Content Include="Content\js\jquery.customSelect.min.js" />
+    <Content Include="Content\js\jquery.dcjqaccordion.2.7.js" />
+    <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\js\jquery.nicescroll.js" />
+    <Content Include="Content\js\jquery.scrollTo.min.js" />
+    <Content Include="Content\js\jquery.sparkline.js" />
+    <Content Include="Content\js\owl.carousel.js" />
+    <Content Include="Content\js\respond.min.js" />
+    <Content Include="Content\js\slidebars.min.js" />
+    <Content Include="Content\js\sparkline-chart.js" />
     <Content Include="Content\Sass\mycss.css">
       <DependentUpon>mycss.scss</DependentUpon>
     </Content>
@@ -334,6 +369,9 @@
     <Content Include="Models\Data\University.edmx.diagram">
       <DependentUpon>University.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\Assets\font-awesome\fonts\fontawesome-webfontba72.eot" />
+    <Content Include="Content\Assets\font-awesome\fonts\fontawesome-webfontba72.woff" />
+    <Content Include="Content\Assets\font-awesome\fonts\fontawesome-webfontd41d.eot" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -357,7 +395,9 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -422,9 +462,11 @@
     <Content Include="Views\HomePage\_Slider.cshtml" />
     <Content Include="Views\HomePage\_Search.cshtml" />
     <Content Include="Views\SinhVien\XemThoiKhoaBieu.cshtml" />
+    <Content Include="Views\HomePage\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\img-qt\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
