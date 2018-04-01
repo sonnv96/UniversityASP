@@ -1,5 +1,4 @@
-﻿@model PagedList.IPagedList<University.Models.ModelviewSinhVien>
-@using PagedList.Mvc;
+﻿@model IEnumerable<University.Models.ModelviewSinhVien>
 
     @{
         ViewBag.Title = "TTSV";
@@ -9,22 +8,21 @@
 
     <h2 class="">Thông tin sinh viên</h2>
 
-     @foreach (var item in Model)
-     {
 
+    
     <div class="row">
         <div class="col-md-6">
-        <img class="" src="~/images/@item.hinhanh" alt="Generic placeholder image"></div>
+        <img class="" src="~/images/@ViewBag.hinhanh" alt="Generic placeholder image"></div>
         <div class="col-md-6">
-            <p class="noidung">Mã số Sinh Viên: <b>@item.masv</b>(@item.trangthai)</p>
-            <p class="noidung">Họ và Tên: <b>@item.tensv</b></p>
-            <p class="noidung">Email: <b>@item.Email</b></p>
-            <p class="noidung">Giới Tính: <b>@item.gioitinh</b></p>
-            <p class="noidung">Ngày Sinh: <b>@item.ngaysinh</b></p>
-            <p class="noidung">Quê quán: <b>@item.quequan</b></p>
-            <p class="noidung">Lớp học: <b>@item.tenlop</b></p>
-            <p class="noidung">Ngành học: <b>@item.tennganh</b></p>
-            <p class="noidung">Năm nhập học: <b>@item.namnhaphoc</b></p>
+            <p class="noidung">Mã số Sinh Viên: <b>@ViewBag.masv</b>(@ViewBag.trangthai)</p>
+            <p class="noidung">Họ và Tên: <b>@ViewBag.tensv</b></p>
+            <p class="noidung">Email: <b>@ViewBag.email</b></p>
+            <p class="noidung">Giới Tính: <b>@ViewBag.gioitinh</b></p>
+            <p class="noidung">Ngày Sinh: <b>@ViewBag.ngaysinh</b></p>
+            <p class="noidung">Quê quán: <b>@ViewBag.quequan</b></p>
+            <p class="noidung">Lớp học: <b>@ViewBag.tenlop</b></p>
+            <p class="noidung">Ngành học: <b>@ViewBag.nganh</b></p>
+            <p class="noidung">Năm nhập học: <b>@ViewBag.namnhaphoc</b></p>
 
         </div>
       

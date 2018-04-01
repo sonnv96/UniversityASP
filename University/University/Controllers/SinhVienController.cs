@@ -134,7 +134,7 @@ namespace University.Controllers
             }
             base.Dispose(disposing);
         }
-        public ActionResult TTSV(int page = 1, int pageSize = 10)
+        public ActionResult TTSV()
         {
             string id = Session["UserName"].ToString();
           
@@ -161,6 +161,18 @@ namespace University.Controllers
                              hinhanh = sv.hinhAnh
                              
                        };
+            var get = list.Where(x => x.tendangnhap == id).FirstOrDefault();
+            ViewBag.tensv = get.tensv;
+            ViewBag.hinhanh = get.hinhanh;
+            ViewBag.trangthai = get.trangthai;
+            ViewBag.masv = get.masv;
+            ViewBag.email = get.Email;
+            ViewBag.gioitinh = get.ngaysinh;
+            ViewBag.ngaysinh = get.ngaysinh;
+            ViewBag.quequan = get.quequan;
+            ViewBag.tenlop = get.tenlop;
+            ViewBag.nganh = get.tennganh;
+            ViewBag.namnhaphoc = get.namnhaphoc;
 
 
 
@@ -168,7 +180,7 @@ namespace University.Controllers
 
 
 
-            return View(list.ToList().Where(x=>x.tendangnhap == id).ToPagedList(page, pageSize));
+            return View(list.ToList().Where(x => x.tendangnhap == id));
 
         }
         public ActionResult Xemdiem(int page = 1, int pageSize = 10)
