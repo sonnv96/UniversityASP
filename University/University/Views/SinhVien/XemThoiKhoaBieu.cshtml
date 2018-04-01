@@ -15,66 +15,72 @@
 
 @using (Html.BeginForm("XemThoiKhoaBieu", "SinhVien", FormMethod.Post, new { @style = "width:90%;float:left" }))
 {
-    <input type="text" value="" name="nam" />
-    <input type="text" value="" name="hocki" />
+  
+    @Html.DropDownList("nam", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control" })
+    @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control" })
+
+
+    
+
+
 
     <button class="btn btn-primary" type="submit">Đồng ý</button>
 }
 
 @*@using (Html.BeginForm("XemThoiKhoaBieu", "SinhVien", FormMethod.Post, new { @class = "form-control", @id = "exampleFormControlSelect1" }))
-{
-    <h2 style="text-align:center; text-transform: uppercase">Chọn ngày làm việc</h2>
-    <fieldset>
+    {
+        <h2 style="text-align:center; text-transform: uppercase">Chọn ngày làm việc</h2>
+        <fieldset>
 
 
 
-        @Html.DropDownList("Day", null, new { @class = "form-control drop" })
+            @Html.DropDownList("Day", null, new { @class = "form-control drop" })
 
-        <p>
+            <p>
 
-            <button class="btn btn-danger" style="margin-left: 330px;
-    width: 150px;" type="submit">
-                Xác nhận
-            </button>
+                <button class="btn btn-danger" style="margin-left: 330px;
+        width: 150px;" type="submit">
+                    Xác nhận
+                </button>
 
-        </p>
-
-
-    </fieldset>
-}*@
+            </p>
 
 
-    <table class="table " style="width:95%">
-        <tr style="background:orange">
-            <th>Mã Sinh Viên</th>
-            <th>Họ Tên</th>
-            <th>Tên đăng nhập</th>
+        </fieldset>
+    }*@
 
-            <th>Ngay Hoc</th>
-            <th>Môn học</th>
-            <th>Tiết học</th>
-            <th>Giảng Viên</th>
-            <th>Phong học</th>
+
+<table class="table " style="width:95%">
+    <tr style="background:orange">
+        <th>Mã Sinh Viên</th>
+        <th>Họ Tên</th>
+        <th>Tên đăng nhập</th>
+
+        <th>Ngay Hoc</th>
+        <th>Môn học</th>
+        <th>Tiết học</th>
+        <th>Giảng Viên</th>
+        <th>Phong học</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>@item.masv</td>
+            <td>@item.tensv</td>
+            <td>@item.tendangnhap</td>
+            <td>@item.ngayhoc</td>
+
+            <td>@item.monhoc</td>
+            <td>@item.tiethoc</td>
+            <td>@item.giangvien</td>
+            <td>@item.phonghoc</td>
+
+
 
         </tr>
-        @foreach (var item in Model)
-        {
-
-            <tr>
-                <td>@item.masv</td>
-                <td>@item.tensv</td>
-                <td>@item.tendangnhap</td>
-                <td>@item.ngayhoc</td>
-
-                <td>@item.monhoc</td>
-                <td>@item.tiethoc</td>
-                <td>@item.giangvien</td>
-                <td>@item.phonghoc</td>
-
-
-
-            </tr>
-        }
-    </table>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    }
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 

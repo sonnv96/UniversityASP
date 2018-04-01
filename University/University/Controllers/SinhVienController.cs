@@ -206,11 +206,26 @@ namespace University.Controllers
                            cuoiki = (Decimal)bd.cuoiKy,
                            thuhanh = (Decimal)bd.thucHanh,
                            mamonhoc = lmh.maMonHoc,
-                           hinhanh = sv.hinhAnh
+                           hinhanh = sv.hinhAnh,
+                           nam = (Int32)lmh.namHoc,
+                           hocki = (Int32)lmh.hocKy
+                           
                            
 
                        };
-            return View(listdiem.ToList().Where(x=>x.tendangnhap == id).ToPagedList(page, pageSize));
+            var get = listdiem.Where(x => x.tendangnhap == id).FirstOrDefault();
+            ViewBag.tensv = get.tensv;
+            ViewBag.hinhanh = get.hinhanh;
+            ViewBag.masv = get.masv;
+            ViewBag.gioitinh = get.gioitinh;
+    
+       
+
+
+
+
+
+            return View(listdiem.ToList().Where(x=>x.tendangnhap == id).OrderByDescending(x=>x.nam).OrderByDescending(x=>x.hocki).ToPagedList(page, pageSize));
         }
         public ActionResult SinhVien()
         {
@@ -254,6 +269,17 @@ namespace University.Controllers
 
 
                            };
+            var get = listtkb.ToList().Where(x=>x.tendangnhap == id).ToList();
+           
+            
+            // Tạo SelectList
+            SelectList cateList = new SelectList(get, "namhoc", "namhoc");
+            SelectList cateList2 = new SelectList(get, "hocki", "hocki");
+
+
+            // Set vào ViewBag
+            ViewBag.namhoc = cateList;
+            ViewBag.hocki = cateList2;
             //IEnumerable<ModelViewLichHoc> values =
 
             //          Enum.GetValues(typeof(ModelViewLichHoc))
