@@ -317,6 +317,12 @@
     <Content Include="Content\Sass\mycss.min.css">
       <DependentUpon>mycss.css</DependentUpon>
     </Content>
+    <Content Include="Content\Sass\TrangSinhVien.css">
+      <DependentUpon>TrangSinhVien.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\Sass\TrangSinhVien.min.css">
+      <DependentUpon>TrangSinhVien.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -325,6 +331,8 @@
     </Content>
     <Content Include="Images\mp2.jpg" />
     <Content Include="Images\mp.jpg" />
+    <Content Include="Images\sinhvien2.jpg" />
+    <Content Include="Images\sinhvien3.png" />
     <Content Include="Models\Data\University.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>University.edmx</DependentUpon>
@@ -372,6 +380,7 @@
     <Content Include="Content\Assets\font-awesome\fonts\fontawesome-webfontba72.eot" />
     <Content Include="Content\Assets\font-awesome\fonts\fontawesome-webfontba72.woff" />
     <Content Include="Content\Assets\font-awesome\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Content\Sass\TrangSinhVien.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -463,6 +472,7 @@
     <Content Include="Views\HomePage\_Search.cshtml" />
     <Content Include="Views\SinhVien\XemThoiKhoaBieu.cshtml" />
     <Content Include="Views\HomePage\Admin.cshtml" />
+    <Content Include="Views\SinhVien\SinhVien.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

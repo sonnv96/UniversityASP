@@ -15,12 +15,25 @@
 
 @using (Html.BeginForm("XemThoiKhoaBieu", "SinhVien", FormMethod.Post, new { @style = "width:90%;float:left" }))
 {
-  
+    
+
     @Html.DropDownList("nam", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control" })
     @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control" })
 
 
-    
+    <div class="form-group">
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Example select</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="nam">
+                @foreach (var item in Model)
+                {
+                    <option>1</option>
+                }
+            </select>
+        </div>
+
+
+    </div>
 
 
 

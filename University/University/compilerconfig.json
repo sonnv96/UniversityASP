@@ -2,5 +2,9 @@
   {
     "outputFile": "Content/Sass/mycss.css",
     "inputFile": "Content/Sass/mycss.scss"
+  },
+  {
+    "outputFile": "Content/Sass/TrangSinhVien.css",
+    "inputFile": "Content/Sass/TrangSinhVien.scss"
   }
 ]

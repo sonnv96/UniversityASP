@@ -136,6 +136,10 @@ namespace University.Controllers
         }
         public ActionResult TTSV()
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("DangNhap", "TaiKhoans");
+            }
             string id = Session["UserName"].ToString();
           
             var list = from tk in db.TaiKhoans
@@ -185,7 +189,10 @@ namespace University.Controllers
         }
         public ActionResult Xemdiem(int page = 1, int pageSize = 10)
         {
-
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("DangNhap", "TaiKhoans");
+            }
             string id = Session["UserName"].ToString();
 
             var listdiem = from tk in db.TaiKhoans
@@ -239,7 +246,10 @@ namespace University.Controllers
         }
         public ActionResult XemThoiKhoaBieu(int page = 1, int pageSize = 10, int nam = 0, int hocki = 0 )
         {
-
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("DangNhap", "TaiKhoans");
+            }
             string id = Session["UserName"].ToString();
           
             var listtkb = from tk in db.TaiKhoans

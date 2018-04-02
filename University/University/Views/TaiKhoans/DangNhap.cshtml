@@ -12,61 +12,73 @@
 
 
 
-    <link rel="shortcut icon" href="img/favicon.html">
-   
-    <!-- Bootstrap core CSS -->
-    <link href="~/Content/Bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/Bootstrap/bootstrap-reset.css" rel="stylesheet">
-    <!--external css-->
-    <link href="~/Content/Assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/Content/Assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
-    <link rel="stylesheet" href="~/Content/Css/owl.carousel.css" type="text/css">
-    <link href="~/Content/Css/style-responsive.css" rel="stylesheet" />
-    <link href="~/Content/Css/login-form.css" rel="stylesheet">
+<link rel="shortcut icon" href="img/favicon.html">
 
-    <body>
-        <div class="container body">
-            <div class="card card-container">
+<!-- Bootstrap core CSS -->
+<link href="~/Content/Bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/Bootstrap/bootstrap-reset.css" rel="stylesheet">
+<!--external css-->
+<link href="~/Content/Assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="~/Content/Assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+<link rel="stylesheet" href="~/Content/Css/owl.carousel.css" type="text/css">
+<link href="~/Content/Css/style-responsive.css" rel="stylesheet" />
+<link href="~/Content/Css/login-form.css" rel="stylesheet">
 
-                <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-                <p id="profile-name" class="profile-name-card"></p>
-                @if (TempData["taikhoan"] != null)
+<body>
+    <div class="container body">
+        <div class="card card-container">
+
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            @if (TempData["taikhoan"] != null)
             {
                 <script>
                     alert("Tài khoản hoặc mật khẩu không đúng");
                 </script>
-        }
-                @if ((string)Session["loaiTaiKhoan"] == "SinhVien" || (string)Session["loaiTaiKhoan"] == "GiangVien")
+            }
+            @if ((string)Session["loaiTaiKhoan"] == "SinhVien")
             {
                 <script>
-                    window.location.href = 'http://localhost:56398/SinhVien/TTSV';
+                    window.location.href = 'http://localhost:56398/SinhVien/SinhVien';
                 </script>
-        }
-        else
-        {
-            using (Html.BeginForm("DangNhap", "TaiKhoans", FormMethod.Post, new { @class = "form-signin" }))
+            }
+            @if ((string)Session["loaiTaiKhoan"] == "GiangVien")
             {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
+                <script>
+                    window.location.href = 'http://localhost:56398/GiangVien/GiangVien';
+                </script>
+            }
+            @if ((string)Session["loaiTaiKhoan"] == "Admin")
+            {
+                <script>
+                    window.location.href = 'http://localhost:56398/Admin/Admin';
+                </script>
+            }
+            else
+            {
+                using (Html.BeginForm("DangNhap", "TaiKhoans", FormMethod.Post, new { @class = "form-signin" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
 
 
 
-                <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" name="tenDangNhap" class="form-control" placeholder="Tên Đăng Nhập" required autofocus>
-                <input type="password" name="matKhau" class="form-control" placeholder="Mật Khẩu" required>
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <input type="text" name="tenDangNhap" class="form-control" placeholder="Tên Đăng Nhập" required autofocus>
+                    <input type="password" name="matKhau" class="form-control" placeholder="Mật Khẩu" required>
 
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" name="login">Sign in</button>
-        }
-    }
-                <a href="#" class="forgot-password">
-                    Forgot the password?
-                </a>
-            </div>
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" name="login">Sign in</button>
+                }
+            }
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
         </div>
-    </body>
+    </div>
+</body>
 
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
 
 
 

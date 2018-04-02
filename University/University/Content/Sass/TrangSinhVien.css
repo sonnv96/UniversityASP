@@ -1,0 +1,16 @@
+﻿.row {
+  margin: 50px; }
+  .row a {
+    text-decoration: none; }
+    .row a h3 {
+      text-align: center;
+      text-transform: uppercase;
+      color: #800000; }
+    .row a img {
+      height: 60%;
+      width: 50%;
+      margin-left: 26%; }
+  .row p {
+    margin-top: 30px;
+    text-align: center; }
+

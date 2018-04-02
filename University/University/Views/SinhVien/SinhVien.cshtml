@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "SinhVien";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+<link rel="stylesheet" href="~/Content/Sass/TrangSinhVien.min.css" />
+
+
+<div class="row">
+    <div class="col-md-4">
+        <a href="@Url.Action("TTSV","SinhVien")">
+            <h3>Thông tin sinh viên</h3>
+            <img src="~/Images/sinhvien3.png" />
+        </a>
+        <p>Hiển thị các thông tin của Sinh viên</p>
+    </div>
+    <div class="col-md-4">
+        <a href="@Url.Action("XemDiem","SinhVien")">
+            <h3>Kết quả học tập</h3>
+            <img src="~/Images/sinhvien3.png" />
+        </a>
+        <p>Hiển thị kết quả học tập của Sinh Viên</p>
+    </div>
+    <div class="col-md-4">
+        <a href="@Url.Action("DangKiHP","SinhVien")">
+            <h3>Đăng kí học phần</h3>
+            <img src="~/Images/sinhvien3.png" />
+        </a>
+        <p>Giúp sinh viên có thể đăng kí học phần trong học kì mới</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <a href="@Url.Action("XemThoiKhoaBieu","SinhVien")">
+            <h3>Xem thời khóa biểu</h3>
+            <img src="~/Images/sinhvien3.png" />
+        </a>
+        <p>Hiển thị lịch học của sinh viên đã đăng kí</p>
+    </div>
+    <div class="col-md-4">
+        <a>
+            <h3>Xem lich thi</h3>
+            <img src="~/Images/sinhvien3.png" />
+        </a>
+        <p>Lịch thi của sinh viên</p>
+    </div>
+    <div class="col-md-4">
+        <a>
+            <h3>Chưa nghĩ ra</h3>
+            <img src="~/Images/sinhvien3.png" />
+        </a>
+    </div>
+</div>
+
