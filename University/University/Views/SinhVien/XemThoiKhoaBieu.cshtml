@@ -4,41 +4,46 @@
     ViewBag.Title = "XemThoiKhoaBieu";
     Layout = "~/Views/HomePage/Home.cshtml";
 }
-
-<h2>XemThoiKhoaBieu</h2>
-
+<link rel="stylesheet" href="~/Content/Sass/TrangXemTKB.min.css" />
 
 
+<h2>thời khóa biểu</h2>
+<div class="row">
+    <div class="col-md-6">
+        <img class="" src="~/images/@ViewBag.hinhanh" alt="Generic placeholder image">
+    </div>
+    <div class="col-md-4">
 
 
 
-
-@using (Html.BeginForm("XemThoiKhoaBieu", "SinhVien", FormMethod.Post, new { @style = "width:90%;float:left" }))
-{
-    
-
-    @Html.DropDownList("nam", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control" })
-    @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control" })
-
-
-    <div class="form-group">
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Example select</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="nam">
-                @foreach (var item in Model)
-                {
-                    <option>1</option>
-                }
-            </select>
-        </div>
-
+        <p class="noidung">Mã số Sinh Viên: <b>@ViewBag.masv</b></p>
+        <p class="noidung">Họ và Tên: <b>@ViewBag.tensv</b></p>
 
     </div>
+</div>
+<div class=" formchon row">
+
+    @using (Html.BeginForm("XemThoiKhoaBieu", "SinhVien", FormMethod.Post, new { @style = "width:90%;float:left" }))
+    {
+        <h4 class="col-md-4">Chọn năm học</h4>
+
+        @Html.DropDownList("nam", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control col-md-5" })
+        <h4 class="col-md-4">Chọn học kì</h4>
+        @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control col-md-5" })
 
 
 
-    <button class="btn btn-primary" type="submit">Đồng ý</button>
-}
+
+
+
+
+
+
+        <button class="btn btn-primary" type="submit">Xem Thời Khóa Biểu</button>
+    }
+
+</div>
+
 
 @*@using (Html.BeginForm("XemThoiKhoaBieu", "SinhVien", FormMethod.Post, new { @class = "form-control", @id = "exampleFormControlSelect1" }))
     {
@@ -62,12 +67,9 @@
         </fieldset>
     }*@
 
-
 <table class="table " style="width:95%">
     <tr style="background:orange">
-        <th>Mã Sinh Viên</th>
-        <th>Họ Tên</th>
-        <th>Tên đăng nhập</th>
+
 
         <th>Ngay Hoc</th>
         <th>Môn học</th>
@@ -80,9 +82,7 @@
     {
 
         <tr>
-            <td>@item.masv</td>
-            <td>@item.tensv</td>
-            <td>@item.tendangnhap</td>
+
             <td>@item.ngayhoc</td>
 
             <td>@item.monhoc</td>

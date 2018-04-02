@@ -323,6 +323,12 @@
     <Content Include="Content\Sass\TrangSinhVien.min.css">
       <DependentUpon>TrangSinhVien.css</DependentUpon>
     </Content>
+    <Content Include="Content\Sass\TrangXemTKB.css">
+      <DependentUpon>TrangXemTKB.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\Sass\TrangXemTKB.min.css">
+      <DependentUpon>TrangXemTKB.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -381,6 +387,7 @@
     <Content Include="Content\Assets\font-awesome\fonts\fontawesome-webfontba72.woff" />
     <Content Include="Content\Assets\font-awesome\fonts\fontawesome-webfontd41d.eot" />
     <Content Include="Content\Sass\TrangSinhVien.scss" />
+    <Content Include="Content\Sass\TrangXemTKB.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

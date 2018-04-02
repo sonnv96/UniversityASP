@@ -1,48 +1,49 @@
 ﻿@model PagedList.IPagedList<University.Models.ModelViewDiem>
 @using PagedList.Mvc;
 
-    @{ 
+@{
     ViewBag.Title = "Xemdiem";
     Layout = "~/Views/HomePage/Admin.cshtml";
-    }
+}
 
 <h2>Xemdiem</h2>
 
 
 
-
+<p class="noidung">Mã số Sinh Viên: <b>@ViewBag.masv</b></p>
+<p class="noidung">Họ và Tên: <b>@ViewBag.tensv</b></p>
+<p class="noidung">Email: <b>@ViewBag.email</b></p>
+<p class="noidung">Giới Tính: <b>@ViewBag.gioitinh</b></p>
+<p class="noidung">Ngày Sinh: <b>@ViewBag.ngaysinh</b></p>
 <table class="table " style="width:95%">
     <tr style="background:orange">
-        <th>Mã Sinh Viên</th>
-        <th>Họ Tên</th>
-        <th>Tên đăng nhập</th>
-        <th>Giới tính</th>
-        <th>Ngày Sinh</th>
+
+      
         <th>Môn học</th>
         <th>Giữa kỳ</th>
         <th>Cuối kỳ</th>
         <th>Thực hành</th>
+        <th>Năm học</th>
+        <th>Học kì</th>
 
     </tr>
     @foreach (var item in Model)
     {
 
-    <tr>
-        <td>@item.masv</td>
-        <td>@item.tensv</td>
-        <td>@item.tendangnhap</td>
-        <td>@item.gioitinh</td>
-        <td>@String.Format("{0:d/M/yyyy}", item.ngaysinh)</td>
-        <td>@item.mamonhoc</td>
-        <td>@item.giuaki</td>
-        <td>@item.cuoiki</td>
-        <td>@item.thuhanh</td>
-        <td>@item.nam</td>
-        <td>@item.hocki</td>
+        <tr>
+
+          
+           
+            <td>@item.mamonhoc</td>
+            <td>@item.giuaki</td>
+            <td>@item.cuoiki</td>
+            <td>@item.thuhanh</td>
+            <td>@item.nam</td>
+            <td>@item.hocki</td>
 
 
 
-    </tr>
+        </tr>
     }
 </table>
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

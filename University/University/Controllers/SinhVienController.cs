@@ -275,13 +275,19 @@ namespace University.Controllers
                                tiethoc = lmh.tietHoc,
                                giangvien = gv.tenGiangVien,
                                phonghoc = lmh.phongHoc,
+                               hinhanh = sv.hinhAnh
                               
 
 
                            };
-            var get = listtkb.ToList().Where(x=>x.tendangnhap == id).ToList();
-           
-            
+            var get2 = listtkb.ToList().Where(x=>x.tendangnhap == id).FirstOrDefault();
+            ViewBag.tensv = get2.tensv;
+            ViewBag.masv = get2.masv;
+            ViewBag.hinhanh = get2.hinhanh; 
+            var get = listtkb.ToList().Where(x => x.tendangnhap == id).ToList();
+
+
+
             // Tạo SelectList
             SelectList cateList = new SelectList(get, "namhoc", "namhoc");
             SelectList cateList2 = new SelectList(get, "hocki", "hocki");

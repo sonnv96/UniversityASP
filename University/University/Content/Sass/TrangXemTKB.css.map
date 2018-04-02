@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "TrangXemTKB.css",
+	"sources": [
+		"TrangXemTKB.scss"
+	],
+	"mappings": "AAAA,AAGQ,IAHJ,CACA,SAAS,CAEL,GAAG,AACC,CACA,KAAK,CAAE,GAAI,CACX,MAAM,CAAE,IAAK,CAChB",
+	"names": []
+}
