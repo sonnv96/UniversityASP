@@ -258,6 +258,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModelViewDiem.cs" />
+    <Compile Include="Models\ModelViewDKMon.cs" />
     <Compile Include="Models\ModelViewLichHoc.cs" />
     <Compile Include="Models\ModelviewSinhVien.cs" />
     <Compile Include="Models\ModelViewTaiKhoan.cs" />

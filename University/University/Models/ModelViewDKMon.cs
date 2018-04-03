@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace University.Models
+{
+    public class ModelViewDKMon
+    {
+        public string malophocphan { get; set; }
+        public string monhoc { get; set; }
+        public int tinchi { get; set; }
+        public int soluong { get; set; }
+        public int soluongdangki { get; set; }
+        public string tinhtrang { get; set; }
+        public string tengiangvien { get; set; }
+        public string lopdangki { get; set; }
+        public string phonghoc { get; set; }
+        public string tiethoc { get; set; }
+        public int ngayhoc { get; set; }
+    }
+}

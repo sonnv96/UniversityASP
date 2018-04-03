@@ -7,13 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using University.Models.Data;
+using University.Models;
 
 namespace University.Controllers
 {
     public class MonHocController : Controller
     {
         private UniversityEntities1 db = new UniversityEntities1();
-
+        Random rd = new Random();
         // GET: MonHoc
         public ActionResult Index()
         {
@@ -127,6 +128,43 @@ namespace University.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult DKMon(string mamon, string nam, string hocki)
+        {
+            var listmh = from lmh in db.LopMonHocs
+                         join mh in db.MonHocs
+                         on lmh.maMonHoc equals mh.maMonHoc
+                         join gv in db.GiangViens
+                         on lmh.maGiangVien equals gv.maGiangVien
+                         join bd in db.BangDiems
+                         on lmh.maLopMonHoc equals bd.maLopMonHoc
+                         join sv in db.SinhViens
+                         on bd.maSinhVien equals sv.maSinhVien
+                         join l in db.Lops
+                         on sv.maLop equals l.maLop
+                         select new ModelViewDKMon()
+                         {
+                             malophocphan = lmh.maLopMonHoc,
+                             monhoc = mh.tenMonHoc,
+                             tinchi = (Int32)mh.soTinChi,
+                             soluong = (Int32)lmh.soLuongToiDa,
+                             soluongdangki = (Int32)lmh.soLuongDangKy,
+                             tinhtrang = lmh.trangThai,
+                             tengiangvien = gv.tenGiangVien,
+                             lopdangki = l.tenLop,
+                             phonghoc = lmh.phongHoc,
+                             tiethoc = lmh.tietHoc,
+                             ngayhoc = (Int32)lmh.ngayHoc
+                         };
+                         
+            var a = db.MonHocs.Where(x => x.maMonHoc == mamon).FirstOrDefault();
+
+            ModelViewDKMon lopmonhoc = new ModelViewDKMon();
+            lopmonhoc.malophocphan = "P" + rd.Next(100000).ToString();
+            
+           
+
+            return View();
         }
     }
 }

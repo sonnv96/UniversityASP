@@ -29,5 +29,10 @@ namespace University.Models.Data
         public virtual ChuyenNganh ChuyenNganh { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LopMonHoc> LopMonHocs { get; set; }
+
+        internal object Next(int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
