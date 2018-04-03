@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a49f194eb58a4f448231a78229c05569" Name="Diagram1" ZoomLevel="96">
+      <Diagram DiagramId="a49f194eb58a4f448231a78229c05569" Name="Diagram1" ZoomLevel="83">
         <EntityTypeShape EntityType="UniversityModel.BangDiem" Width="1.5" PointX="8.25" PointY="7.375" />
         <EntityTypeShape EntityType="UniversityModel.ChuyenNganh" Width="1.5" PointX="0.75" PointY="2.25" />
         <EntityTypeShape EntityType="UniversityModel.GiangVien" Width="1.5" PointX="3" PointY="4.375" />
@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="UniversityModel.MonHoc" Width="1.5" PointX="3" PointY="0.75" />
         <EntityTypeShape EntityType="UniversityModel.QuanTri" Width="1.5" PointX="3" PointY="13.25" />
         <EntityTypeShape EntityType="UniversityModel.SinhVien" Width="1.5" PointX="6" PointY="9.375" />
-        <EntityTypeShape EntityType="UniversityModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="UniversityModel.TaiKhoan" Width="1.5" PointX="3.25" PointY="7.75" />
         <AssociationConnector Association="UniversityModel.FK_BangDiem_LopMonHoc" />
         <AssociationConnector Association="UniversityModel.FK_BangDiem_SinhVien" />
         <AssociationConnector Association="UniversityModel.FK_ChuyenNganh_Khoa" />

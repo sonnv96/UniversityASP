@@ -203,6 +203,7 @@
     <Compile Include="Controllers\GiangVienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MonHocController.cs" />
     <Compile Include="Controllers\SinhVienController.cs" />
     <Compile Include="Controllers\TaiKhoansController.cs" />
     <Compile Include="Global.asax.cs">
@@ -259,6 +260,7 @@
     <Compile Include="Models\ModelViewDiem.cs" />
     <Compile Include="Models\ModelViewLichHoc.cs" />
     <Compile Include="Models\ModelviewSinhVien.cs" />
+    <Compile Include="Models\ModelViewTaiKhoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -480,6 +482,11 @@
     <Content Include="Views\SinhVien\XemThoiKhoaBieu.cshtml" />
     <Content Include="Views\HomePage\Admin.cshtml" />
     <Content Include="Views\SinhVien\SinhVien.cshtml" />
+    <Content Include="Views\MonHoc\Create.cshtml" />
+    <Content Include="Views\MonHoc\Delete.cshtml" />
+    <Content Include="Views\MonHoc\Details.cshtml" />
+    <Content Include="Views\MonHoc\Edit.cshtml" />
+    <Content Include="Views\MonHoc\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

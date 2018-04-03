@@ -1,0 +1,51 @@
+﻿@model University.Models.Data.MonHoc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/HomePage/Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MonHoc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenMonHoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenMonHoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soTinChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soTinChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChuyenNganh.tenChuyenNganh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChuyenNganh.tenChuyenNganh)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maMonHoc }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

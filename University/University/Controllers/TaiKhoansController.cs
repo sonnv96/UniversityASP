@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using University.Models.Data;
+using University.Models;
 
 namespace University.Controllers
 {
@@ -133,13 +134,27 @@ namespace University.Controllers
 
         [HttpPost]
 
-        public ActionResult DangNhap(TaiKhoan taikhoan)
+        public ActionResult DangNhap(TaiKhoan taikhoan, string tenDangNhap, string matKhau)
         {
             if (ModelState.IsValid)
             {
                 using (UniversityEntities1 db = new UniversityEntities1())
                 {
-                    var obj = db.TaiKhoans.Where(a => a.tenDangNhap.Equals(taikhoan.tenDangNhap) && a.matKhau.Equals(taikhoan.matKhau)).FirstOrDefault();
+
+                    var list = from tk in db.TaiKhoans
+                               join sv in db.SinhViens
+                               on tk.tenDangNhap equals sv.tenDangNhap
+
+                               select new ModelViewTaiKhoan()
+                               {
+                                   masv = sv.maSinhVien,
+
+                                   tendangnhap = tk.tenDangNhap,
+                                   matkhau = tk.matKhau,
+                                   loaitk = tk.loaiTaiKhoan
+                               };
+                    var obj = db.TaiKhoans.Where(a => a.tenDangNhap.Equals(taikhoan.tenDangNhap) && a.matKhau.Equals(taikhoan.matKhau)).FirstOrDefault() ;
+                    var obj2 = list.Where(a => a.masv == tenDangNhap && a.matkhau == matKhau).FirstOrDefault();
 
                     if (obj != null)
                     {
@@ -163,6 +178,28 @@ namespace University.Controllers
 
                         return RedirectToAction("XemDiem", "SinhVien");
                     }
+                    else if (obj2 != null)
+                    {
+                        Session["MaSV"] = obj2.masv.ToString();
+                        Session["loaiTaiKhoan"] = obj2.loaitk.ToString();
+
+
+                        if (obj2.loaitk == "SinhVien")
+                        {
+                            return RedirectToAction("SinhVien", "SinhVien");
+                        }
+                        else if (obj2.loaitk == "GiangVien")
+                        {
+                            return RedirectToAction("GiangVien", "GiangVien");
+                        }
+                        else if (obj2.loaitk == "Admin")
+                        {
+                            return RedirectToAction("Admin", "Admin");
+                        }
+
+
+                        return RedirectToAction("XemDiem", "SinhVien");
+                    }
                     else
                     {
                         TempData["taikhoan"] = "abc";
@@ -171,14 +208,7 @@ namespace University.Controllers
             }
             return View(taikhoan);
         }
-        public void ThongtinSV()
-        {
-            string id = Session["Username"].ToString();
-         
-            ViewBag.thongtin = db.TaiKhoans.ToList().Where(x => x.tenDangNhap == id);
-           
-
-        }
+      
 
 
         public ActionResult LogOff()

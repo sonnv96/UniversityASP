@@ -136,7 +136,7 @@ namespace University.Controllers
         }
         public ActionResult TTSV()
         {
-            if (Session["UserName"] == null)
+            if (Session["UserName"] == null && Session["MaSV"] == null)
             {
                 return RedirectToAction("DangNhap", "TaiKhoans");
             }
@@ -189,7 +189,7 @@ namespace University.Controllers
         }
         public ActionResult Xemdiem(int page = 1, int pageSize = 10)
         {
-            if (Session["UserName"] == null)
+            if (Session["UserName"] == null && Session["MaSV"] == null)
             {
                 return RedirectToAction("DangNhap", "TaiKhoans");
             }
@@ -237,7 +237,7 @@ namespace University.Controllers
         public ActionResult SinhVien()
         {
           
-            if(Session["UserName"]  == null)
+            if(Session["UserName"]  == null && Session["MaSV"] == null)
             {
                 return RedirectToAction("DangNhap", "TaiKhoans");
             }
@@ -246,7 +246,7 @@ namespace University.Controllers
         }
         public ActionResult XemThoiKhoaBieu(int page = 1, int pageSize = 10, int nam = 0, int hocki = 0 )
         {
-            if (Session["UserName"] == null)
+            if (Session["UserName"] == null && Session["MaSV"] == null)
             {
                 return RedirectToAction("DangNhap", "TaiKhoans");
             }
