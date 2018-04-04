@@ -1,0 +1,15 @@
+﻿@model List<University.Models.ModelViewDKMon>
+<tr>
+    <th>Product Code</th>
+    <th>Product Name</th>
+    <th>Product Quality</th>
+</tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.tengiangvien</td>
+        <td>@item.soluongdangki</td>
+        <td>@item.soluong</td>
+    </tr>
+}

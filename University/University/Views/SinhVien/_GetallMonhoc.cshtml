@@ -1,0 +1,34 @@
+﻿@model List<University.Models.ModelViewDKMon>
+<table class="table">
+    <tr>
+        <th>Danh sách môn</th>
+
+    </tr>
+
+
+    @using (Ajax.BeginForm("GetallMonhoc", "SinhVien", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "divResult2", InsertionMode = InsertionMode.Replace, LoadingElementId = "loadingElement" }))
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <radio type="radio" name="mon" value="@item.monhoc" /> @item.monhoc<br />
+
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-primary">Get</button>
+                </td>
+            </tr>
+
+
+            <tr></tr>
+        }
+    }
+
+</table>
+
+<div id="loadingElement" style="display:none; color:#f60">
+    Đang tải danh sách môn học...
+</div>
+<div id="divResult"></div>
+

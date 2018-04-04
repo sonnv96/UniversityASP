@@ -1,0 +1,48 @@
+﻿@model List<University.Models.ModelViewDKMon>
+@{
+    ViewBag.Title = "DangKiHPSV";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+<hr />
+<h3>1. Chọn năm học và học kì</h3>
+@using (Ajax.BeginForm("GetallMonhoc", "SinhVien", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "divResult", InsertionMode = InsertionMode.Replace, LoadingElementId = "loadingElement" }))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.Editor("NamHoc", new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Product Code" } })
+                @Html.Editor("HocKi", new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Product Code" } })
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">Get</button>
+            </td>
+        </tr>
+    </table>
+}
+@*Product Detail Display Here*@
+<div id="loadingElement" style="display:none; color:#f60">
+    Đang tải danh sách môn học...
+</div>
+<div id="divResult"></div>
+<h3>2. Ajax.ActionLink </h3>
+<p>
+
+    @Ajax.ActionLink("d", "GetAllProducts", "Ajax", new AjaxOptions
+    {
+        UpdateTargetId = "divResultAll",
+        OnBegin = "",
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "GET",
+        LoadingElementId = "loadingElement2",
+        OnSuccess = "",
+        Confirm = "Do you want to get all product?"
+    }, new { @class = "btn btn-warning" })
+</p>
+@*Product List Display Here*@
+<div id="loadingElement2" style="display:none; color:#f60">
+    Loading products...
+</div>
+<div id="divResultAll"></div>

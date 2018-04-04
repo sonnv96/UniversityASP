@@ -8,6 +8,8 @@ namespace University.Models
     public class ModelViewDKMon
     {
         public string malophocphan { get; set; }
+        public string tendn { get; set; }
+        public string masv { get; set; }
         public string monhoc { get; set; }
         public int tinchi { get; set; }
         public int soluong { get; set; }

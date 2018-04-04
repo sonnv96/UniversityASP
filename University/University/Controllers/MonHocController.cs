@@ -129,43 +129,68 @@ namespace University.Controllers
             }
             base.Dispose(disposing);
         }
-        public ActionResult DKMon(string mamon, int nam, int hocki)
+        public ActionResult MoLop(string mamon)
         {
-            var listmh = from lmh in db.LopMonHocs
-                         join mh in db.MonHocs
-                         on lmh.maMonHoc equals mh.maMonHoc
-                         join gv in db.GiangViens
-                         on lmh.maGiangVien equals gv.maGiangVien
-                         join bd in db.BangDiems
-                         on lmh.maLopMonHoc equals bd.maLopMonHoc
-                         join sv in db.SinhViens
-                         on bd.maSinhVien equals sv.maSinhVien
-                         join l in db.Lops
-                         on sv.maLop equals l.maLop
-                         select new ModelViewDKMon()
-                         {
-                             malophocphan = lmh.maLopMonHoc,
-                             monhoc = mh.tenMonHoc,
-                             tinchi = (Int32)mh.soTinChi,
-                             soluong = (Int32)lmh.soLuongToiDa,
-                             soluongdangki = (Int32)lmh.soLuongDangKy,
-                             tinhtrang = lmh.trangThai,
-                             tengiangvien = gv.tenGiangVien,
-                             lopdangki = l.tenLop,
-                             phonghoc = lmh.phongHoc,
-                             tiethoc = lmh.tietHoc,
-                             ngayhoc = (Int32)lmh.ngayHoc,
-                             namhoc = (Int32)lmh.namHoc,
-                             hocki = (Int32)lmh.hocKy
-                             
-                         };
-
             var a = db.MonHocs.Where(x => x.maMonHoc == mamon).FirstOrDefault();
-
-            var b = db.LopMonHocs.Where(x => x.maMonHoc == a.maMonHoc).FirstOrDefault();
-            var c = db.GiangViens.Where(x => x.maGiangVien == b.maGiangVien).FirstOrDefault();
-            b.maLopMonHoc = "P" + rd.Next(100000).ToString();
             
+            TempData["tenmonhoc"] = a.tenMonHoc;
+
+            return RedirectToAction("MoDKMon", "MonHoc");
+        }
+        public ActionResult MoDKMon()
+        {
+
+            var b = TempData["a"];
+
+            LopMonHoc lopmonhoc = new LopMonHoc();
+            lopmonhoc.maMonHoc = 
+           
+            lopmonhoc.maLopMonHoc = "P" + rd.Next(100000).ToString();
+            lopmonhoc.tenLopMonHoc = "S" + rd.Next(10000).ToString();
+           
+
+            lopmonhoc.soLuongToiDa = 40;
+            lopmonhoc.soLuongDangKy = 0;
+        
+            lopmonhoc.namHoc = null;
+            lopmonhoc.hocKy = null;
+            lopmonhoc.phongHoc = null;
+            lopmonhoc.tietHoc = "";
+            lopmonhoc.trangThai = "dangchodangki";
+            db.LopMonHocs.Add(lopmonhoc);
+            db.SaveChanges();
+
+
+            //var listmh = from lmh in db.LopMonHocs
+            //             join mh in db.MonHocs
+            //             on lmh.maMonHoc equals mh.maMonHoc
+            //             join gv in db.GiangViens
+            //             on lmh.maGiangVien equals gv.maGiangVien
+            //             join bd in db.BangDiems
+            //             on lmh.maLopMonHoc equals bd.maLopMonHoc
+            //             join sv in db.SinhViens
+            //             on bd.maSinhVien equals sv.maSinhVien
+            //             join l in db.Lops
+            //             on sv.maLop equals l.maLop
+            //             select new ModelViewDKMon()
+            //             {
+            //                 malophocphan = lmh.maLopMonHoc,
+            //                 monhoc = mh.tenMonHoc,
+            //                 tinchi = (Int32)mh.soTinChi,
+            //                 soluong = (Int32)lmh.soLuongToiDa,
+            //                 soluongdangki = (Int32)lmh.soLuongDangKy,
+            //                 tinhtrang = lmh.trangThai,
+            //                 tengiangvien = gv.tenGiangVien,
+            //                 lopdangki = l.tenLop,
+            //                 phonghoc = lmh.phongHoc,
+            //                 tiethoc = lmh.tietHoc,
+            //                 ngayhoc = (Int32)lmh.ngayHoc,
+            //                 namhoc = (Int32)lmh.namHoc,
+            //                 hocki = (Int32)lmh.hocKy
+
+            //             };
+
+
 
 
             //lopmonhoc.malophocphan = "P" + rd.Next(100000).ToString();
@@ -197,6 +222,39 @@ namespace University.Controllers
 
 
             return View();
+        }
+        public ActionResult DKiMon(int hocki, int nam)
+        {
+            var listmh = from lmh in db.LopMonHocs
+                         join mh in db.MonHocs
+                         on lmh.maMonHoc equals mh.maMonHoc
+                         join gv in db.GiangViens
+                         on lmh.maGiangVien equals gv.maGiangVien
+                         join bd in db.BangDiems
+                         on lmh.maLopMonHoc equals bd.maLopMonHoc
+                         join sv in db.SinhViens
+                         on bd.maSinhVien equals sv.maSinhVien
+                         join l in db.Lops
+                         on sv.maLop equals l.maLop
+                         select new ModelViewDKMon()
+                         {
+                             malophocphan = lmh.maLopMonHoc,
+                             monhoc = mh.tenMonHoc,
+                             tinchi = (Int32)mh.soTinChi,
+                             soluong = (Int32)lmh.soLuongToiDa,
+                             soluongdangki = (Int32)lmh.soLuongDangKy,
+                             tinhtrang = lmh.trangThai,
+                             tengiangvien = gv.tenGiangVien,
+                             lopdangki = l.tenLop,
+                             phonghoc = lmh.phongHoc,
+                             tiethoc = lmh.tietHoc,
+                             ngayhoc = (Int32)lmh.ngayHoc,
+                             namhoc = (Int32)lmh.namHoc,
+                             hocki = (Int32)lmh.hocKy
+
+                         };
+
+            return View(listmh.Where(x => x.namhoc == nam && x.hocki == hocki).ToList());
         }
     }
 }
