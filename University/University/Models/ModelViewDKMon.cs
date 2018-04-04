@@ -18,5 +18,8 @@ namespace University.Models
         public string phonghoc { get; set; }
         public string tiethoc { get; set; }
         public int ngayhoc { get; set; }
+        public int namhoc { get; set; }
+        public int hocki { get; set; }
+        public string mamonhoc { get; set; }
     }
 }

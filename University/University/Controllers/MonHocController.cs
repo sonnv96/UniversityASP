@@ -129,7 +129,7 @@ namespace University.Controllers
             }
             base.Dispose(disposing);
         }
-        public ActionResult DKMon(string mamon, string nam, string hocki)
+        public ActionResult DKMon(string mamon, int nam, int hocki)
         {
             var listmh = from lmh in db.LopMonHocs
                          join mh in db.MonHocs
@@ -154,15 +154,47 @@ namespace University.Controllers
                              lopdangki = l.tenLop,
                              phonghoc = lmh.phongHoc,
                              tiethoc = lmh.tietHoc,
-                             ngayhoc = (Int32)lmh.ngayHoc
+                             ngayhoc = (Int32)lmh.ngayHoc,
+                             namhoc = (Int32)lmh.namHoc,
+                             hocki = (Int32)lmh.hocKy
+                             
                          };
-                         
+
             var a = db.MonHocs.Where(x => x.maMonHoc == mamon).FirstOrDefault();
 
-            ModelViewDKMon lopmonhoc = new ModelViewDKMon();
-            lopmonhoc.malophocphan = "P" + rd.Next(100000).ToString();
+            var b = db.LopMonHocs.Where(x => x.maMonHoc == a.maMonHoc).FirstOrDefault();
+            var c = db.GiangViens.Where(x => x.maGiangVien == b.maGiangVien).FirstOrDefault();
+            b.maLopMonHoc = "P" + rd.Next(100000).ToString();
             
-           
+
+
+            //lopmonhoc.malophocphan = "P" + rd.Next(100000).ToString();
+            //lopmonhoc.monhoc = a.tenMonHoc;
+            //lopmonhoc.tinchi = (Int32)a.soTinChi;
+            //lopmonhoc.soluong = 40;
+            //lopmonhoc.soluongdangki = 0;
+            //lopmonhoc.tinhtrang = "Dangchodangki";
+            //lopmonhoc.tengiangvien = c.tenGiangVien;
+
+            //lopmonhoc.phonghoc = b.phongHoc;
+            ////xử lí sau
+            //lopmonhoc.tiethoc = b.tietHoc;
+            //lopmonhoc.ngayhoc =(Int32)b.ngayHoc;
+            //lopmonhoc.namhoc = nam;
+            //lopmonhoc.hocki = hocki;
+            //mdkm.Add(lopmonhoc);+
+
+
+
+
+
+
+
+
+
+
+
+
 
             return View();
         }
