@@ -204,6 +204,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MonHocController.cs" />
+    <Compile Include="Controllers\QuanTriController.cs" />
     <Compile Include="Controllers\SinhVienController.cs" />
     <Compile Include="Controllers\TaiKhoansController.cs" />
     <Compile Include="Global.asax.cs">
@@ -262,6 +263,7 @@
     <Compile Include="Models\ModelViewLichHoc.cs" />
     <Compile Include="Models\ModelviewSinhVien.cs" />
     <Compile Include="Models\ModelViewTaiKhoan.cs" />
+    <Compile Include="Models\ModelViewTKSV.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -496,6 +498,13 @@
     <Content Include="Views\SinhVien\DangKiHPSV.cshtml" />
     <Content Include="Views\SinhVien\_ChitietMon.cshtml" />
     <Content Include="Views\SinhVien\DangKiHPSV2.cshtml" />
+    <Content Include="Views\QuanTri\Create.cshtml" />
+    <Content Include="Views\QuanTri\Delete.cshtml" />
+    <Content Include="Views\QuanTri\Details.cshtml" />
+    <Content Include="Views\QuanTri\Edit.cshtml" />
+    <Content Include="Views\QuanTri\Index.cshtml" />
+    <Content Include="Views\QuanTri\TKSinhVien.cshtml" />
+    <Content Include="Views\QuanTri\CTTK.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

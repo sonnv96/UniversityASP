@@ -1,0 +1,41 @@
+﻿@model University.Models.ModelViewTKSV
+
+@{
+    ViewBag.Title = "CTTK";
+    Layout = "~/Views/HomePage/Admin.cshtml";
+}
+<link rel="stylesheet" href="~/Content/Sass/mycss.min.css" />
+
+
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <img class="" src="~/images/@Html.DisplayFor(model => model.hinhanh)" alt="Generic placeholder image">
+    </div>
+    <div class="col-md-6">
+        <p class="noidung">Mã số Sinh Viên: <b>@Html.DisplayFor(model => model.masv)</b>(@Html.DisplayFor(model => model.trangthai))</p>
+        <p class="noidung">Họ và Tên: <b>@Html.DisplayFor(model => model.tensv)</b></p>
+        <p class="noidung">Email: <b>@Html.DisplayFor(model => model.Email)</b></p>
+        <p class="noidung">Giới Tính: <b>@Html.DisplayFor(model => model.gioitinh)</b></p>
+        <p class="noidung">Ngày Sinh: <b> @Html.DisplayFor(model => model.ngaysinh)</b></p>
+        <p class="noidung">Quê quán: <b> @Html.DisplayFor(model => model.quequan)</b></p>
+        <p class="noidung">Lớp học: <b> @Html.DisplayFor(model => model.tenlop)</b></p>
+        <p class="noidung">Ngành học: <b> @Html.DisplayFor(model => model.tennganh)</b></p>
+        <p class="noidung">Năm nhập học: <b>@Html.DisplayFor(model => model.namnhaphoc)</b></p>
+        <p class="noidung">Tên đăng nhập: <b>@Html.DisplayFor(model => model.tendangnhap)</b></p>
+        <p class="noidung">Mật khẩu: <b>@Html.DisplayFor(model => model.matkhau)</b></p>
+
+    </div>
+
+
+
+</div>
+
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.masv }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
