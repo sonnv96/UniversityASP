@@ -302,6 +302,7 @@
     <Content Include="Content\Css\yamm.css" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\common-scripts.js" />
+    <Content Include="Content\js\controller\ajax.js" />
     <Content Include="Content\js\count.js" />
     <Content Include="Content\js\easy-pie-chart.js" />
     <Content Include="Content\js\jquery.customSelect.min.js" />
@@ -494,6 +495,7 @@
     <Content Include="Views\SinhVien\_GetallMonhoc.cshtml" />
     <Content Include="Views\SinhVien\DangKiHPSV.cshtml" />
     <Content Include="Views\SinhVien\_ChitietMon.cshtml" />
+    <Content Include="Views\SinhVien\DangKiHPSV2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

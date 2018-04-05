@@ -494,14 +494,14 @@ namespace University.Controllers
             if (Session["UserName"] != null)
             {
                 string ten = Session["UserName"].ToString();
-                var lst = listmh.Where(x => x.hocki == hocki && x.namhoc == nam && x.tendn == ten).ToList();
+                var lst = listmh.Where(x => x.hocki == hocki && x.namhoc == nam).ToList();
 
 
                 return PartialView("_GetallMonhoc", lst);
 
             }
             string id = Session["MaSV"].ToString();
-            var lst2 = listmh.Where(x => x.hocki == hocki && x.namhoc == nam && x.masv == id).ToList();
+            var lst2 = listmh.Where(x => x.hocki == hocki && x.namhoc == nam ).ToList();
 
 
             return PartialView("_GetallMonhoc", lst2);
@@ -549,6 +549,105 @@ namespace University.Controllers
 
 
             return PartialView("_ChitietMon", a);
+        }
+
+        public ActionResult DangKiHPSV2()
+        {
+            if (Session["UserName"] == null && Session["MaSV"] == null)
+            {
+                return RedirectToAction("DangNhap", "TaiKhoans");
+            }
+            return View();
+        }
+        public JsonResult Get(int nam , int hocki)
+        {
+           
+           
+            var listmh = from lmh in db.LopMonHocs
+                         join mh in db.MonHocs
+                         on lmh.maMonHoc equals mh.maMonHoc
+                         join gv in db.GiangViens
+                         on lmh.maGiangVien equals gv.maGiangVien
+                         join bd in db.BangDiems
+                         on lmh.maLopMonHoc equals bd.maLopMonHoc
+                         join sv in db.SinhViens
+                         on bd.maSinhVien equals sv.maSinhVien
+                         join tk in db.TaiKhoans
+                         on sv.tenDangNhap equals tk.tenDangNhap
+                         join l in db.Lops
+                         on sv.maLop equals l.maLop
+                         select new ModelViewDKMon()
+                         {
+                             malophocphan = lmh.maLopMonHoc,
+                             monhoc = mh.tenMonHoc,
+                             tinchi = (Int32)mh.soTinChi,
+                             soluong = (Int32)lmh.soLuongToiDa,
+                             soluongdangki = (Int32)lmh.soLuongDangKy,
+                             tinhtrang = lmh.trangThai,
+                             tengiangvien = gv.tenGiangVien,
+                             lopdangki = l.tenLop,
+                             phonghoc = lmh.phongHoc,
+                             tiethoc = lmh.tietHoc,
+                             ngayhoc = (Int32)lmh.ngayHoc,
+                             namhoc = (Int32)lmh.namHoc,
+                             hocki = (Int32)lmh.hocKy,
+                             tendn = tk.tenDangNhap,
+                             masv = sv.maSinhVien
+
+                         };
+            if (Session["UserName"] != null)
+            {
+                string ten = Session["UserName"].ToString();
+                var lst = listmh.ToList();
+
+                return Json(lst, JsonRequestBehavior.AllowGet);
+
+
+            }
+            string id = Session["MaSV"].ToString();
+            var lst2 = listmh.Where(x => x.hocki == hocki && x.namhoc == nam && x.masv == id).ToList();
+
+
+           
+            
+            return Json(lst2, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Get2(int id)
+        {
+            var listmh = from lmh in db.LopMonHocs
+                         join mh in db.MonHocs
+                         on lmh.maMonHoc equals mh.maMonHoc
+                         join gv in db.GiangViens
+                         on lmh.maGiangVien equals gv.maGiangVien
+                         join bd in db.BangDiems
+                         on lmh.maLopMonHoc equals bd.maLopMonHoc
+                         join sv in db.SinhViens
+                         on bd.maSinhVien equals sv.maSinhVien
+                         join tk in db.TaiKhoans
+                         on sv.tenDangNhap equals tk.tenDangNhap
+                         join l in db.Lops
+                         on sv.maLop equals l.maLop
+                         select new ModelViewDKMon()
+                         {
+                             malophocphan = lmh.maLopMonHoc,
+                             monhoc = mh.tenMonHoc,
+                             tinchi = (Int32)mh.soTinChi,
+                             soluong = (Int32)lmh.soLuongToiDa,
+                             soluongdangki = (Int32)lmh.soLuongDangKy,
+                             tinhtrang = lmh.trangThai,
+                             tengiangvien = gv.tenGiangVien,
+                             lopdangki = l.tenLop,
+                             phonghoc = lmh.phongHoc,
+                             tiethoc = lmh.tietHoc,
+                             ngayhoc = (Int32)lmh.ngayHoc,
+                             namhoc = (Int32)lmh.namHoc,
+                             hocki = (Int32)lmh.hocKy,
+                             tendn = tk.tenDangNhap,
+                             masv = sv.maSinhVien
+
+                         };
+            var Student = listmh.ToList().Find(x => x.mamonhoc.Equals(id));
+            return Json(Student, JsonRequestBehavior.AllowGet);
         }
 
     }

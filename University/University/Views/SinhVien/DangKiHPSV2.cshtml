@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "DangKiHPSV2";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+
+<h2>DangKiHPSV2</h2>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Content/js/controller/ajax.js"></script>
+<link href="~/Content/Bootstrap/bootstrap.css" rel="stylesheet" />
+<div id="list">
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+
+
+                <th>Name</th>
+
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody class="tbody"></tbody>
+    </table>
+  
+  
+
+
+        <button type="submit" class="btn btn-primary" onclick="return _getAll();">Get</button>
+
+
+
+
+    <div id=" show">
+
+    </div>
+
+</div>
