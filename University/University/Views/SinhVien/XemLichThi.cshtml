@@ -1,4 +1,4 @@
-﻿@model List<University.Models.ModelViewLichHoc>
+﻿@model IEnumerable<University.Models.ModelViewLichHoc>
 @{
     ViewBag.Title = "XemLichThi";
     Layout = "~/Views/HomePage/Home.cshtml";
@@ -11,7 +11,7 @@
 
 <div class=" formchon row">
 
-    @using (Html.BeginForm("XemMonHoc", "GiangVien", FormMethod.Post, new { @style = "width:90%;float:left" }))
+    @using (Html.BeginForm("XemLichThi", "SinhVien", FormMethod.Post, new { @style = "width:90%;float:left" }))
     {
         <h4 class="col-md-4">Chọn năm học</h4>
 
@@ -27,7 +27,7 @@
 
 
 
-        <button class="btn btn-primary" type="submit">Xem Lịch dạy</button>
+        <button class="btn btn-primary" type="submit">Xem Lịch Thi</button>
     }
 
 </div>
