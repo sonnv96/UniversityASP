@@ -1,0 +1,65 @@
+﻿@model List<University.Models.ModelViewLichHoc>
+@{
+    ViewBag.Title = "XemLichThi";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+
+<h2>XemLichThi</h2>
+
+<link rel="stylesheet" href="~/Content/Sass/TrangXemTKB.min.css" />
+
+
+<div class=" formchon row">
+
+    @using (Html.BeginForm("XemMonHoc", "GiangVien", FormMethod.Post, new { @style = "width:90%;float:left" }))
+    {
+        <h4 class="col-md-4">Chọn năm học</h4>
+
+        @Html.DropDownList("nam", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control col-md-5" })
+        <h4 class="col-md-4">Chọn học kì</h4>
+        @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control col-md-5" })
+
+
+
+
+
+
+
+
+
+        <button class="btn btn-primary" type="submit">Xem Lịch dạy</button>
+    }
+
+</div>
+
+
+<table class="table " style="width:95%">
+    <tr style="background:orange">
+
+
+
+        <th>Ngay Thi</th>
+        <th>Thứ</th>
+        <th>Môn học</th>
+        <th>Tiết học</th>
+        <th>Giảng Viên</th>
+        <th>Phong thi</th>
+
+    </tr>
+@foreach(var item in Model)
+    {
+
+        <tr>
+            <td>@item.ngaythi</td>
+            <td>@item.ngayhoc</td>
+
+            <td>@item.monhoc</td>
+            <td>@item.tiethoc</td>
+            <td>@item.giangvien</td>
+            <td>@item.phonghoc</td>
+
+
+
+        </tr>
+    }
+</table>

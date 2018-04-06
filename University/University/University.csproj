@@ -514,6 +514,7 @@
     <Content Include="Views\SinhVien\XemSVtheoLop.cshtml" />
     <Content Include="Views\GiangVien\XemMonHoc.cshtml" />
     <Content Include="Views\GiangVien\GiangVien.cshtml" />
+    <Content Include="Views\SinhVien\XemLichThi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
