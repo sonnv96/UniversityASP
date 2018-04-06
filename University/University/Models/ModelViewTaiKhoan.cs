@@ -10,6 +10,8 @@ namespace University.Models
 
 
         public string masv { get; set; }
+        public string magv { get; set; }
+
         public string tendangnhap { get; set; }
         public string matkhau { get; set; }
         public string  loaitk { get; set; }

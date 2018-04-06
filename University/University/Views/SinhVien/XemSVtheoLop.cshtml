@@ -1,0 +1,12 @@
+﻿@model University.Models.ModelViewDSSV
+@{
+    ViewBag.Title = "XemSVtheoLop";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+
+<h2>XemSVtheoLop</h2>
+<div class="col-md-6">
+    <p class="noidung">Mã số Sinh Viên: <b>@Html.DisplayFor(model => model.masv)</b>(@Html.DisplayFor(model => model.trangthai))</p>
+    <p class="noidung">Họ và Tên: <b>@Html.DisplayFor(model => model.tensv)</b></p>
+    
+</div>

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using University.Models.Data;
+using University.Models;
 
 namespace University.Controllers
 {
@@ -132,12 +133,53 @@ namespace University.Controllers
         public ActionResult GiangVien()
         {
 
-            if (Session["UserName"] == null)
+            if (Session["UserName"] == null && Session["MaGV"] == null)
             {
                 return RedirectToAction("DangNhap", "TaiKhoans");
             }
 
             return View();
+        }
+        public ActionResult XemMonHoc(int nam = 0, int hocki = 0)
+        {
+            string ten = Session["UserName"].ToString();
+            var listgiangday = from gv in db.GiangViens
+                           join lmh in db.LopMonHocs
+                           on gv.maGiangVien equals lmh.maGiangVien
+                           join tk in db.TaiKhoans
+                           on gv.tenDangNhap equals tk.tenDangNhap
+                           join mh in db.MonHocs
+                           on lmh.maMonHoc equals mh.maMonHoc
+                           
+                           select new ModelViewXemMonHoc()
+                           {
+                              tengiangvien = gv.tenGiangVien,
+                              tendangnhap = tk.tenDangNhap,
+                              tenlophp = lmh.tenLopMonHoc,
+                              tenmonhoc = mh.tenMonHoc,
+                              namhoc = (Int32)lmh.namHoc,
+                              hocki = (Int32)lmh.hocKy,
+                              ngayhoc = (Int32)lmh.ngayHoc,
+                              phonghoc = lmh.phongHoc,
+                              tiethoc = lmh.tietHoc
+                           };
+            var get = listgiangday.ToList();
+
+
+
+            // Tạo SelectList
+            SelectList cateList = new SelectList(get, "namhoc", "namhoc");
+            SelectList cateList2 = new SelectList(get, "hocki", "hocki");
+
+
+            // Set vào ViewBag
+            ViewBag.namhoc = cateList;
+            ViewBag.hocki = cateList2;
+
+
+
+            return View(listgiangday.ToList().Where( x=> x.namhoc == nam && x.hocki == hocki));
+
         }
     }
 }

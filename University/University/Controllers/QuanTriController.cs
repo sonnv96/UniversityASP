@@ -142,6 +142,12 @@ namespace University.Controllers
         }
         public ActionResult TKSinhVien()
         {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("DangNhap", "TaiKhoans");
+            }
+
+            
             var listtksv = from tk in db.TaiKhoans
                            join sv in db.SinhViens
                            on tk.tenDangNhap equals sv.tenDangNhap

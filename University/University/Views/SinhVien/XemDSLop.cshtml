@@ -1,0 +1,26 @@
+﻿@model IEnumerable<University.Models.Data.Lop>
+@{
+    ViewBag.Title = "XemDSLop";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Danh Sách Sinh Viên
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach(var item in Model) { 
+        <tr>
+            <td>
+                @Html.ActionLink(item.tenLop, "XemSVtheoLop", new { id = item.maLop  })
+            </td>
+            
+        </tr>
+    }
+
+</table>
+

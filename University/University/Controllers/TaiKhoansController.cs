@@ -144,10 +144,22 @@ namespace University.Controllers
                     var list = from tk in db.TaiKhoans
                                join sv in db.SinhViens
                                on tk.tenDangNhap equals sv.tenDangNhap
-
+                             
                                select new ModelViewTaiKhoan()
                                {
                                    masv = sv.maSinhVien,
+                                   
+                                   tendangnhap = tk.tenDangNhap,
+                                   matkhau = tk.matKhau,
+                                   loaitk = tk.loaiTaiKhoan
+                               };
+                    var list2 = from tk in db.TaiKhoans
+                               join gv in db.GiangViens
+                               on tk.tenDangNhap equals gv.tenDangNhap
+
+                               select new ModelViewTaiKhoan()
+                               {
+                                  magv = gv.maGiangVien,
 
                                    tendangnhap = tk.tenDangNhap,
                                    matkhau = tk.matKhau,
@@ -155,6 +167,7 @@ namespace University.Controllers
                                };
                     var obj = db.TaiKhoans.Where(a => a.tenDangNhap.Equals(taikhoan.tenDangNhap) && a.matKhau.Equals(taikhoan.matKhau)).FirstOrDefault() ;
                     var obj2 = list.Where(a => a.masv == tenDangNhap && a.matkhau == matKhau).FirstOrDefault();
+                    var objmagv = list2.Where(a => a.magv == tenDangNhap && a.matkhau == matKhau).FirstOrDefault();
 
                     if (obj != null)
                     {
@@ -172,7 +185,7 @@ namespace University.Controllers
                         }
                         else if (obj.loaiTaiKhoan == "Admin")
                         {
-                            return RedirectToAction("Admin", "QuanTri");
+                            return RedirectToAction("TKSinhVien", "QuanTri");
                         }
 
 
@@ -182,23 +195,26 @@ namespace University.Controllers
                     {
                         Session["MaSV"] = obj2.masv.ToString();
                         Session["loaiTaiKhoan"] = obj2.loaitk.ToString();
-
+                      
 
                         if (obj2.loaitk == "SinhVien")
                         {
                             return RedirectToAction("SinhVien", "SinhVien");
                         }
-                        else if (obj2.loaitk == "GiangVien")
+                      
+                    }
+                    else if(objmagv !=null)
+                    {
+                        Session["MaGV"] = objmagv.magv.ToString();
+                        Session["loaiTaiKhoan"] = objmagv.loaitk.ToString();
+                      
+
+
+                       
+                         if (objmagv.loaitk == "GiangVien")
                         {
                             return RedirectToAction("GiangVien", "GiangVien");
                         }
-                        else if (obj2.loaitk == "Admin")
-                        {
-                            return RedirectToAction("Admin", "Admin");
-                        }
-
-
-                        return RedirectToAction("XemDiem", "SinhVien");
                     }
                     else
                     {

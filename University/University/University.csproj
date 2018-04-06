@@ -260,10 +260,12 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModelViewDiem.cs" />
     <Compile Include="Models\ModelViewDKMon.cs" />
+    <Compile Include="Models\ModelViewDSSV.cs" />
     <Compile Include="Models\ModelViewLichHoc.cs" />
     <Compile Include="Models\ModelviewSinhVien.cs" />
     <Compile Include="Models\ModelViewTaiKhoan.cs" />
     <Compile Include="Models\ModelViewTKSV.cs" />
+    <Compile Include="Models\ModelViewXemMonHoc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -505,6 +507,10 @@
     <Content Include="Views\QuanTri\Index.cshtml" />
     <Content Include="Views\QuanTri\TKSinhVien.cshtml" />
     <Content Include="Views\QuanTri\CTTK.cshtml" />
+    <Content Include="Views\SinhVien\XemDSLop.cshtml" />
+    <Content Include="Views\SinhVien\XemSVtheoLop.cshtml" />
+    <Content Include="Views\GiangVien\XemMonHoc.cshtml" />
+    <Content Include="Views\GiangVien\GiangVien.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

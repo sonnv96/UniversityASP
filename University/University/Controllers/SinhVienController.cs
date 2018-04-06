@@ -139,6 +139,7 @@ namespace University.Controllers
             if (Session["UserName"] == null && Session["MaSV"] == null)
             {
                 return RedirectToAction("DangNhap", "TaiKhoans");
+                
             }
             else
             {
@@ -165,6 +166,7 @@ namespace University.Controllers
                                hinhanh = sv.hinhAnh
 
                            };
+               
                 if (Session["UserName"] != null)
                 {
                     string ten = Session["UserName"].ToString();
@@ -649,6 +651,44 @@ namespace University.Controllers
             var Student = listmh.ToList().Find(x => x.mamonhoc.Equals(id));
             return Json(Student, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult XemDSLop()
+        {
+
+            return View(db.Lops.ToList());
+
+        }
+        public ActionResult XemSVtheoLop(string id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var listdssv = from sv in db.SinhViens
+                           join l in db.Lops
+                           on sv.maLop equals l.maLop
+                           join cn in db.ChuyenNganhs
+                           on sv.maChuyenNganh equals cn.maChuyenNganh
+                           select new ModelViewDSSV()
+                           {
+                               malop = l.maLop,
+                               tenlop = l.tenLop,
+                               masv = sv.maSinhVien,
+                               tensv = sv.tenSinhVien,
+                               chuyennganh = cn.tenChuyenNganh
+                           };
+
+            var s = listdssv.Where(x => x.malop == id).FirstOrDefault();
+            ViewBag.malop = s.malop;
+
+            if (s == null)
+            {
+                return HttpNotFound();
+            }
+            return View(s);
+        }
+        
+       
 
     }
 }
