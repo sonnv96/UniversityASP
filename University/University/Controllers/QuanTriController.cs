@@ -146,8 +146,13 @@ namespace University.Controllers
             {
                 return RedirectToAction("DangNhap", "TaiKhoans");
             }
+            else if ((string)Session["loaiTaiKhoan"] != "Admin")
+            {
+                TempData["phanquyen"] = "sondep";
+                return RedirectToAction("Home", "TaiKhoans");
+            }
 
-            
+
             var listtksv = from tk in db.TaiKhoans
                            join sv in db.SinhViens
                            on tk.tenDangNhap equals sv.tenDangNhap

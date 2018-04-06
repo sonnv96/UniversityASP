@@ -346,10 +346,22 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\download-tn.jpg" />
+    <Content Include="Images\download.jpg" />
+    <Content Include="Images\images %281%29-tn.jpg" />
+    <Content Include="Images\images %281%29.jpg" />
+    <Content Include="Images\images-tn.jpg" />
+    <Content Include="Images\images.jpg" />
     <Content Include="Images\mp2.jpg" />
     <Content Include="Images\mp.jpg" />
     <Content Include="Images\sinhvien2.jpg" />
     <Content Include="Images\sinhvien3.png" />
+    <Content Include="Images\sinhvien\dkhp.png" />
+    <Content Include="Images\sinhvien\ketqua.png" />
+    <Content Include="Images\sinhvien\lichhoc.png" />
+    <Content Include="Images\sinhvien\schedule.png" />
+    <Content Include="Images\sinhvien\student.png" />
+    <Content Include="Images\sinhvien\tuition.png" />
     <Content Include="Models\Data\University.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>University.edmx</DependentUpon>
@@ -424,6 +436,35 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="sliderengine\amazingslider-2.css" />
+    <Content Include="sliderengine\amazingslider.js" />
+    <Content Include="sliderengine\arrows-48-48-3.png" />
+    <Content Include="sliderengine\bottomshadow-110-100-5.png" />
+    <Content Include="sliderengine\bullet-12-12-0.png" />
+    <Content Include="sliderengine\carouselarrows-32-32-0.png" />
+    <Content Include="sliderengine\froogaloop2.min.js" />
+    <Content Include="sliderengine\html5boxplayer.swf" />
+    <Content Include="sliderengine\html5boxplayer_fullscreen.png" />
+    <Content Include="sliderengine\html5boxplayer_hd.png" />
+    <Content Include="sliderengine\html5boxplayer_playpause.png" />
+    <Content Include="sliderengine\html5boxplayer_playvideo.png" />
+    <Content Include="sliderengine\html5boxplayer_volume.png" />
+    <Content Include="sliderengine\initslider-2.js" />
+    <Content Include="sliderengine\jquery.js" />
+    <Content Include="sliderengine\lightbox-close.png" />
+    <Content Include="sliderengine\lightbox-loading.gif" />
+    <Content Include="sliderengine\lightbox-navnext.png" />
+    <Content Include="sliderengine\lightbox-navprev.png" />
+    <Content Include="sliderengine\lightbox-next.png" />
+    <Content Include="sliderengine\lightbox-pause.png" />
+    <Content Include="sliderengine\lightbox-play.png" />
+    <Content Include="sliderengine\lightbox-playvideo.png" />
+    <Content Include="sliderengine\lightbox-prev.png" />
+    <Content Include="sliderengine\navarrows-28-28-0.png" />
+    <Content Include="sliderengine\navbuttonbgimage-28-28-0.png" />
+    <Content Include="sliderengine\navplaypause-28-28-0.png" />
+    <Content Include="sliderengine\play-32-32-0.png" />
+    <Content Include="sliderengine\playvideo-64-64-0.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -515,6 +556,8 @@
     <Content Include="Views\GiangVien\XemMonHoc.cshtml" />
     <Content Include="Views\GiangVien\GiangVien.cshtml" />
     <Content Include="Views\SinhVien\XemLichThi.cshtml" />
+    <Content Include="Views\GiangVien\TTGV.cshtml" />
+    <Content Include="Views\TaiKhoans\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

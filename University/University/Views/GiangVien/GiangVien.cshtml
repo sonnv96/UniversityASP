@@ -4,5 +4,38 @@
     Layout = "~/Views/HomePage/Home.cshtml";
 }
 
-<h2>GiangVien</h2>
+<link rel="stylesheet" href="~/Content/Sass/TrangSinhVien.min.css" />
 
+
+<div class="row">
+    <div class="col-md-4">
+        <a href="@Url.Action("TTGV","GiangVien")">
+            <h3>Thông tin Giảng Viên</h3>
+            <img src="~/Images/sinhvien/student.png" />
+        </a>
+        <p>Hiển thị các thông tin của Giảng viên</p>
+    </div>
+    <div class="col-md-4">
+        <a href="@Url.Action("XemMonHoc","GiangVien")">
+            <h3>Xem Lịch Dạy</h3>
+            <img src="~/Images/sinhvien/lichhoc.png" />
+        </a>
+        <p>Hiển thị kết quả học tập của Sinh Viên</p>
+    </div>
+    <div class="col-md-4">
+        <a href="@Url.Action("XemDSLop","SinhVien")">
+            <h3>Danh Sách Lơp</h3>
+            <img src="~/Images/sinhvien/dkhp.png" />
+        </a>
+        <p>Giúp sinh viên có thể đăng kí học phần trong học kì mới</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <a href="">
+            <h3>nhập điểm</h3>
+            <img src="~/Images/sinhvien/schedule.png" />
+        </a>
+        <p>Hiển thị lịch học của sinh viên đã đăng kí</p>
+    </div>
+   </div>

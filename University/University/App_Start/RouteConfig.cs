@@ -16,7 +16,7 @@ namespace University
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "TaiKhoans", action = "DangNhap", id = UrlParameter.Optional }
+                defaults: new { controller = "TaiKhoans", action = "Home", id = UrlParameter.Optional }
             );
         }
     }

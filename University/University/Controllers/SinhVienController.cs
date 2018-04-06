@@ -298,8 +298,16 @@ namespace University.Controllers
             {
                 return RedirectToAction("DangNhap", "TaiKhoans");
             }
-
-            return View();
+            else if((string)Session["loaiTaiKhoan"] != "SinhVien")
+            {
+                TempData["phanquyen"] = "sondep";
+                return RedirectToAction("Home", "TaiKhoans");
+            }
+    
+            
+                return View();
+            
+           
         }
         public ActionResult XemThoiKhoaBieu(int page = 1, int pageSize = 10, int nam = 0, int hocki = 0)
         {

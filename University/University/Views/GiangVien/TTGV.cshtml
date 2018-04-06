@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "TTGV";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+
+<h2 class="">Thông tin Giảng Viên</h2>
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <img class="" src="~/images/@ViewBag.hinhanh" alt="Generic placeholder image">
+    </div>
+    <div class="col-md-6">
+        <p class="noidung">Mã số Giảng Viên: <b>@ViewBag.magv</b>(@ViewBag.trangthai)</p>
+        <p class="noidung">Họ và Tên: <b>@ViewBag.tengv</b></p>
+        <p class="noidung">Email: <b>@ViewBag.email</b></p>
+        
+        <p class="noidung">Ngày Sinh: <b>@ViewBag.ngaysinh</b></p>
+        <p class="noidung">Quê quán: <b>@ViewBag.quequan</b></p>
+       
+        <p class="noidung">Năm bắt đầu: <b>@ViewBag.namnhaphoc</b></p>
+
+    </div>
+
+
+
+</div>
+

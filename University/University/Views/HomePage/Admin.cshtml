@@ -21,6 +21,7 @@
     <!-- Custom styles for this template -->
     <link href="~/Content/Css/style.css" rel="stylesheet">
     <link href="~/Content/Css/style-responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/Sass/mycss.min.css" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
     <!--[if lt IE 9]>
@@ -36,7 +37,7 @@
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
             <!--logo start-->
-            <a href="index.html" class="logo">Quản<span>trị</span></a>
+            <a href="@Url.Action("Home", "TaiKhoans")" class="logo">Quản<span>trị</span></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -253,15 +254,15 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <img alt="" src="img/avatar1_small.jpg">
-                            <span class="username">Jhon Doue</span>
+                            <span class="username">Xin Chào @Session["UserName"]</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
-                            <div class="log-arrow-up"></div>
+                            
                             <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                             <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
-                            <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                            <li><a href="@Url.Action("LogOff", "TaiKhoans")"><i class="fa fa-key"></i> Log Out</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->

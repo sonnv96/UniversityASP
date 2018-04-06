@@ -137,6 +137,12 @@ namespace University.Controllers
             {
                 return RedirectToAction("DangNhap", "TaiKhoans");
             }
+            else if ((string)Session["loaiTaiKhoan"] != "GiangVien")
+            {
+                TempData["phanquyen"] = "sondep";
+                return RedirectToAction("Home", "TaiKhoans");
+            }
+
 
             return View();
         }
@@ -220,6 +226,23 @@ namespace University.Controllers
             }
 
 
+        }
+        public ActionResult TTGV()
+        {
+            string ten = Session["UserName"].ToString();
+            var get = db.GiangViens.Where(x => x.tenDangNhap == ten).FirstOrDefault();
+            ViewBag.tengv = get.tenGiangVien;
+            ViewBag.hinhanh = get.hinhAnh;
+            ViewBag.trangthai = get.trangThai;
+            ViewBag.magv = get.maGiangVien;
+            ViewBag.email = get.eMail;
+        
+            ViewBag.ngaysinh = get.ngaySinh;
+            ViewBag.quequan = get.queQuan;
+      
+            ViewBag.namnhaphoc = get.namBatDau;
+           
+            return View(db.GiangViens.Where(x=>x.tenDangNhap == ten).ToList());
         }
     }
 }

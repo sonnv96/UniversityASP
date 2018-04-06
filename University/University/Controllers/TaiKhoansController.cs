@@ -233,6 +233,12 @@ namespace University.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("DangNhap", "TaiKhoans");
         }
+        public ActionResult Home()
+        {
+            
+            return View();
+        }
+
 
     }
 }
