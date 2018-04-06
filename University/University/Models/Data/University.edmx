@@ -34,7 +34,7 @@
           <Property Name="maGiangVien" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="tenGiangVien" Type="nvarchar" MaxLength="128" />
           <Property Name="queQuan" Type="nvarchar" MaxLength="128" />
-          <Property Name="ngaySinh" Type="smalldatetime" />
+          <Property Name="ngaySinh" Type="date" />
           <Property Name="namBatDau" Type="int" />
           <Property Name="eMail" Type="varchar" MaxLength="128" />
           <Property Name="tenDangNhap" Type="varchar" MaxLength="32" />
@@ -73,6 +73,8 @@
           <Property Name="phongHoc" Type="varchar" MaxLength="128" />
           <Property Name="ngayHoc" Type="int" />
           <Property Name="tietHoc" Type="nvarchar" MaxLength="128" />
+          <Property Name="ngayThi" Type="date" />
+          <Property Name="hanDangKy" Type="date" />
         </EntityType>
         <EntityType Name="MonHoc">
           <Key>
@@ -91,7 +93,7 @@
           <Property Name="maQuanTri" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="tenQuanTri" Type="nvarchar" MaxLength="128" />
           <Property Name="queQuan" Type="nvarchar" MaxLength="128" />
-          <Property Name="ngaySinh" Type="smalldatetime" />
+          <Property Name="ngaySinh" Type="date" />
           <Property Name="tenDangNhap" Type="varchar" MaxLength="32" />
           <Property Name="trangThai" Type="nvarchar" MaxLength="128" />
         </EntityType>
@@ -102,7 +104,7 @@
           <Property Name="maSinhVien" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="tenSinhVien" Type="nvarchar" MaxLength="128" />
           <Property Name="queQuan" Type="nvarchar" MaxLength="128" />
-          <Property Name="ngaySinh" Type="smalldatetime" />
+          <Property Name="ngaySinh" Type="date" />
           <Property Name="namNhapHoc" Type="int" />
           <Property Name="maChuyenNganh" Type="varchar" MaxLength="16" />
           <Property Name="eMail" Type="varchar" MaxLength="128" />
@@ -111,6 +113,16 @@
           <Property Name="trangThai" Type="nvarchar" MaxLength="128" />
           <Property Name="maLop" Type="varchar" MaxLength="16" />
           <Property Name="hinhAnh" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -275,6 +287,7 @@
           <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuanTri" EntityType="Self.QuanTri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SinhVien" EntityType="Self.SinhVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BangDiem_LopMonHoc" Association="Self.FK_BangDiem_LopMonHoc">
             <End Role="LopMonHoc" EntitySet="LopMonHoc" />
@@ -339,6 +352,7 @@
           <EntitySet Name="MonHocs" EntityType="UniversityModel.MonHoc" />
           <EntitySet Name="QuanTris" EntityType="UniversityModel.QuanTri" />
           <EntitySet Name="SinhViens" EntityType="UniversityModel.SinhVien" />
+          <EntitySet Name="sysdiagrams" EntityType="UniversityModel.sysdiagram" />
           <EntitySet Name="TaiKhoans" EntityType="UniversityModel.TaiKhoan" />
           <AssociationSet Name="FK_BangDiem_LopMonHoc" Association="UniversityModel.FK_BangDiem_LopMonHoc">
             <End Role="LopMonHoc" EntitySet="LopMonHocs" />
@@ -467,6 +481,8 @@
           <Property Name="phongHoc" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="ngayHoc" Type="Int32" />
           <Property Name="tietHoc" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ngayThi" Type="DateTime" Precision="0" />
+          <Property Name="hanDangKy" Type="DateTime" Precision="0" />
           <NavigationProperty Name="BangDiems" Relationship="UniversityModel.FK_BangDiem_LopMonHoc" FromRole="LopMonHoc" ToRole="BangDiem" />
           <NavigationProperty Name="GiangVien" Relationship="UniversityModel.FK_LopMonHoc_GiangVien" FromRole="LopMonHoc" ToRole="GiangVien" />
           <NavigationProperty Name="MonHoc" Relationship="UniversityModel.FK_LopMonHoc_MonHoc" FromRole="LopMonHoc" ToRole="MonHoc" />
@@ -516,6 +532,16 @@
           <NavigationProperty Name="ChuyenNganh1" Relationship="UniversityModel.FK_SinhVien_ChuyenNganh1" FromRole="SinhVien" ToRole="ChuyenNganh" />
           <NavigationProperty Name="Lop" Relationship="UniversityModel.FK_SinhVien_Lop" FromRole="SinhVien" ToRole="Lop" />
           <NavigationProperty Name="TaiKhoan" Relationship="UniversityModel.FK_SinhVien_TaiKhoan" FromRole="SinhVien" ToRole="TaiKhoan" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -738,6 +764,8 @@
           <EntitySetMapping Name="LopMonHocs">
             <EntityTypeMapping TypeName="UniversityModel.LopMonHoc">
               <MappingFragment StoreEntitySet="LopMonHoc">
+                <ScalarProperty Name="hanDangKy" ColumnName="hanDangKy" />
+                <ScalarProperty Name="ngayThi" ColumnName="ngayThi" />
                 <ScalarProperty Name="tietHoc" ColumnName="tietHoc" />
                 <ScalarProperty Name="ngayHoc" ColumnName="ngayHoc" />
                 <ScalarProperty Name="phongHoc" ColumnName="phongHoc" />
@@ -791,6 +819,17 @@
                 <ScalarProperty Name="queQuan" ColumnName="queQuan" />
                 <ScalarProperty Name="tenSinhVien" ColumnName="tenSinhVien" />
                 <ScalarProperty Name="maSinhVien" ColumnName="maSinhVien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="UniversityModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

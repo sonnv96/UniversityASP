@@ -1,4 +1,4 @@
-﻿@model IEnumerable<University.Models.ModelViewXemMonHoc>
+﻿@model List<University.Models.ModelViewXemMonHoc>
 @{
     ViewBag.Title = "XemMonHoc";
     Layout = "~/Views/HomePage/Home.cshtml";
@@ -8,29 +8,15 @@
 <link rel="stylesheet" href="~/Content/Sass/TrangXemTKB.min.css" />
 
 
-<h2>thời khóa biểu</h2>
-@*<div class="row">
-    <div class="col-md-6">
-        <img class="" src="~/images/@ViewBag.hinhanh" alt="Generic placeholder image">
-    </div>
-    <div class="col-md-4">
-
-
-
-        <p class="noidung">Mã số Sinh Viên: <b>@ViewBag.masv</b></p>
-        <p class="noidung">Họ và Tên: <b>@ViewBag.tensv</b></p>
-
-    </div>
-</div>*@
 <div class=" formchon row">
 
     @using (Html.BeginForm("XemMonHoc", "GiangVien", FormMethod.Post, new { @style = "width:90%;float:left" }))
     {
         <h4 class="col-md-4">Chọn năm học</h4>
 
-        @Html.DropDownList("nam", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control col-md-5" })
+        @Html.DropDownList("namhoc", (IEnumerable<SelectListItem>)ViewBag.nam, new { @class = "form-control col-md-5" })
         <h4 class="col-md-4">Chọn học kì</h4>
-        @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control col-md-5" })
+        @Html.DropDownList("hocKi", (IEnumerable<SelectListItem>)ViewBag.hocKi, new { @class = "form-control col-md-5" })
 
 
 

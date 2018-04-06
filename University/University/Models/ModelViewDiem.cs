@@ -22,6 +22,7 @@ namespace University.Models
         public decimal giuaki { get; set; }
         public decimal cuoiki { get; set; }
         public string mamonhoc { get; set; }
+        public string tenmonhoc { get; set; }
 
     }
 }

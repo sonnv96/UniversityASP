@@ -18,5 +18,6 @@ namespace University.Models
         public string tiethoc { get; set; }
         public string giangvien { get; set; }
         public string phonghoc { get; set; }
+        public DateTime ngaythi { get; set; }
     }
 }

@@ -139,7 +139,7 @@ namespace University.Controllers
             if (Session["UserName"] == null && Session["MaSV"] == null)
             {
                 return RedirectToAction("DangNhap", "TaiKhoans");
-                
+
             }
             else
             {
@@ -166,7 +166,7 @@ namespace University.Controllers
                                hinhanh = sv.hinhAnh
 
                            };
-               
+
                 if (Session["UserName"] != null)
                 {
                     string ten = Session["UserName"].ToString();
@@ -217,7 +217,7 @@ namespace University.Controllers
             }
 
         }
-        public ActionResult Xemdiem(int page = 1, int pageSize = 10)
+        public ActionResult Xemdiem()
         {
             if (Session["UserName"] == null && Session["MaSV"] == null)
             {
@@ -234,6 +234,8 @@ namespace University.Controllers
                                on sv.maSinhVien equals bd.maSinhVien
                                join lmh in db.LopMonHocs
                                on bd.maLopMonHoc equals lmh.maLopMonHoc
+                               join mh in db.MonHocs
+                               on lmh.maMonHoc equals mh.maMonHoc
                                select new ModelViewDiem()
                                {
                                    masv = sv.maSinhVien,
@@ -247,7 +249,8 @@ namespace University.Controllers
                                    mamonhoc = lmh.maMonHoc,
                                    hinhanh = sv.hinhAnh,
                                    nam = (Int32)lmh.namHoc,
-                                   hocki = (Int32)lmh.hocKy
+                                   hocki = (Int32)lmh.hocKy,
+                                   tenmonhoc = mh.tenMonHoc
 
 
 
@@ -267,7 +270,7 @@ namespace University.Controllers
 
 
 
-                    return View(listdiem.ToList().Where(x => x.tendangnhap == ten).OrderByDescending(x => x.nam).OrderByDescending(x => x.hocki).ToPagedList(page, pageSize));
+                    return View(listdiem.Where(x => x.tendangnhap == ten).OrderByDescending(x => x.nam).OrderByDescending(x => x.hocki).ToList());
                 }
                 else
                 {
@@ -284,7 +287,7 @@ namespace University.Controllers
 
 
 
-                    return View(listdiem.ToList().Where(x => x.masv == id).OrderByDescending(x => x.nam).OrderByDescending(x => x.hocki).ToPagedList(page, pageSize));
+                    return View(listdiem.Where(x => x.masv == id).OrderByDescending(x => x.nam).OrderByDescending(x => x.hocki).ToList());
                 }
             }
         }
@@ -394,7 +397,7 @@ namespace University.Controllers
                     ViewBag.tensv = get2.tensv;
                     ViewBag.masv = get2.masv;
                     ViewBag.hinhanh = get2.hinhanh;
-                    var get = listtkb.ToList().Where(x => x.masv == id).ToList();
+                    var get = listtkb.Where(x => x.masv == id).ToList();
 
 
 
@@ -503,7 +506,7 @@ namespace University.Controllers
 
             }
             string id = Session["MaSV"].ToString();
-            var lst2 = listmh.Where(x => x.hocki == hocki && x.namhoc == nam ).ToList();
+            var lst2 = listmh.Where(x => x.hocki == hocki && x.namhoc == nam).ToList();
 
 
             return PartialView("_GetallMonhoc", lst2);
@@ -561,10 +564,10 @@ namespace University.Controllers
             }
             return View();
         }
-        public JsonResult Get(int nam , int hocki)
+        public JsonResult Get(int nam, int hocki)
         {
-           
-           
+
+
             var listmh = from lmh in db.LopMonHocs
                          join mh in db.MonHocs
                          on lmh.maMonHoc equals mh.maMonHoc
@@ -610,8 +613,8 @@ namespace University.Controllers
             var lst2 = listmh.Where(x => x.hocki == hocki && x.namhoc == nam && x.masv == id).ToList();
 
 
-           
-            
+
+
             return Json(lst2, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get2(int id)
@@ -687,8 +690,101 @@ namespace University.Controllers
             }
             return View(s);
         }
-        
-       
+        //    public ActionResult XemLichThi()
+        //    {
 
+        //        if (Session["UserName"] == null && Session["MaSV"] == null)
+        //        {
+        //            return RedirectToAction("DangNhap", "TaiKhoans");
+        //        }
+        //        else
+        //        {
+
+
+        //            var listtkb = from tk in db.TaiKhoans
+        //                          join sv in db.SinhViens
+        //                          on tk.tenDangNhap equals sv.tenDangNhap
+        //                          join bd in db.BangDiems
+        //                          on sv.maSinhVien equals bd.maSinhVien
+        //                          join lmh in db.LopMonHocs
+        //                          on bd.maLopMonHoc equals lmh.maLopMonHoc
+        //                          join gv in db.GiangViens
+        //                          on lmh.maGiangVien equals gv.maGiangVien
+        //                          join mh in db.MonHocs
+        //                          on lmh.maMonHoc equals mh.maMonHoc
+        //                          select new ModelViewLichHoc()
+        //                          {
+        //                              masv = sv.maSinhVien,
+        //                              tensv = sv.tenSinhVien,
+        //                              tendangnhap = tk.tenDangNhap,
+        //                              namhoc = (Int32)lmh.namHoc,
+        //                              hocki = (Int32)lmh.hocKy,
+        //                              ngayhoc = (Int32)lmh.ngayHoc,
+        //                              monhoc = mh.tenMonHoc,
+        //                              tiethoc = lmh.tietHoc,
+        //                              giangvien = gv.tenGiangVien,
+        //                              phonghoc = lmh.phongHoc,
+        //                              hinhanh = sv.hinhAnh,
+
+
+
+
+        //                          };
+        //            if (Session["UserName"] != null)
+        //            {
+        //                string ten = Session["UserName"].ToString();
+        //                var get2 = listtkb.ToList().Where(x => x.tendangnhap == ten).FirstOrDefault();
+        //                ViewBag.tensv = get2.tensv;
+        //                ViewBag.masv = get2.masv;
+        //                ViewBag.hinhanh = get2.hinhanh;
+        //                var get = listtkb.ToList().Where(x => x.tendangnhap == ten).ToList();
+
+
+
+
+        //                SelectList cateList = new SelectList(get, "namhoc", "namhoc");
+        //                SelectList cateList2 = new SelectList(get, "hocki", "hocki");
+
+
+
+        //                ViewBag.namhoc = cateList;
+        //                ViewBag.hocki = cateList2;
+
+
+
+        //                return View(listtkb.ToList().Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == ).ToPagedList(page, pageSize));
+        //            }
+        //            else
+        //            {
+        //                string id = Session["MaSV"].ToString();
+        //                var get2 = listtkb.ToList().Where(x => x.masv == id).FirstOrDefault();
+        //                ViewBag.tensv = get2.tensv;
+        //                ViewBag.masv = get2.masv;
+        //                ViewBag.hinhanh = get2.hinhanh;
+        //                var get = listtkb.Where(x => x.masv == id).ToList();
+
+
+
+
+        //                SelectList cateList = new SelectList(get, "namhoc", "namhoc");
+        //                SelectList cateList2 = new SelectList(get, "hocki", "hocki");
+
+
+
+        //                ViewBag.namhoc = cateList;
+        //                ViewBag.hocki = cateList2;
+
+
+
+        //                return View(listtkb.ToList().Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki).ToPagedList(page, pageSize));
+
+        //            }
+        //            return View();
+
+        //    }
+
+
+
+        //}
     }
 }

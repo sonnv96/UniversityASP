@@ -1,9 +1,7 @@
-﻿@model PagedList.IPagedList<University.Models.ModelViewDiem>
-@using PagedList.Mvc;
-
+﻿@model IEnumerable<University.Models.ModelViewDiem>
 @{
     ViewBag.Title = "Xemdiem";
-    Layout = "~/Views/HomePage/Admin.cshtml";
+    Layout = "~/Views/HomePage/Home.cshtml";
 }
 
 <h2>Xemdiem</h2>
@@ -18,7 +16,8 @@
 <table class="table " style="width:95%">
     <tr style="background:orange">
 
-      
+
+        <th>Mã Môn học</th>
         <th>Môn học</th>
         <th>Giữa kỳ</th>
         <th>Cuối kỳ</th>
@@ -27,24 +26,26 @@
         <th>Học kì</th>
 
     </tr>
-    @foreach (var item in Model)
+@foreach(var item in Model)
     {
 
-        <tr>
-
-          
-           
-            <td>@item.mamonhoc</td>
-            <td>@item.giuaki</td>
-            <td>@item.cuoiki</td>
-            <td>@item.thuhanh</td>
-            <td>@item.nam</td>
-            <td>@item.hocki</td>
+    <tr>
 
 
 
-        </tr>
+        <td>@item.mamonhoc</td>
+        <td>@item.tenmonhoc</td>
+
+        <td>@item.giuaki</td>
+        <td>@item.cuoiki</td>
+        <td>@item.thuhanh</td>
+        <td>@item.nam</td>
+        <td>@item.hocki</td>
+
+
+
+    </tr>
     }
 </table>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
 

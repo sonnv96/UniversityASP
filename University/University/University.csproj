@@ -238,6 +238,9 @@
     <Compile Include="Models\Data\SinhVien.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Data\sysdiagram.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Data\TaiKhoan.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
