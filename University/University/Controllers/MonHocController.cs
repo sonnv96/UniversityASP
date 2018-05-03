@@ -139,26 +139,44 @@ namespace University.Controllers
         }
         public ActionResult MoDKMon()
         {
+            LopMonHoc lopmonhoc = new LopMonHoc();
+            ViewBag.maGiangVien = new SelectList(db.GiangViens, "maGiangVien", "tenGiangVien", lopmonhoc.maGiangVien);
+            return View();
+        }
+        [HttpPost]
+        public ActionResult MoDKMon(string id, ModelViewMoLop model)
+        {
 
             var b = TempData["a"];
-
+            MonHoc monHoc = db.MonHocs.Find(id);
             LopMonHoc lopmonhoc = new LopMonHoc();
-            lopmonhoc.maMonHoc = 
-           
+            lopmonhoc.maMonHoc = monHoc.maMonHoc;
+
             lopmonhoc.maLopMonHoc = "P" + rd.Next(100000).ToString();
             lopmonhoc.tenLopMonHoc = "S" + rd.Next(10000).ToString();
-           
+
 
             lopmonhoc.soLuongToiDa = 40;
             lopmonhoc.soLuongDangKy = 0;
-        
-            lopmonhoc.namHoc = null;
-            lopmonhoc.hocKy = null;
-            lopmonhoc.phongHoc = null;
-            lopmonhoc.tietHoc = "";
+
+            lopmonhoc.namHoc = model.namhoc;
+            lopmonhoc.hocKy = model.hocki; 
+            lopmonhoc.tietHoc = model.tiethoc;
+            lopmonhoc.phongHoc = model.phonghoc;
+            lopmonhoc.maGiangVien = model.magiangvien;
             lopmonhoc.trangThai = "dangchodangki";
-            db.LopMonHocs.Add(lopmonhoc);
-            db.SaveChanges();
+            ViewBag.maGiangVien = new SelectList(db.GiangViens, "maGiangVien", "tenGiangVien", lopmonhoc.maGiangVien);
+            lopmonhoc.ngayHoc = model.ngayhoc;
+            lopmonhoc.ngayThi = null;
+            lopmonhoc.hanDangKy = DateTime.Now.AddDays(30);
+
+            if (ModelState.IsValid)
+            {
+
+                db.LopMonHocs.Add(lopmonhoc);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
 
             //var listmh = from lmh in db.LopMonHocs
@@ -190,7 +208,12 @@ namespace University.Controllers
 
             //             };
 
-
+            //SinhVien sv = new SinhVien();
+            //sv.BangDiems = new List<BangDiem> {
+            //    new BangDiem {giuaKy = 4},
+            //};
+            ////sv.
+            //db.SinhViens.
 
 
             //lopmonhoc.malophocphan = "P" + rd.Next(100000).ToString();
@@ -221,7 +244,7 @@ namespace University.Controllers
 
 
 
-            return View();
+            return View(model);
         }
         public ActionResult DKiMon(int hocki, int nam)
         {

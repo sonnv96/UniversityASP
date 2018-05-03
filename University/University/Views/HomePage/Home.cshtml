@@ -62,16 +62,21 @@
                                 <a class="glyphicon glyphicon-user" data-toggle="dropdown"></a>
                                 <div>
 
-                                    <a data-toggle="dropdown" style="color:white">
-                                      
-                                            <span>Xin Chào</span>
-                                            @Session["UserName"]
+                                    <a href="checkout.html" data-toggle="dropdown">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                        @if (Session["UserName"] != null)
+        {
+                                <span>Xin Chào</span> @Session["UserName"];
+                                <ul class="dropdown-menu">
+
+                                    <li><a href="@Url.Action("LogOff", "TaiKhoans")" class="logoff"><i class="fa fa-sign-out"></i>Đăng xuất</a></li>
+                                </ul>
+}
+else
+{
+                                <a href="@Url.Action("DangNhap", "TaiKhoans")"> Đăng nhập </a>}
 
 
-                                            <ul class="dropdown-menu">
-
-                                                <li><a href="@Url.Action("LogOff", "TaiKhoans")"><i class="fa fa-sign-out"></i>Đăng xuất</a></li>
-                                            </ul>
 
 
 

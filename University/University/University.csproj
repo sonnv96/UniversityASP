@@ -265,6 +265,7 @@
     <Compile Include="Models\ModelViewDKMon.cs" />
     <Compile Include="Models\ModelViewDSSV.cs" />
     <Compile Include="Models\ModelViewLichHoc.cs" />
+    <Compile Include="Models\ModelViewMoLop.cs" />
     <Compile Include="Models\ModelviewSinhVien.cs" />
     <Compile Include="Models\ModelViewTaiKhoan.cs" />
     <Compile Include="Models\ModelViewTKSV.cs" />

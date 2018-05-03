@@ -45,13 +45,16 @@
             @Html.ActionLink("Edit", "Edit", new { id = item.maMonHoc }) |
             @Html.ActionLink("Details", "Details", new { id = item.maMonHoc }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.maMonHoc })|
-            @using (Html.BeginForm("MoDKMon", "MonHoc", FormMethod.Post))
-            {
-                <button type="submit">Mở Lớp</button>
-            }
+            <a href="@Url.Action("MoDKMon", "MonHoc", new {id = item.maMonHoc })">Mở Lớp</a>
+
+
+            @*@using (Html.BeginForm(" MoDKMon", "MonHoc" , FormMethod.Post, new { id=item.maMonHoc }))
+               {
+            <button type="submit">Mở Lớp</button>
+        }*@
 
         </td>
     </tr>
 }
-
+        
 </table>

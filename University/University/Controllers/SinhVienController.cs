@@ -452,14 +452,14 @@ namespace University.Controllers
                 }
             }
         }
-        public ActionResult DangKiHPSV()
-        {
-            if (Session["UserName"] == null && Session["MaSV"] == null)
-            {
-                return RedirectToAction("DangNhap", "TaiKhoans");
-            }
-            return View();
-        }
+        //public ActionRe  sult DangKiHPSV()
+        //{
+        //    if (Session["UserName"] == null && Session["MaSV"] == null)
+        //    {
+        //        return RedirectToAction("DangNhap", "TaiKhoans");
+        //    }
+        //    return View();
+        //}
 
         [HttpPost]
         public PartialViewResult GetallMonhoc()
@@ -564,7 +564,7 @@ namespace University.Controllers
             return PartialView("_ChitietMon", a);
         }
 
-        public ActionResult DangKiHPSV2()
+        public ActionResult DangKiHPSV2(int namhoc = 0, int hocki = 0)
         {
             if (Session["UserName"] == null && Session["MaSV"] == null)
             {
