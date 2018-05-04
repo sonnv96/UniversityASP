@@ -1,40 +1,69 @@
-﻿
+﻿@model  IEnumerable<University.Models.Data.MM_Result1>
 @{
     ViewBag.Title = "DangKiHPSV2";
     Layout = "~/Views/HomePage/Home.cshtml";
 }
 
 <h2>DangKiHPSV2</h2>
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-<script src="~/Scripts/bootstrap.js"></script>
-<script src="~/Content/js/controller/ajax.js"></script>
-<link href="~/Content/Bootstrap/bootstrap.css" rel="stylesheet" />
-<div id="list">
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
+@using (Html.BeginForm("DangKiHPSV2", "SinhVien", FormMethod.Get, new { id = "formfilter", @class = "example" }))
+{
+      <h4 class="col-md-4">Chọn năm học</h4>
 
-
-                <th>Name</th>
-
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody class="tbody"></tbody>
-    </table>
-  
-  
-
-
-        <button type="submit" class="btn btn-primary" onclick="return _getAll();">Get</button>
+        @Html.DropDownList("namhoc", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control col-md-5" })
+        <h4 class="col-md-4">Chọn học kì</h4>
+        @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control col-md-5" })
 
 
 
 
-    <div id=" show">
 
-    </div>
 
-</div>
+
+
+
+     
+        <div id="rdbtn" class="radio">
+            <label class="radio-inline">
+                @Html.RadioButton("trangthaidk", "dkmoi", true, new { @class = "radiobutton" })<text>Đăng ký mới</text>
+            </label>
+            <label class="radio-inline">
+                @Html.RadioButton("trangthaidk", "hoclai", false, new { @class = "radiobutton" })<text>Học Lại</text>
+            </label>
+            <label class="radio-inline">
+                @Html.RadioButton("trangthaidk", "caithien", false, new { @class = "radiobutton" })<text>Cải thiện điểm</text>
+            </label>
+
+            <button class="btn btn-primary" type="submit">Xem Lịch Thi</button>
+
+        </div>
+
+
+}
+
+<table class="table " style="width:95%">
+    <tr style="background:orange">
+        <th>Mã</th>
+      
+        <th>Tên môn</th>
+        <th></th>
+
+
+    </tr>
+@foreach(var item in Model)
+    {
+
+    <tr>
+        <td>@item.maMonHoc</td>
+     
+ 
+        <td><a href="@Url.Action("DangKyMon", "SinhVien", new {id = item.maMonHoc })">@item.tenMonHoc</a></td>
+
+    </tr>
+
+
+    }
+</table>
+
+
+

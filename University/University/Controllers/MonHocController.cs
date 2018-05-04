@@ -147,7 +147,7 @@ namespace University.Controllers
         public ActionResult MoDKMon(string id, ModelViewMoLop model)
         {
 
-            var b = TempData["a"];
+           
             MonHoc monHoc = db.MonHocs.Find(id);
             LopMonHoc lopmonhoc = new LopMonHoc();
             lopmonhoc.maMonHoc = monHoc.maMonHoc;

@@ -229,6 +229,15 @@
     <Compile Include="Models\Data\LopMonHoc.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Data\MM.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Data\MM_Result.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Data\MM_Result1.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Data\MonHoc.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
@@ -236,6 +245,15 @@
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Data\SinhVien.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Data\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Data\sp_helpdiagrams_Result.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Data\st_test_Result.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Data\sysdiagram.cs">
@@ -263,6 +281,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModelViewDiem.cs" />
     <Compile Include="Models\ModelViewDKMon.cs" />
+    <Compile Include="Models\ModelViewDSMHDK.cs" />
     <Compile Include="Models\ModelViewDSSV.cs" />
     <Compile Include="Models\ModelViewLichHoc.cs" />
     <Compile Include="Models\ModelViewMoLop.cs" />
@@ -544,7 +563,6 @@
     <Content Include="Views\SinhVien\_GetallMonhoc.cshtml" />
     <Content Include="Views\SinhVien\DangKiHPSV.cshtml" />
     <Content Include="Views\SinhVien\_ChitietMon.cshtml" />
-    <Content Include="Views\SinhVien\DangKiHPSV2.cshtml" />
     <Content Include="Views\QuanTri\Create.cshtml" />
     <Content Include="Views\QuanTri\Delete.cshtml" />
     <Content Include="Views\QuanTri\Details.cshtml" />
@@ -559,6 +577,7 @@
     <Content Include="Views\SinhVien\XemLichThi.cshtml" />
     <Content Include="Views\GiangVien\TTGV.cshtml" />
     <Content Include="Views\TaiKhoans\Home.cshtml" />
+    <Content Include="Views\SinhVien\DangKiHPSV2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
