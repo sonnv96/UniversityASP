@@ -1,0 +1,51 @@
+﻿@model List<University.Models.Data.LopMonHoc>
+
+@{
+    ViewBag.Title = "DSMonDK2";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<h2>DSMonDK</h2>
+<table class="table " style="width:95%">
+    <tr style="background:orange">
+        <th>Mã</th>
+
+        <th>Tên môn</th>
+        <th></th>
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>@item.maMonHoc</td>
+
+
+
+
+
+
+
+            <td>
+                @Ajax.ActionLink(item.tenLopMonHoc, "DSMonDKPartial", "SinhVien", new { id = item.maLopMonHoc }, new AjaxOptions
+                {
+                    UpdateTargetId = "divResultAll",
+                    OnBegin = "",
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "get",
+                    LoadingElementId = "loadingElement2",
+                    OnSuccess = "",
+                    Confirm = ""
+                })
+            </td>
+        </tr>
+
+    }
+</table>
+@*Product List Display Here*@
+<div id="loadingElement2" style="display:none; color:#f60">
+    Loading products...
+</div>
+<div id="divResultAll"></div>

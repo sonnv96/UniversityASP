@@ -679,6 +679,10 @@ namespace University.Controllers
                             {
                                 return View(a);
                             }
+                            else if(trangthaidk == "hoclai")
+                    {
+
+                    }
                        
                
 
@@ -736,6 +740,60 @@ namespace University.Controllers
 
 
         }
+        [HttpGet] 
+        public PartialViewResult DSMonDKPartial(string id)
+        {
+           
+            System.Threading.Thread.Sleep(3000);
+            var lopMonHoc = db.LopMonHocs.Find(id);
+            string mamonh = lopMonHoc.maLopMonHoc;
+            var lstmh = from lmh in db.LopMonHocs
+
+                        join gv in db.GiangViens
+                        on lmh.maGiangVien equals gv.maGiangVien
+
+                        select new ModelViewDKMon()
+                        {
+                            malophocphan = lmh.maLopMonHoc,
+
+                            mamonhoc = lmh.maMonHoc,
+                            soluong = (Int32)lmh.soLuongToiDa,
+                            soluongdangki = (Int32)lmh.soLuongDangKy,
+                            tinhtrang = lmh.trangThai,
+                            tengiangvien = gv.tenGiangVien,
+                            tenlophp = lmh.tenLopMonHoc,
+                            phonghoc = lmh.phongHoc,
+                            tiethoc = lmh.tietHoc,
+
+                            ngayhoc = (Int32)lmh.ngayHoc,
+                            namhoc = (Int32)lmh.namHoc,
+                            hocki = (Int32)lmh.hocKy
+
+
+
+                        };
+         
+            var lst1 = lstmh.Where(x => x.malophocphan == mamonh).FirstOrDefault();
+            var lst = db.LopMonHocs.Where(x => x.maLopMonHoc == mamonh).ToList();
+            ViewBag.tengv = lst1.tengiangvien;
+
+            return PartialView("DSMonDKPartial", lst);  
+        }
+        public ActionResult DSMonDK2()
+        {
+
+            var lst = TempData["lstlmh"];
+
+            return View(lst);
+        }
+        public ActionResult DSMonDK(string id)
+        {
+            MonHoc monHoc = db.MonHocs.Find(id);
+            string mamonh = monHoc.maMonHoc;
+
+            TempData["lstlmh"] = db.LopMonHocs.Where(x => x.maMonHoc == mamonh).ToList();
+            return RedirectToAction("DSMonDK2");
+        }
         public ActionResult DangKyMon(string id)
         {
             if (Session["UserName"] == null && Session["MaSV"] == null)
@@ -790,13 +848,55 @@ namespace University.Controllers
                     bangDiem.giuaKy = null;
                     bangDiem.cuoiKy = null;
                     bangDiem.trangThai = "";
-                    if (ModelState.IsValid)
+                    lmonhoc.soLuongDangKy += 1;
+                    if(DateTime.Now < lmonhoc.hanDangKy)
                     {
+                        if (lmonhoc.soLuongDangKy >= 20 && lmonhoc.soLuongDangKy < lmonhoc.soLuongToiDa)
+                        {
+                            lmonhoc.trangThai = "Chấp nhận mở lớp";
+                            if (ModelState.IsValid)
+                            {
 
-                        db.BangDiems.Add(bangDiem);
-                        db.SaveChanges();
-                        return RedirectToAction("DangKiHPSV2");
+                                db.BangDiems.Add(bangDiem);
+                                db.SaveChanges();
+                                return RedirectToAction("DangKiHPSV2");
+                            }
+                        }
+                       
+                        
                     }
+                    else if(DateTime.Now > lmonhoc.hanDangKy)
+                    {
+                        if(lmonhoc.soLuongDangKy < 20)
+                        {
+                            lmonhoc.trangThai = "Hủy Lớp";
+                            if (ModelState.IsValid)
+                            {
+
+
+                                db.SaveChanges();
+                                return RedirectToAction("DangKiHPSV2");
+                            }
+                        }else if (lmonhoc.soLuongDangKy > 20)
+                        {
+                            lmonhoc.trangThai = "Khóa Lớp";
+                            if (ModelState.IsValid)
+                            {
+
+
+                                db.SaveChanges();
+                                return RedirectToAction("DangKiHPSV2");
+                            }
+                        }
+                      
+
+                    }
+                   
+                    
+                  
+                    
+                   
+                 
                 }
                 return View();
 

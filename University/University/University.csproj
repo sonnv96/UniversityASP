@@ -578,6 +578,9 @@
     <Content Include="Views\GiangVien\TTGV.cshtml" />
     <Content Include="Views\TaiKhoans\Home.cshtml" />
     <Content Include="Views\SinhVien\DangKiHPSV2.cshtml" />
+    <Content Include="Views\SinhVien\DSMonDK.cshtml" />
+    <Content Include="Views\SinhVien\DSMonDKPartial.cshtml" />
+    <Content Include="Views\SinhVien\DSMonDK2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

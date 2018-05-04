@@ -8,6 +8,7 @@ namespace University.Models
     public class ModelViewDKMon
     {
         public string malophocphan { get; set; }
+        public string tenlophp { get; set; }
         public string tendn { get; set; }
         public string masv { get; set; }
         public string monhoc { get; set; }
@@ -23,5 +24,7 @@ namespace University.Models
         public int namhoc { get; set; }
         public int hocki { get; set; }
         public string mamonhoc { get; set; }
+
+        public DateTime handk { get; set; }
     }
 }

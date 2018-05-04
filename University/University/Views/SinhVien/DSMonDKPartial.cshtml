@@ -1,0 +1,32 @@
+﻿@model List<University.Models.Data.LopMonHoc>
+<table class="table">
+    <tr>
+        <th>Lớp học phần</th>
+        <th>Tình trạng</th>
+        <th>Sỉ số</th>
+        <th>Tối đa</th>
+        <th>Giảng Viên</th>
+        <th>Hạn đăng kí</th>
+        <th>Thứ</th>
+        <th>Tiết</th>
+        <th>Phòng</th>
+    </tr>
+@foreach(var item in Model)
+    {
+    <tr>
+        <td>@item.tenLopMonHoc</td>
+
+        <td>@item.trangThai</td>
+        <td>@item.soLuongDangKy</td>
+        <td>@item.soLuongToiDa</td>
+        <td>@ViewBag.tengv</td>
+        <td>@item.hanDangKy</td>
+        <td>@item.ngayHoc</td>
+        <td>@item.tietHoc</td>
+        <td>@item.phongHoc</td>
+
+        <td><a href="@Url.Action("DangKyMon", "SinhVien", new {id = item.maLopMonHoc })">Đăng ký</a></td>
+    </tr>
+    }
+
+</table>

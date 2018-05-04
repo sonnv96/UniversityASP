@@ -31,7 +31,7 @@ function _getAll() {
 }
 function _getById(id) {
     $.ajax({
-        url: '/SinhVien/Get2/' + id,
+        url: '/SinhVien/get/' + id,
         // data: JSON.stringify(dto),
         type: "GET",
         contentType: "application/json; charset=utf-8",
@@ -40,9 +40,8 @@ function _getById(id) {
             var html = '';
             $.each(result, function (key, item) {
                 
-                html += '<p>' + item.monhoc + '</p>';
-                html += '<p>' + item.tengiangvien+ '</p>';
-                html += '<p>' + item.soluong + '</p>';
+                html += '<p>' + item.tenLopMonHoc + '</p>';
+            
 
              
             });
