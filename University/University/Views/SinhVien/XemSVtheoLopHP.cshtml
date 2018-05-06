@@ -1,0 +1,54 @@
+﻿@model List<University.Models.ModelViewDSSV>
+@{
+    ViewBag.Title = "XemSVtheoLop";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+
+<h2>XemSVtheoLop</h2>
+@using (Html.BeginForm("NhapDiem", "SinhVien", FormMethod.Post, new { @style = "width:90%;float:left" }))
+{
+<table class="table " style="width:95%">
+    <tr style="background:orange">
+        <th>Mã</th>
+
+        <th>Tên môn</th>
+        <th>Thường kỳ</th>
+        <th>Giữa kỳ</th>
+        <th>Thực hành</th>
+        <th>Cuối kỳ</th>
+
+    </tr>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+    <tr>
+        <td>@Html.HiddenFor(model => model[i].masv)</td>
+        <td>@Html.EditorFor(model => model[i].tensv)</td>
+        <td>@Html.EditorFor(model => model[i].thuongky)</td>
+        <td>@Html.EditorFor(model => model[i].giuaky)</td>
+        <td>@Html.EditorFor(model => model[i].cuoiky)</td>
+        <td>@Html.EditorFor(model => model[i].thuchanh)</td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </tr>
+
+
+    }
+
+
+
+
+</table>
+    <input type="submit" value="Save"/>
+  
+}

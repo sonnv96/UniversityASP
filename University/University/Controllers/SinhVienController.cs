@@ -607,7 +607,7 @@ namespace University.Controllers
                                  mamonhoc = mh.maMonHoc
 
                              };
-          
+
 
                 var listlmh = from lmh in db.LopMonHocs
                               join mh in db.MonHocs
@@ -637,14 +637,14 @@ namespace University.Controllers
                 if (Session["UserName"] != null)
                 {
                     var lstlmh = listlmh.ToList();
-                   
-                    
-                    
+
+
+
 
                     string ten = Session["UserName"].ToString();
                     var get2 = listmh.Where(x => x.tendn == ten).FirstOrDefault();
                     var masv1 = get2.masv;
-                   
+
                     var b = from mm in lstlmh select mm.mamonhoc;
 
 
@@ -670,21 +670,21 @@ namespace University.Controllers
                     SelectList cateList2 = new SelectList(get, "hocki", "hocki");
 
 
-                       
+
                     ViewBag.namhoc = cateList;
                     ViewBag.hocki = cateList2;
-                
-                       
-                            if(trangthaidk=="dkmoi")
-                            {
-                                return View(a);
-                            }
-                            else if(trangthaidk == "hoclai")
+
+
+                    if (trangthaidk == "dkmoi")
+                    {
+                        return View(a);
+                    }
+                    else if (trangthaidk == "hoclai")
                     {
 
                     }
-                       
-               
+
+
 
                     //if (trangthaidk == "dkmoi" )
                     //{
@@ -740,10 +740,10 @@ namespace University.Controllers
 
 
         }
-        [HttpGet] 
+        [HttpGet]
         public PartialViewResult DSMonDKPartial(string id)
         {
-           
+
             System.Threading.Thread.Sleep(3000);
             var lopMonHoc = db.LopMonHocs.Find(id);
             string mamonh = lopMonHoc.maLopMonHoc;
@@ -772,27 +772,28 @@ namespace University.Controllers
 
 
                         };
-         
+
             var lst1 = lstmh.Where(x => x.malophocphan == mamonh).FirstOrDefault();
             var lst = db.LopMonHocs.Where(x => x.maLopMonHoc == mamonh).ToList();
             ViewBag.tengv = lst1.tengiangvien;
 
-            return PartialView("DSMonDKPartial", lst);  
+            return PartialView("DSMonDKPartial", lst);
         }
-        public ActionResult DSMonDK2()
+        public PartialViewResult DSMonDK2()
         {
 
             var lst = TempData["lstlmh"];
 
-            return View(lst);
+            return PartialView("DSMonDK2", lst);
         }
-        public ActionResult DSMonDK(string id)
+        public PartialViewResult DSMonDK(string id)
         {
+            System.Threading.Thread.Sleep(3000);
             MonHoc monHoc = db.MonHocs.Find(id);
             string mamonh = monHoc.maMonHoc;
 
-            TempData["lstlmh"] = db.LopMonHocs.Where(x => x.maMonHoc == mamonh).ToList();
-            return RedirectToAction("DSMonDK2");
+            var lst = db.LopMonHocs.Where(x => x.maMonHoc == mamonh).ToList();
+            return PartialView("DSMonDK2", lst);
         }
         public ActionResult DangKyMon(string id)
         {
@@ -849,7 +850,7 @@ namespace University.Controllers
                     bangDiem.cuoiKy = null;
                     bangDiem.trangThai = "";
                     lmonhoc.soLuongDangKy += 1;
-                    if(DateTime.Now < lmonhoc.hanDangKy)
+                    if (DateTime.Now < lmonhoc.hanDangKy)
                     {
                         if (lmonhoc.soLuongDangKy >= 20 && lmonhoc.soLuongDangKy < lmonhoc.soLuongToiDa)
                         {
@@ -862,12 +863,12 @@ namespace University.Controllers
                                 return RedirectToAction("DangKiHPSV2");
                             }
                         }
-                       
-                        
+
+
                     }
-                    else if(DateTime.Now > lmonhoc.hanDangKy)
+                    else if (DateTime.Now > lmonhoc.hanDangKy)
                     {
-                        if(lmonhoc.soLuongDangKy < 20)
+                        if (lmonhoc.soLuongDangKy < 20)
                         {
                             lmonhoc.trangThai = "Hủy Lớp";
                             if (ModelState.IsValid)
@@ -877,7 +878,8 @@ namespace University.Controllers
                                 db.SaveChanges();
                                 return RedirectToAction("DangKiHPSV2");
                             }
-                        }else if (lmonhoc.soLuongDangKy > 20)
+                        }
+                        else if (lmonhoc.soLuongDangKy > 20)
                         {
                             lmonhoc.trangThai = "Khóa Lớp";
                             if (ModelState.IsValid)
@@ -888,15 +890,22 @@ namespace University.Controllers
                                 return RedirectToAction("DangKiHPSV2");
                             }
                         }
-                      
+
 
                     }
-                   
-                    
-                  
-                    
-                   
-                 
+
+
+
+                    //SinhVien sv = new SinhVien();
+
+                    //sv.BangDiems = new List<BangDiem>
+                    //{
+                    //    new BangDiem{ cuoiKy=9},
+                    //    new BangDiem{ cuoiKy=9}
+                    //};
+                    //db.SinhViens.Add(sv);
+                    //db.SaveChanges();
+
                 }
                 return View();
 
@@ -995,6 +1004,7 @@ namespace University.Controllers
             var Student = listmh.ToList().Find(x => x.mamonhoc.Equals(id));
             return Json(Student, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult XemDSLop()
         {
 
@@ -1128,5 +1138,98 @@ namespace University.Controllers
 
 
         }
+        public ActionResult DSLopHP()
+        {
+            return View(db.LopMonHocs.ToList());
+        }
+        public ActionResult XemSVtheoLopHP(string id, List<BangDiem> lst)
+        {
+            LopMonHoc lopMonHoc = db.LopMonHocs.Find(id);
+            TempData["malmhoc"] = lopMonHoc.maLopMonHoc;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var listdssv = from sv in db.SinhViens
+                           join bd in db.BangDiems
+                           on sv.maSinhVien equals bd.maSinhVien
+                           join lmh in db.LopMonHocs
+                           on bd.maLopMonHoc equals lmh.maLopMonHoc
+                           select new ModelViewDSSV()
+                           {
+                               malmh = lmh.maLopMonHoc,
+                               tenlmh = lmh.tenLopMonHoc,
+                               masv = sv.maSinhVien,
+                               tensv = sv.tenSinhVien,
+                               thuongky = (Decimal)bd.thuongKy,
+                               giuaky = (Decimal)bd.giuaKy,
+                               cuoiky = (Decimal)bd.cuoiKy,
+                               thuchanh = (Decimal)bd.thucHanh
+
+
+                           };
+
+            var s = listdssv.Where(x => x.malmh == id).ToList();
+
+
+
+            if (s == null)
+            {
+                return HttpNotFound();
+            }
+            return View(s);
+        }
+
+        public ActionResult NhapDiem(List<ModelViewDSSV> model)
+        {
+            var listdssv = from sv in db.SinhViens
+                           join bd in db.BangDiems
+                           on sv.maSinhVien equals bd.maSinhVien
+                           join lmh in db.LopMonHocs
+                           on bd.maLopMonHoc equals lmh.maLopMonHoc
+                           select new ModelViewDSSV()
+                           {
+                               malmh = lmh.maLopMonHoc,
+                               tenlmh = lmh.tenLopMonHoc,
+                               masv = sv.maSinhVien,
+                               tensv = sv.tenSinhVien,
+                               thuongky = (Decimal)bd.thuongKy,
+                               giuaky = (Decimal)bd.giuaKy,
+                               cuoiky = (Decimal)bd.cuoiKy,
+                               thuchanh = (Decimal)bd.thucHanh
+
+
+                           };
+            var a = TempData["malmhoc"];
+            var s = listdssv.Where(x => x.malmh == a.ToString()).ToList();
+
+
+
+            foreach (var i in model)
+            {
+
+
+
+                var b = TempData["malmhoc"];
+                var c = db.BangDiems.Where(x => x.maSinhVien == i.masv && x.maLopMonHoc == b.ToString()).FirstOrDefault();
+
+
+                c.thuongKy = i.thuongky;
+
+                c.giuaKy = i.giuaky;
+                c.cuoiKy = i.cuoiky;
+                c.thucHanh = i.thuchanh;
+                db.SaveChanges();
+
+            }
+
+
+
+
+
+            return RedirectToAction("DSLopHP");
+        }
+
     }
+
 }

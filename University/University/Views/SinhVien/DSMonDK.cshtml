@@ -1,9 +1,5 @@
 ﻿@model List<University.Models.Data.LopMonHoc>
 
-@{
-    ViewBag.Title = "DSMonDK";
-    Layout = "~/Views/HomePage/Home.cshtml";
-}
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 <h2>DSMonDK</h2>
@@ -16,7 +12,7 @@
 
 
     </tr>
-    @foreach (var item in Model)
+    @foreach(var item in Model)
     {
 
         <tr>
@@ -29,16 +25,16 @@
 
 
             <td>
-                @Ajax.ActionLink(item.tenLopMonHoc, "DSMonDKPartial", "SinhVien", new AjaxOptions
+                @Ajax.ActionLink(item.tenLopMonHoc, "DSMonDKPartial", "SinhVien", new { id = item.maLopMonHoc }, new AjaxOptions
                 {
                     UpdateTargetId = "divResultAll",
                     OnBegin = "",
                     InsertionMode = InsertionMode.Replace,
-                    HttpMethod = "GET",
+                    HttpMethod = "get",
                     LoadingElementId = "loadingElement2",
                     OnSuccess = "",
-                    Confirm = "Do you want to get all product?"
-                }, new { id = item.maLopMonHoc })
+                    Confirm = ""
+                })
             </td>
         </tr>
 
@@ -49,3 +45,4 @@
     Loading products...
 </div>
 <div id="divResultAll"></div>
+

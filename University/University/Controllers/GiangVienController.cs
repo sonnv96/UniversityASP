@@ -244,5 +244,6 @@ namespace University.Controllers
            
             return View(db.GiangViens.Where(x=>x.tenDangNhap == ten).ToList());
         }
+       
     }
 }

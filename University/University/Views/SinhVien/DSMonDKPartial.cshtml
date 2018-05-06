@@ -1,4 +1,7 @@
 ﻿@model List<University.Models.Data.LopMonHoc>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
 <table class="table">
     <tr>
         <th>Lớp học phần</th>
@@ -11,22 +14,22 @@
         <th>Tiết</th>
         <th>Phòng</th>
     </tr>
-@foreach(var item in Model)
+    @foreach (var item in Model)
     {
-    <tr>
-        <td>@item.tenLopMonHoc</td>
+        <tr>
+            <td>@item.tenLopMonHoc</td>
 
-        <td>@item.trangThai</td>
-        <td>@item.soLuongDangKy</td>
-        <td>@item.soLuongToiDa</td>
-        <td>@ViewBag.tengv</td>
-        <td>@item.hanDangKy</td>
-        <td>@item.ngayHoc</td>
-        <td>@item.tietHoc</td>
-        <td>@item.phongHoc</td>
+            <td>@item.trangThai</td>
+            <td>@item.soLuongDangKy</td>
+            <td>@item.soLuongToiDa</td>
+            <td>@ViewBag.tengv</td>
+            <td>@item.hanDangKy</td>
+            <td>@item.ngayHoc</td>
+            <td>@item.tietHoc</td>
+            <td>@item.phongHoc</td>
 
-        <td><a href="@Url.Action("DangKyMon", "SinhVien", new {id = item.maLopMonHoc })">Đăng ký</a></td>
-    </tr>
+            <td><a href="@Url.Action("DangKyMon", "SinhVien", new {id = item.maLopMonHoc })">Đăng ký</a></td>
+        </tr>
     }
 
 </table>

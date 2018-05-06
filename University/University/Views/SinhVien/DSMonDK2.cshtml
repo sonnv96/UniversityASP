@@ -1,9 +1,4 @@
 ﻿@model List<University.Models.Data.LopMonHoc>
-
-@{
-    ViewBag.Title = "DSMonDK2";
-    Layout = "~/Views/HomePage/Home.cshtml";
-}
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 <h2>DSMonDK</h2>
@@ -16,7 +11,7 @@
 
 
     </tr>
-    @foreach (var item in Model)
+   @foreach(var item in Model)
     {
 
         <tr>
@@ -49,3 +44,4 @@
     Loading products...
 </div>
 <div id="divResultAll"></div>
+
