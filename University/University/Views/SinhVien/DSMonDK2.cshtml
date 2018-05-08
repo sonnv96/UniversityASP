@@ -1,47 +1,13 @@
 ﻿@model List<University.Models.Data.LopMonHoc>
-<script src="~/Scripts/jquery-3.3.1.js"></script>
-<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-<h2>DSMonDK</h2>
-<table class="table " style="width:95%">
-    <tr style="background:orange">
-        <th>Mã</th>
-
-        <th>Tên môn</th>
-        <th></th>
+<link rel="stylesheet" href="~/Content/Sass/dkhp.min.css" />
 
 
-    </tr>
-   @foreach(var item in Model)
-    {
+   
 
-        <tr>
-            <td>@item.maMonHoc</td>
+ 
 
+      
+           <h2 style="margin-left: 30%;">Không có lớp học phần đang mở</h2>
+     
 
-
-
-
-
-
-            <td>
-                @Ajax.ActionLink(item.tenLopMonHoc, "DSMonDKPartial", "SinhVien", new { id = item.maLopMonHoc }, new AjaxOptions
-                {
-                    UpdateTargetId = "divResultAll",
-                    OnBegin = "",
-                    InsertionMode = InsertionMode.Replace,
-                    HttpMethod = "get",
-                    LoadingElementId = "loadingElement2",
-                    OnSuccess = "",
-                    Confirm = ""
-                })
-            </td>
-        </tr>
-
-    }
-</table>
-@*Product List Display Here*@
-<div id="loadingElement2" style="display:none; color:#f60">
-    Loading products...
-</div>
-<div id="divResultAll"></div>
 

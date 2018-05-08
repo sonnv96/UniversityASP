@@ -5,81 +5,117 @@
 }
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-<h2>DangKiHPSV2</h2>
 
-@using (Html.BeginForm("DangKiHPSV2", "SinhVien", FormMethod.Get, new { id = "formfilter", @class = "example" }))
+<link rel="stylesheet" href="~/Content/Sass/dkhp.min.css" />
+<h2>Đăng ký học phần</h2>
+<script type="text/javascript">
+    function fnOnBegin() {
+</script>
+@if (TempData["lhocphan"] != null)
 {
-    <h4 class="col-md-4">Chọn năm học</h4>
-
-    @Html.DropDownList("namhoc", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control col-md-5" })
-    <h4 class="col-md-4">Chọn học kì</h4>
-    @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control col-md-5" })
-
-
-
-
-
-
-
-
-
-
-    <div id="rdbtn" class="radio">
-        <label class="radio-inline">
-            @Html.RadioButton("trangthaidk", "dkmoi", true, new { @class = "radiobutton" })<text>Đăng ký mới</text>
-        </label>
-        <label class="radio-inline">
-            @Html.RadioButton("trangthaidk", "hoclai", false, new { @class = "radiobutton" })<text>Học Lại</text>
-        </label>
-        <label class="radio-inline">
-            @Html.RadioButton("trangthaidk", "caithien", false, new { @class = "radiobutton" })<text>Cải thiện điểm</text>
-        </label>
-
-        <button class="btn btn-primary" type="submit">Xem Lịch Thi</button>
-
-    </div>
-
-
+    <script>
+        alert("Không có dữ liệu");
+    </script>
 }
+<script>}</script>
 
-<table class="table " style="width:95%">
-    <tr style="background:orange">
-        <th>Mã</th>
+@if (TempData["dangkitc"] != null)
+{
+    <script>
+        alert("Đăng ký thanh công");
+    </script>
+}
+else if (TempData["dangkitc"] != null)
+{
+    <script>
+        alert("Đăng ký thất bại");
+    </script>
+}
+<div class="row">
+    <div class="col-md-6" style="overflow:hidden">
+        <div class="table" style="height:400px;">
+            @using (Html.BeginForm("DangKiHPSV2", "SinhVien", FormMethod.Get, new { id = "formfilter", @class = "example" }))
+            {
+                <h4 class="col-md-12">Chọn năm học</h4>
 
-        <th>Tên môn</th>
-        <th></th>
-
-
-    </tr>
-    @foreach (var item in Model)
-    {
-
-        <tr>
-            <td>@item.maMonHoc</td>
-
-
-            <td>
-                @Ajax.ActionLink(item.tenMonHoc, "DSMonDK", "SinhVien", new { id = item.maMonHoc }, new AjaxOptions
-                {
-                    UpdateTargetId = "divResultAll1",
-                    OnBegin = "",
-                    InsertionMode = InsertionMode.Replace,
-                    HttpMethod = "get",
-                    LoadingElementId = "loadingElement2",
-                    OnSuccess = "",
-                    Confirm = ""
-                })
-            </td>
-
-        </tr>
+                @Html.DropDownList("namhoc", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control col-md-5 dr" })
+                <h4 class="col-md-12">Chọn học kì</h4>
+                @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control col-md-5 dr" })
 
 
-    }
-</table>
 
-<div id="loadingElement2" style="display:none; color:#f60">
-    Đang tải lớp môn học....
+
+
+
+
+
+
+
+                <div id="rdbtn" class="radio">
+                    <label class="radio-inline">
+                        @Html.RadioButton("trangthaidk", "dkmoi", true, new { @class = "radiobutton" })<text>Đăng ký mới</text>
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButton("trangthaidk", "hoclai", false, new { @class = "radiobutton" })<text>Học Lại</text>
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButton("trangthaidk", "caithien", false, new { @class = "radiobutton" })<text>Cải thiện điểm</text>
+                    </label>
+
+
+                </div>
+                <button class="btn btn-primary" type="submit">Xác nhận</button>
+
+
+
+            }
+        </div>
+    </div>
+    <div class="col-md-6">
+        <table class="table">
+            <tr>
+                <th>Mã</th>
+
+                <th>Tên môn</th>
+
+
+
+            </tr>
+           @foreach(var item in Model)
+            {
+
+                <tr>
+                    <td>@item.maMonHoc</td>
+
+
+                    <td>
+                        @Ajax.ActionLink(item.tenMonHoc, "DSMonDK", "SinhVien", new { id = item.maMonHoc }, new AjaxOptions
+                        {
+                            UpdateTargetId = "divResultAll1",
+                            OnBegin = "",
+                            InsertionMode = InsertionMode.Replace,
+                            HttpMethod = "get",
+                            LoadingElementId = "loadingElement2",
+                            OnSuccess = "",
+                            Confirm = ""
+                        })
+                    </td>
+
+
+                </tr>
+
+
+            }
+        </table>
+    </div>
 </div>
-<div id="divResultAll1"></div>
+<div id="loadingElement2">
+    <p>Đang tải....</p>
+</div>
+
+
+<div id="divResultAll1" class="row"></div>
+
+
 
 

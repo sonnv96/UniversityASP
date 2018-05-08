@@ -113,6 +113,7 @@
           <Property Name="trangThai" Type="nvarchar" MaxLength="128" />
           <Property Name="maLop" Type="varchar" MaxLength="16" />
           <Property Name="hinhAnh" Type="nvarchar" MaxLength="128" />
+          <Property Name="eMailPH" Type="varchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -278,6 +279,21 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="lstMHChuaDK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masv" Type="varchar" Mode="In" />
+          <Parameter Name="namhoc" Type="int" Mode="In" />
+          <Parameter Name="hocky" Type="int" Mode="In" />
+        </Function>
+        <Function Name="lstMHChuaDK1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masv" Type="varchar" Mode="In" />
+          <Parameter Name="namhoc" Type="int" Mode="In" />
+          <Parameter Name="hocky" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MHChuaDK4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masv" Type="varchar" Mode="In" />
+          <Parameter Name="namhoc" Type="int" Mode="In" />
+          <Parameter Name="hocky" Type="int" Mode="In" />
+        </Function>
         <Function Name="MM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masv" Type="varchar" Mode="In" />
           <Parameter Name="namhoc" Type="int" Mode="In" />
@@ -313,6 +329,11 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="st_MHChuaDK3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masv" Type="varchar" Mode="In" />
+          <Parameter Name="namhoc" Type="int" Mode="In" />
+          <Parameter Name="hocky" Type="int" Mode="In" />
+        </Function>
         <Function Name="st_test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masv" Type="varchar" Mode="In" />
           <Parameter Name="namhoc" Type="int" Mode="In" />
@@ -384,6 +405,51 @@
     <edmx:ConceptualModels>
       <Schema Namespace="UniversityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="UniversityEntities1" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(UniversityModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(UniversityModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="GetMa" ReturnType="Collection(UniversityModel.MM)">
+            <Parameter Name="masv" Mode="In" Type="String" />
+            <Parameter Name="namhoc" Mode="In" Type="Int32" />
+            <Parameter Name="hocky" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MM" ReturnType="Collection(UniversityModel.MM_Result1)">
+            <Parameter Name="masv" Mode="In" Type="String" />
+            <Parameter Name="namhoc" Mode="In" Type="Int32" />
+            <Parameter Name="hocky" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MHChuaDK4" ReturnType="Collection(UniversityModel.MHChuaDK4_Result)">
+            <Parameter Name="masv" Mode="In" Type="String" />
+            <Parameter Name="namhoc" Mode="In" Type="Int32" />
+            <Parameter Name="hocky" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="BangDiems" EntityType="UniversityModel.BangDiem" />
           <EntitySet Name="ChuyenNganhs" EntityType="UniversityModel.ChuyenNganh" />
           <EntitySet Name="GiangViens" EntityType="UniversityModel.GiangVien" />
@@ -443,47 +509,57 @@
             <End Role="TaiKhoan" EntitySet="TaiKhoans" />
             <End Role="SinhVien" EntitySet="SinhViens" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(UniversityModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(UniversityModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="GetMa" ReturnType="Collection(UniversityModel.MM)">
-          <Parameter Name="masv" Mode="In" Type="String" />
+          <FunctionImport Name="lstMHChuaDK">
+            <Parameter Name="masv" Mode="In" Type="String" />
             <Parameter Name="namhoc" Mode="In" Type="Int32" />
             <Parameter Name="hocky" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="MM" ReturnType="Collection(UniversityModel.MM_Result1)">
+          <FunctionImport Name="lstMHChuaDK1" ReturnType="Collection(UniversityModel.lstMHChuaDK1_Result)">
             <Parameter Name="masv" Mode="In" Type="String" />
             <Parameter Name="namhoc" Mode="In" Type="Int32" />
             <Parameter Name="hocky" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="st_test_Result">
+          <Property Type="String" Name="maMonHoc" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="tenMonHoc" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="maChuyenNganh" Nullable="true" MaxLength="16" />
+          <Property Type="Int32" Name="soTinChi" Nullable="true" />
+          <Property Type="String" Name="trangThai" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="MM">
+          <Property Type="String" Name="maMonHoc" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="tenMonHoc" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="maChuyenNganh" Nullable="true" MaxLength="16" />
+          <Property Type="Int32" Name="soTinChi" Nullable="true" />
+          <Property Type="String" Name="trangThai" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="MM_Result">
+          <Property Type="String" Name="maMonHoc" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="tenMonHoc" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="maChuyenNganh" Nullable="true" MaxLength="16" />
+          <Property Type="Int32" Name="soTinChi" Nullable="true" />
+          <Property Type="String" Name="trangThai" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="MM_Result1">
+          <Property Type="String" Name="maMonHoc" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="tenMonHoc" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="maChuyenNganh" Nullable="true" MaxLength="16" />
+          <Property Type="Int32" Name="soTinChi" Nullable="true" />
+          <Property Type="String" Name="trangThai" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="MHChuaDK4_Result" />
         <EntityType Name="BangDiem">
           <Key>
             <PropertyRef Name="maSinhVien" />
@@ -608,6 +684,7 @@
           <Property Name="trangThai" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="maLop" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="hinhAnh" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="eMailPH" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BangDiems" Relationship="UniversityModel.FK_BangDiem_SinhVien" FromRole="SinhVien" ToRole="BangDiem" />
           <NavigationProperty Name="ChuyenNganh" Relationship="UniversityModel.FK_SinhVien_ChuyenNganh" FromRole="SinhVien" ToRole="ChuyenNganh" />
           <NavigationProperty Name="ChuyenNganh1" Relationship="UniversityModel.FK_SinhVien_ChuyenNganh1" FromRole="SinhVien" ToRole="ChuyenNganh" />
@@ -780,39 +857,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="st_test_Result">
-          <Property Type="String" Name="maMonHoc" Nullable="false" MaxLength="16" />
-          <Property Type="String" Name="tenMonHoc" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="maChuyenNganh" Nullable="true" MaxLength="16" />
-          <Property Type="Int32" Name="soTinChi" Nullable="true" />
-          <Property Type="String" Name="trangThai" Nullable="true" MaxLength="128" />
-        </ComplexType>
-        <ComplexType Name="MM">
-          <Property Type="String" Name="maMonHoc" Nullable="false" MaxLength="16" />
-          <Property Type="String" Name="tenMonHoc" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="maChuyenNganh" Nullable="true" MaxLength="16" />
-          <Property Type="Int32" Name="soTinChi" Nullable="true" />
-          <Property Type="String" Name="trangThai" Nullable="true" MaxLength="128" />
-        </ComplexType>
-        <ComplexType Name="MM_Result">
-          <Property Type="String" Name="maMonHoc" Nullable="false" MaxLength="16" />
-          <Property Type="String" Name="tenMonHoc" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="maChuyenNganh" Nullable="true" MaxLength="16" />
-          <Property Type="Int32" Name="soTinChi" Nullable="true" />
-          <Property Type="String" Name="trangThai" Nullable="true" MaxLength="128" />
-        </ComplexType>
-        <ComplexType Name="MM_Result1">
+        <ComplexType Name="lstMHChuaDK1_Result">
           <Property Type="String" Name="maMonHoc" Nullable="false" MaxLength="16" />
           <Property Type="String" Name="tenMonHoc" Nullable="true" MaxLength="128" />
           <Property Type="String" Name="maChuyenNganh" Nullable="true" MaxLength="16" />
@@ -825,6 +870,57 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="UniversityModelStoreContainer" CdmEntityContainer="UniversityEntities1">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="UniversityModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="UniversityModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="UniversityModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="UniversityModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="UniversityModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="UniversityModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="UniversityModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="GetMa" FunctionName="UniversityModel.Store.st_test">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.MM">
+                <ScalarProperty Name="maMonHoc" ColumnName="maMonHoc" />
+                <ScalarProperty Name="tenMonHoc" ColumnName="tenMonHoc" />
+                <ScalarProperty Name="maChuyenNganh" ColumnName="maChuyenNganh" />
+                <ScalarProperty Name="soTinChi" ColumnName="soTinChi" />
+                <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MM" FunctionName="UniversityModel.Store.MM">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.MM_Result1">
+                <ScalarProperty Name="maMonHoc" ColumnName="maMonHoc" />
+                <ScalarProperty Name="tenMonHoc" ColumnName="tenMonHoc" />
+                <ScalarProperty Name="maChuyenNganh" ColumnName="maChuyenNganh" />
+                <ScalarProperty Name="soTinChi" ColumnName="soTinChi" />
+                <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MHChuaDK4" FunctionName="UniversityModel.Store.MHChuaDK4" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.MHChuaDK4_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="BangDiems">
             <EntityTypeMapping TypeName="UniversityModel.BangDiem">
               <MappingFragment StoreEntitySet="BangDiem">
@@ -927,6 +1023,7 @@
           <EntitySetMapping Name="SinhViens">
             <EntityTypeMapping TypeName="UniversityModel.SinhVien">
               <MappingFragment StoreEntitySet="SinhVien">
+                <ScalarProperty Name="eMailPH" ColumnName="eMailPH" />
                 <ScalarProperty Name="hinhAnh" ColumnName="hinhAnh" />
                 <ScalarProperty Name="maLop" ColumnName="maLop" />
                 <ScalarProperty Name="trangThai" ColumnName="trangThai" />
@@ -963,44 +1060,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="UniversityModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="UniversityModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="UniversityModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="UniversityModel.Store.sp_helpdiagramdefinition">
+          <FunctionImportMapping FunctionImportName="lstMHChuaDK" FunctionName="UniversityModel.Store.lstMHChuaDK" />
+          <FunctionImportMapping FunctionImportName="lstMHChuaDK1" FunctionName="UniversityModel.Store.lstMHChuaDK1">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="UniversityModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="UniversityModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="UniversityModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="UniversityModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="UniversityModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="GetMa" FunctionName="UniversityModel.Store.st_test">
-          <ResultMapping>
-              <ComplexTypeMapping TypeName="UniversityModel.MM">
-                <ScalarProperty Name="maMonHoc" ColumnName="maMonHoc" />
-                <ScalarProperty Name="tenMonHoc" ColumnName="tenMonHoc" />
-                <ScalarProperty Name="maChuyenNganh" ColumnName="maChuyenNganh" />
-                <ScalarProperty Name="soTinChi" ColumnName="soTinChi" />
-                <ScalarProperty Name="trangThai" ColumnName="trangThai" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="MM" FunctionName="UniversityModel.Store.MM">
-          <ResultMapping>
-              <ComplexTypeMapping TypeName="UniversityModel.MM_Result1">
+              <ComplexTypeMapping TypeName="UniversityModel.lstMHChuaDK1_Result">
                 <ScalarProperty Name="maMonHoc" ColumnName="maMonHoc" />
                 <ScalarProperty Name="tenMonHoc" ColumnName="tenMonHoc" />
                 <ScalarProperty Name="maChuyenNganh" ColumnName="maChuyenNganh" />

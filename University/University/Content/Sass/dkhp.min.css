@@ -1,0 +1,3 @@
+.row{height:100%;width:100%;overflow:hidden}.row .col-md-6{height:400px;overflow-y:scroll}.row .col-md-6 .table{margin:auto;border:1px solid #ede8e8;width:80%}.row .col-md-6 .table .example{margin-top:10%}.row .col-md-6 .table .example h4{text-transform:uppercase;font-size:15px;margin:10px;margin-left:30%}.row .col-md-6 .table .example .dr{margin-left:30%}.row .col-md-6 .table .example .radio{margin-left:30%;margin-top:5px}.row .col-md-6 .table .example .radio .radio-inline{margin:2px}.row .col-md-6 .table .example .btn{margin:15px;margin-left:45%}.row .col-md-6 ::-webkit-scrollbar{display:none}#loadingElement2{display:none;color:#f60}#loadingElement2 p{text-align:center;font-size:15px}.abc ::-webkit-scrollbar{display:none}
+
+/*# sourceMappingURL=dkhp.css.map */

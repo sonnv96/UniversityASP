@@ -32,6 +32,12 @@ body {
   .container-fluid .navbar-light #navbarSupportedContent ul li .nav-link {
     color: #ffffff; }
 
+.renderbody h2 {
+  text-transform: uppercase;
+  margin: 30px;
+  color: #800000;
+  text-align: center; }
+
 footer {
   position: absolute;
   width: 100%;

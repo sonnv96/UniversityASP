@@ -241,11 +241,12 @@ namespace University.Controllers
                                    masv = sv.maSinhVien,
                                    tensv = sv.tenSinhVien,
                                    tendangnhap = tk.tenDangNhap,
-                                   ngaysinh = (DateTime)sv.ngaySinh,
+                                   ngaysinh = (DateTime?)sv.ngaySinh,
                                    gioitinh = sv.gioiTinh,
-                                   giuaki = (Decimal)bd.giuaKy,
-                                   cuoiki = (Decimal)bd.cuoiKy,
-                                   thuhanh = (Decimal)bd.thucHanh,
+                                   thuongki = (Decimal?)bd.thuongKy,
+                                   giuaki = (Decimal?)bd.giuaKy,
+                                   cuoiki = (Decimal?)bd.cuoiKy,
+                                   thuhanh = (Decimal?)bd.thucHanh,
                                    mamonhoc = lmh.maMonHoc,
                                    hinhanh = sv.hinhAnh,
                                    nam = (Int32)lmh.namHoc,
@@ -395,8 +396,23 @@ namespace University.Controllers
 
                     //ViewBag.Day = items;
 
-
+                   
+                    ViewBag.thu2 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 2).ToList();
+                    ViewBag.thu3 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 3).ToList();
+                    ViewBag.thu4 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 4).ToList();
+                    ViewBag.thu5 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 5).ToList();
+                    ViewBag.thu6 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 6).ToList();
+                    ViewBag.thu7 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 7).ToList();
+                    ViewBag.thu8 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 8).ToList();
+                    ViewBag.thu2count = ViewBag.thu2.Count + 1;
+                    ViewBag.thu3count = ViewBag.thu3.Count + 1;
+                    ViewBag.thu4count = ViewBag.thu4.Count + 1;
+                    ViewBag.thu5count = ViewBag.thu5.Count + 1;
+                    ViewBag.thu6count = ViewBag.thu6.Count + 1;
+                    ViewBag.thu7count = ViewBag.thu7.Count + 1;
+                    ViewBag.thu8count = ViewBag.thu8.Count + 1;
                     return View(listtkb.ToList().Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki).ToPagedList(page, pageSize));
+                   
                 }
                 else
                 {
@@ -782,9 +798,9 @@ namespace University.Controllers
         public PartialViewResult DSMonDK2()
         {
 
-            var lst = TempData["lstlmh"];
+           
 
-            return PartialView("DSMonDK2", lst);
+            return PartialView("DSMonDK2", null);
         }
         public PartialViewResult DSMonDK(string id)
         {
@@ -793,7 +809,11 @@ namespace University.Controllers
             string mamonh = monHoc.maMonHoc;
 
             var lst = db.LopMonHocs.Where(x => x.maMonHoc == mamonh).ToList();
-            return PartialView("DSMonDK2", lst);
+            if(lst.Count == 0)
+            {
+                return PartialView("DSMonDK2");
+            }
+            return PartialView("DSMonDK", lst);
         }
         public ActionResult DangKyMon(string id)
         {
@@ -857,9 +877,22 @@ namespace University.Controllers
                             lmonhoc.trangThai = "Chấp nhận mở lớp";
                             if (ModelState.IsValid)
                             {
+                                
+                                db.BangDiems.Add(bangDiem);
+                                db.SaveChanges();
+                                TempData["dangkitc"] = "sơn";
+                                return RedirectToAction("DangKiHPSV2");
+                            }
+                        }
+                        else if(lmonhoc.soLuongDangKy < lmonhoc.soLuongToiDa)
+                        {
+                            lmonhoc.trangThai = "Chờ Sinh Viên Đăng ký";
+                            if (ModelState.IsValid)
+                            {
 
                                 db.BangDiems.Add(bangDiem);
                                 db.SaveChanges();
+                                TempData["dangkitc"] = "sơn";
                                 return RedirectToAction("DangKiHPSV2");
                             }
                         }
@@ -876,6 +909,7 @@ namespace University.Controllers
 
 
                                 db.SaveChanges();
+                                TempData["dangkitb"] = "sơn";
                                 return RedirectToAction("DangKiHPSV2");
                             }
                         }
@@ -887,6 +921,7 @@ namespace University.Controllers
 
 
                                 db.SaveChanges();
+                                TempData["dangkitb"] = "sơn";
                                 return RedirectToAction("DangKiHPSV2");
                             }
                         }
@@ -907,7 +942,7 @@ namespace University.Controllers
                     //db.SaveChanges();
 
                 }
-                return View();
+                return RedirectToAction("DangKiHPSV2");
 
 
 
@@ -1076,7 +1111,7 @@ namespace University.Controllers
                                   giangvien = gv.tenGiangVien,
                                   phonghoc = lmh.phongHoc,
                                   hinhanh = sv.hinhAnh,
-                                  ngaythi = (DateTime)lmh.ngayThi
+                                  ngaythi = (DateTime?)lmh.ngayThi
 
 
 
@@ -1089,7 +1124,7 @@ namespace University.Controllers
                     ViewBag.tensv = get2.tensv;
                     ViewBag.masv = get2.masv;
                     ViewBag.hinhanh = get2.hinhanh;
-                    var get = listtkb.ToList().Where(x => x.tendangnhap == ten).ToList();
+                    var get = listtkb.Where(x => x.tendangnhap == ten).ToList();
 
 
 

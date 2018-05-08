@@ -10,5 +10,17 @@
   {
     "outputFile": "Content/Sass/TrangXemTKB.css",
     "inputFile": "Content/Sass/TrangXemTKB.scss"
+  },
+  {
+    "outputFile": "Content/Sass/dkhp.css",
+    "inputFile": "Content/Sass/dkhp.scss"
+  },
+  {
+    "outputFile": "Content/Sass/dsmondk.css",
+    "inputFile": "Content/Sass/dsmondk.scss"
+  },
+  {
+    "outputFile": "Content/Sass/xemtkb.css",
+    "inputFile": "Content/Sass/xemtkb.scss"
   }
 ]

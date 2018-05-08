@@ -3,18 +3,18 @@
     padding: 0;
     height: 100%;
 }
- body {
+
+body {
     font-size: 100%;
     overflow-x: hidden;
     text-rendering: optimizeLegibility;
     margin: 0;
     padding: 0;
     display: block;
- 
     height: 100%;
 
     #wapper {
-        
+
 
         :before, :after {
             box-sizing: inherit;
@@ -27,13 +27,16 @@
             }
         }
     }
-    .title
-        {
+
+
+
+    .title {
         background-color: #800000;
-        height:150px;
-       h1 {
-           margin:auto;
-           color:#ffffff;
+        height: 150px;
+
+        h1 {
+            margin: auto;
+            color: #ffffff;
         }
     }
 }
@@ -58,24 +61,32 @@
             }
         }
     }
-    }
+}
 
-    footer {
-        position: absolute;
-        width: 100%;
-        background: #5b6e84;
-        color: #fff;
-        padding: 10px 0;
-        bottom: 0;
+.renderbody {
+    h2 {
+        text-transform: uppercase;
+        margin: 30px;
+        color: #800000;
+        text-align:center;
     }
+}
 
-    //Trang thông tin sinh viên
+footer {
+    position: absolute;
+    width: 100%;
+    background: #5b6e84;
+    color: #fff;
+    padding: 10px 0;
+    bottom: 0;
+}
+
+//Trang thông tin sinh viên
 
 .row {
     margin: 50px;
 
     img {
-
         /*@media (min-width: 576px) {
             width: 400px;
             height: 270px;
@@ -97,7 +108,5 @@
         }*/
         width: 80%;
         height: 100%;
-
-       
     }
 }

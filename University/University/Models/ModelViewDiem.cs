@@ -15,12 +15,13 @@ namespace University.Models
         public int hocki { get; set; }
         public int nam { get; set; }
 
-        public DateTime ngaysinh { get; set; }
+        public DateTime? ngaysinh { get; set; }
         public string tenlop { get; set; }
         public string gioitinh { get; set; }
-        public decimal thuhanh { get; set; }
-        public decimal giuaki { get; set; }
-        public decimal cuoiki { get; set; }
+        public decimal? thuongki { get; set; }
+        public decimal? thuhanh { get; set; }
+        public decimal? giuaki { get; set; }
+        public decimal? cuoiki { get; set; }
         public string mamonhoc { get; set; }
         public string tenmonhoc { get; set; }
 

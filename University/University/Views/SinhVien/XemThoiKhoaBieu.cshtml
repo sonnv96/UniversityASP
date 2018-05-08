@@ -5,6 +5,7 @@
     Layout = "~/Views/HomePage/Home.cshtml";
 }
 <link rel="stylesheet" href="~/Content/Sass/TrangXemTKB.min.css" />
+<link rel="stylesheet" href="~/Content/Sass/xemtkb.min.css" />
 
 
 <h2>thời khóa biểu</h2>
@@ -67,33 +68,155 @@
         </fieldset>
     }*@
 
-<table class="table " style="width:95%">
-    <tr style="background:orange">
+<table class="table">
+    <tr>
 
 
-        <th>Ngay Hoc</th>
-        <th>Môn học</th>
-        <th>Tiết học</th>
-        <th>Giảng Viên</th>
-        <th>Phong học</th>
+        <th>Thứ</th>
+        <td>
+
+            Môn học
+
+
+        </td>
+        <td>Tiết học</td>
+        <td>Giảng Viên</td>
+        <td>Phòng học</td>
 
     </tr>
-    @foreach (var item in Model)
-    {
-
-        <tr>
-
-            <td>@item.ngayhoc</td>
-
-            <td>@item.monhoc</td>
-            <td>@item.tiethoc</td>
-            <td>@item.giangvien</td>
-            <td>@item.phonghoc</td>
 
 
 
-        </tr>
-    }
-</table>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+  
+    <tr>
+            <td rowspan="@ViewBag.thu2count">Hai</td>
+
+            @foreach (var item in ViewBag.thu2)
+            {
+            <tr style="border-bottom: 1px solid #ede8e8;">
+                <td>@item.monhoc</td>
+                <td>@item.tiethoc</td>
+                <td>@item.giangvien</td>
+                <td>@item.phonghoc</td>
+            </tr>
+            
+
+        }
+
+
+
+            <tr>
+
+                <td rowspan="@ViewBag.thu3count">Ba</td>
+
+                @foreach (var item in ViewBag.thu3)
+                {
+                <tr style="border-bottom: 1px solid #ede8e8;">
+                    <td>@item.monhoc</td>
+                    <td>@item.tiethoc</td>
+                    <td>@item.giangvien</td>
+                    <td>@item.phonghoc</td>
+                </tr>
+
+            }
+
+   
+
+                <tr>
+
+                    <td rowspan="@ViewBag.thu4count">Tư</td>
+
+                    @foreach (var item in ViewBag.thu4)
+                    {
+                    <tr style="border-bottom: 1px solid #ede8e8;">
+                        <td>@item.monhoc</td>
+                        <td>@item.tiethoc</td>
+                        <td>@item.giangvien</td>
+                        <td>@item.phonghoc</td>
+                    </tr>
+
+                }
+
+    
+
+                    <tr>
+
+                        <td rowspan="@ViewBag.thu5count">Năm</td>
+
+                        @foreach (var item in ViewBag.thu5)
+                        {
+                        <tr style="border-bottom: 1px solid #ede8e8;">
+                            <td>@item.monhoc</td>
+                            <td>@item.tiethoc</td>
+                            <td>@item.giangvien</td>
+                            <td>@item.phonghoc</td>
+                        </tr>
+
+                    }
+
+       
+
+                        <tr>
+
+                            <td rowspan="@ViewBag.thu6count">Sáu</td>
+
+                            @foreach (var item in ViewBag.thu6)
+                            {
+                            <tr style="border-bottom: 1px solid #ede8e8;">
+                                <td>@item.monhoc</td>
+                                <td>@item.tiethoc</td>
+                                <td>@item.giangvien</td>
+                                <td>@item.phonghoc</td>
+                            </tr>
+
+                        }
+
+  
+
+                            <tr>
+
+                                <td rowspan="@ViewBag.thu7count">Bảy</td>
+
+                                @foreach (var item in ViewBag.thu7)
+                                {
+                                <tr style="border-bottom: 1px solid #ede8e8;">
+                                    <td >@item.monhoc</td>
+                                    <td>@item.tiethoc</td>
+                                    <td>@item.giangvien</td>
+                                    <td>@item.phonghoc</td>
+                                </tr>
+
+                            }
+
+                 
+
+                                <tr>
+
+                                    <td rowspan="@ViewBag.thu8count">Chủ Nhật</td>
+
+                                    @foreach (var item in ViewBag.thu8)
+                                    {
+                                    <tr style="border-bottom: 1px solid #ede8e8;">
+                                        <td>@item.monhoc</td>
+                                        <td>@item.tiethoc</td>
+                                        <td>@item.giangvien</td>
+                                        <td>@item.phonghoc</td>
+                                    </tr>
+
+                                }
+    
+
+                
+
+
+    </table>
+
+
+
+
+
+
+
+                                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
