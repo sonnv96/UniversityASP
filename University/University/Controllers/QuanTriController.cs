@@ -227,6 +227,14 @@ namespace University.Controllers
             }
             return View(s);
         }
+        public ActionResult CreateNewStudent()
+        {
+            SinhVien sv = new SinhVien();
+            ViewBag.maLop = new SelectList(db.Lops, "maLop", "tenLop", sv.maLop);
+
+            return View();
+        }
+        [HttpPost]
         public ActionResult CreateNewStudent(ModelViewTKSV model)
         {
             TaiKhoan tk = new TaiKhoan();
@@ -237,7 +245,7 @@ namespace University.Controllers
             sv.ngaySinh = model.ngaysinh;
             sv.namNhapHoc = model.namnhaphoc;
             sv.maChuyenNganh = model.machuyennganh;
-            sv.maLop = "";
+            ViewBag.maLop = new SelectList(db.Lops, "maLop", "tenLop", sv.maLop);
             sv.eMail = model.Email;
             tk.tenDangNhap = model.tendangnhap;
             tk.matKhau = model.matkhau;

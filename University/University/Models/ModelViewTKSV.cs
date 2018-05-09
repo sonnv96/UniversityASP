@@ -11,6 +11,7 @@ namespace University.Models
         public string matkhau { get; set; }
         public string loaitaikhoan { get; set; }
         public string masv { get; set; }
+        public string malop { get; set; }
         public string tensv { get; set; }
         public string quequan { get; set; }
         public DateTime ngaysinh { get; set; }

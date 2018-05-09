@@ -8,53 +8,35 @@
 <h2>Danh sách môn học</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm Mới", "Create")
 </p>
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.tenMonHoc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.soTinChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.trangThai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChuyenNganh.tenChuyenNganh)
-        </th>
+        <th>Tên Môn</th>
+        <th>Chuyên Ngành</th>
+        <th>Số Tín Chỉ</th>
+        <th>Trạng Thái</th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
     <tr>
+        <td>@item.tenMonHoc</td>
+        <td>@item.ChuyenNganh.tenChuyenNganh</td>
+        <td>@item.soTinChi</td>
+        <td>@item.trangThai</td>
         <td>
-            @Html.DisplayFor(modelItem => item.tenMonHoc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.soTinChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.trangThai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChuyenNganh.tenChuyenNganh)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.maMonHoc }) |
-            @Html.ActionLink("Details", "Details", new { id = item.maMonHoc }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.maMonHoc })|
+            @Html.ActionLink("Sửa", "Edit", new { id = item.maMonHoc }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.maMonHoc }) |
+            @Html.ActionLink("Xóa", "Delete", new { id = item.maMonHoc })|
             <a href="@Url.Action("MoDKMon", "MonHoc", new {id = item.maMonHoc })">Mở Lớp</a>
-
-
-            @*@using (Html.BeginForm(" MoDKMon", "MonHoc" , FormMethod.Post, new { id=item.maMonHoc }))
-               {
-            <button type="submit">Mở Lớp</button>
-        }*@
-
         </td>
     </tr>
-}
-        
+       
+    }
+
+
 </table>
+
+

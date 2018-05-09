@@ -5,18 +5,21 @@
     Layout = "~/Views/HomePage/Admin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Quản Lý Tài Khoản</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm mới", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.matKhau)
+            Tên Đăng Nhập
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.loaiTaiKhoan)
+            Mật Khẩu
+        </th>
+        <th>
+            Loại Tài Khoản
         </th>
         <th></th>
     </tr>
@@ -24,15 +27,18 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.tenDangNhap)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.matKhau)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.loaiTaiKhoan)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.tenDangNhap }) |
-            @Html.ActionLink("Details", "Details", new { id=item.tenDangNhap }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.tenDangNhap })
+            @Html.ActionLink("Sửa", "Edit", new { id = item.tenDangNhap }) |
+            @Html.ActionLink("Chi Tiết", "Details", new { id = item.tenDangNhap }) |
+            @Html.ActionLink("Xóa", "Delete", new { id = item.tenDangNhap })
         </td>
     </tr>
 }
