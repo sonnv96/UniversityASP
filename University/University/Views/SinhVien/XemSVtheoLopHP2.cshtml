@@ -1,0 +1,59 @@
+﻿@model List<University.Models.ModelViewDSSV>
+@{
+    ViewBag.Title = "XemSVtheoLopHP2";
+    Layout = "~/Views/HomePage/Admin.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/Sass/nhapdiem.min.css" />
+<h2>Nhập Điểm</h2>
+@using (Html.BeginForm("NhapDiem", "SinhVien", FormMethod.Post, new { @style = "width:90%;float:left" }))
+{
+    <table class="table ">
+        <tr>
+            <th></th>
+            <th>Mã</th>
+
+            <th>Tên Sinh Viên</th>
+            <th>Thường kỳ</th>
+            <th>Giữa kỳ</th>
+            <th>Thực hành</th>
+            <th>Cuối kỳ</th>
+
+        </tr>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@Html.HiddenFor(model => model[i].masv)</td>
+                <td>@Html.DisplayFor(model => model[i].masv)</td>
+                <td>@Html.DisplayFor(model => model[i].tensv)</td>
+                <td>@Html.EditorFor(model => model[i].thuongky, new { htmlAttributes = new { @class = "odiem" } })</td>
+                <td>@Html.EditorFor(model => model[i].giuaky, new { htmlAttributes = new { @class = "odiem" } })</td>
+                <td>@Html.EditorFor(model => model[i].cuoiky, new { htmlAttributes = new { @class = "odiem" } })</td>
+                <td>@Html.EditorFor(model => model[i].thuchanh, new { htmlAttributes = new { @class = "odiem" } })</td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </tr>
+
+
+        }
+
+
+
+
+    </table>
+    <button class="btn btn-danger" type="submit">Lưu</button>
+
+}
+
+

@@ -226,5 +226,74 @@ namespace University.Models.Data
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<lstMHChuaDK1_Result>("lstMHChuaDK1", masvParameter, namhocParameter, hockyParameter);
         }
+    
+        public virtual ObjectResult<st_MHChuaDK1_Result> st_MHChuaDK1(string masv, Nullable<int> namhoc, Nullable<int> hocky)
+        {
+            var masvParameter = masv != null ?
+                new ObjectParameter("masv", masv) :
+                new ObjectParameter("masv", typeof(string));
+    
+            var namhocParameter = namhoc.HasValue ?
+                new ObjectParameter("namhoc", namhoc) :
+                new ObjectParameter("namhoc", typeof(int));
+    
+            var hockyParameter = hocky.HasValue ?
+                new ObjectParameter("hocky", hocky) :
+                new ObjectParameter("hocky", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_MHChuaDK1_Result>("st_MHChuaDK1", masvParameter, namhocParameter, hockyParameter);
+        }
+    
+        public virtual ObjectResult<st_MHChuaDK1_tdn_Result> st_MHChuaDK1_tdn(string tendangnhap, Nullable<int> namhoc, Nullable<int> hocky)
+        {
+            var tendangnhapParameter = tendangnhap != null ?
+                new ObjectParameter("tendangnhap", tendangnhap) :
+                new ObjectParameter("tendangnhap", typeof(string));
+    
+            var namhocParameter = namhoc.HasValue ?
+                new ObjectParameter("namhoc", namhoc) :
+                new ObjectParameter("namhoc", typeof(int));
+    
+            var hockyParameter = hocky.HasValue ?
+                new ObjectParameter("hocky", hocky) :
+                new ObjectParameter("hocky", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_MHChuaDK1_tdn_Result>("st_MHChuaDK1_tdn", tendangnhapParameter, namhocParameter, hockyParameter);
+        }
+    
+        public virtual ObjectResult<st_hocky_Result> st_hocky(string masv)
+        {
+            var masvParameter = masv != null ?
+                new ObjectParameter("masv", masv) :
+                new ObjectParameter("masv", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_hocky_Result>("st_hocky", masvParameter);
+        }
+    
+        public virtual ObjectResult<st_namhoc_Result> st_namhoc(string masv)
+        {
+            var masvParameter = masv != null ?
+                new ObjectParameter("masv", masv) :
+                new ObjectParameter("masv", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_namhoc_Result>("st_namhoc", masvParameter);
+        }
+    
+        public virtual ObjectResult<st_hoclai_Result> st_hoclai(string masv, Nullable<int> namhoc, Nullable<int> hocky)
+        {
+            var masvParameter = masv != null ?
+                new ObjectParameter("masv", masv) :
+                new ObjectParameter("masv", typeof(string));
+    
+            var namhocParameter = namhoc.HasValue ?
+                new ObjectParameter("namhoc", namhoc) :
+                new ObjectParameter("namhoc", typeof(int));
+    
+            var hockyParameter = hocky.HasValue ?
+                new ObjectParameter("hocky", hocky) :
+                new ObjectParameter("hocky", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_hoclai_Result>("st_hoclai", masvParameter, namhocParameter, hockyParameter);
+        }
     }
 }

@@ -3,15 +3,16 @@
     ViewBag.Title = "XemSVtheoLop";
     Layout = "~/Views/HomePage/Home.cshtml";
 }
-
-<h2>XemSVtheoLop</h2>
+<link rel="stylesheet" href="~/Content/Sass/nhapdiem.min.css" />
+<h2>Nhập Điểm</h2>
 @using (Html.BeginForm("NhapDiem", "SinhVien", FormMethod.Post, new { @style = "width:90%;float:left" }))
 {
-<table class="table " style="width:95%">
-    <tr style="background:orange">
+<table class="table " >
+    <tr >
+        <th></th>
         <th>Mã</th>
 
-        <th>Tên môn</th>
+        <th>Tên Sinh Viên</th>
         <th>Thường kỳ</th>
         <th>Giữa kỳ</th>
         <th>Thực hành</th>
@@ -22,11 +23,12 @@
     {
     <tr>
         <td>@Html.HiddenFor(model => model[i].masv)</td>
-        <td>@Html.EditorFor(model => model[i].tensv)</td>
-        <td>@Html.EditorFor(model => model[i].thuongky)</td>
-        <td>@Html.EditorFor(model => model[i].giuaky)</td>
-        <td>@Html.EditorFor(model => model[i].cuoiky)</td>
-        <td>@Html.EditorFor(model => model[i].thuchanh)</td>
+        <td>@Html.DisplayFor(model => model[i].masv)</td>
+        <td>@Html.DisplayFor(model => model[i].tensv)</td>
+        <td>@Html.EditorFor(model => model[i].thuongky, new { htmlAttributes = new { @class = "odiem" } })</td>
+        <td>@Html.EditorFor(model => model[i].giuaky, new { htmlAttributes = new { @class = "odiem" } })</td>
+        <td>@Html.EditorFor(model => model[i].cuoiky, new { htmlAttributes = new { @class = "odiem" } })</td>
+        <td>@Html.EditorFor(model => model[i].thuchanh, new { htmlAttributes = new { @class = "odiem" } })</td>
 
 
 
@@ -49,6 +51,6 @@
 
 
 </table>
-    <input type="submit" value="Save"/>
+    <button class="btn btn-danger"  type="submit" >Lưu</button>
   
 }

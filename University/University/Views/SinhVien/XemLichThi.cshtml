@@ -4,62 +4,240 @@
     Layout = "~/Views/HomePage/Home.cshtml";
 }
 
-<h2>XemLichThi</h2>
+
+
+
+
+
 
 <link rel="stylesheet" href="~/Content/Sass/TrangXemTKB.min.css" />
+<link rel="stylesheet" href="~/Content/Sass/xemtkb.min.css" />
 
 
-<div class=" formchon row">
-
-    @using (Html.BeginForm("XemLichThi", "SinhVien", FormMethod.Post, new { @style = "width:90%;float:left" }))
-    {
-        <h4 class="col-md-4">Chọn năm học</h4>
-
-        @Html.DropDownList("nam", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control col-md-5" })
-        <h4 class="col-md-4">Chọn học kì</h4>
-        @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control col-md-5" })
-
+<h2>Lịch thi</h2>
+<div class="row">
+    <div class="col-md-6">
+        <img class="" src="~/images/@ViewBag.hinhanh" alt="Generic placeholder image">
+    </div>
+    <div class="col-md-4">
 
 
 
+        <p class="noidung">Mã số Sinh Viên: <b>@ViewBag.masv</b></p>
+        <p class="noidung">Họ và Tên: <b>@ViewBag.tensv</b></p>
+
+    </div>
+</div>
+<div class="formchon">
+    <div class="a">
+        @using (Html.BeginForm("XemLichThi", "SinhVien", FormMethod.Post, new { @class = "form-tkb" }))
+        {
+            <h4 class="">Chọn năm học</h4>
+
+            @Html.DropDownList("nam", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control drop col-md-5" })
+            <h4 class="">Chọn học kì</h4>
+            @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control drop col-md-5" })
 
 
 
 
 
-        <button class="btn btn-primary" type="submit">Xem Lịch Thi</button>
-    }
+
+
+
+
+            <button class="btn btn-primary" type="submit">Xem Lịch</button>
+        }
+    </div>
 
 </div>
 
 
-<table class="table " style="width:95%">
-    <tr style="background:orange">
+@*@using (Html.BeginForm("XemThoiKhoaBieu", "SinhVien", FormMethod.Post, new { @class = "form-control", @id = "exampleFormControlSelect1" }))
+    {
+        <h2 style="text-align:center; text-transform: uppercase">Chọn ngày làm việc</h2>
+        <fieldset>
 
 
 
-        <th>Ngay Thi</th>
+            @Html.DropDownList("Day", null, new { @class = "form-control drop" })
+
+            <p>
+
+                <button class="btn btn-danger" style="margin-left: 330px;
+        width: 150px;" type="submit">
+                    Xác nhận
+                </button>
+
+            </p>
+
+
+        </fieldset>
+    }*@
+
+<table class="table">
+    <tr>
+
+
         <th>Thứ</th>
+        <th>Ngày thi</th>
         <th>Môn học</th>
         <th>Tiết học</th>
         <th>Giảng Viên</th>
         <th>Phong thi</th>
 
     </tr>
-@foreach(var item in Model)
-    {
+
+
+
+
+
+    <tr>
+        <td rowspan="@ViewBag.thu2count">Hai</td>
+
+        @foreach (var item in ViewBag.thu2)
+        {
+    <tr style="border-bottom: 1px solid #ede8e8;">
+        <td>@item.ngaythi</td>
+       
+
+        <td>@item.monhoc</td>
+        <td>@item.tiethoc</td>
+        <td>@item.giangvien</td>
+        <td>@item.phonghoc</td>
+    </tr>
+
+
+    }
+
+
 
         <tr>
+
+            <td rowspan="@ViewBag.thu3count">Ba</td>
+
+            @foreach (var item in ViewBag.thu3)
+            {
+        <tr style="border-bottom: 1px solid #ede8e8;">
             <td>@item.ngaythi</td>
-            <td>@item.ngayhoc</td>
+        
 
             <td>@item.monhoc</td>
             <td>@item.tiethoc</td>
             <td>@item.giangvien</td>
             <td>@item.phonghoc</td>
-
-
-
         </tr>
-    }
-</table>
+
+        }
+
+
+
+            <tr>
+
+                <td rowspan="@ViewBag.thu4count">Tư</td>
+
+                @foreach (var item in ViewBag.thu4)
+                {
+            <tr style="border-bottom: 1px solid #ede8e8;">
+                <td>@item.ngaythi</td>
+            
+
+                <td>@item.monhoc</td>
+                <td>@item.tiethoc</td>
+                <td>@item.giangvien</td>
+                <td>@item.phonghoc</td>
+            </tr>
+
+            }
+
+
+
+                <tr>
+
+                    <td rowspan="@ViewBag.thu5count">Năm</td>
+
+                    @foreach (var item in ViewBag.thu5)
+                    {
+                <tr style="border-bottom: 1px solid #ede8e8;">
+                    <td>@item.ngaythi</td>
+           
+
+                    <td>@item.monhoc</td>
+                    <td>@item.tiethoc</td>
+                    <td>@item.giangvien</td>
+                    <td>@item.phonghoc</td>
+                </tr>
+
+                }
+
+
+
+                    <tr>
+
+                        <td rowspan="@ViewBag.thu6count">Sáu</td>
+
+                        @foreach (var item in ViewBag.thu6)
+                        {
+                    <tr style="border-bottom: 1px solid #ede8e8;">
+                        <td>@item.ngaythi</td>
+                    
+
+                        <td>@item.monhoc</td>
+                        <td>@item.tiethoc</td>
+                        <td>@item.giangvien</td>
+                        <td>@item.phonghoc</td>
+                    </tr>
+
+                    }
+
+
+
+                        <tr>
+
+                            <td rowspan="@ViewBag.thu7count">Bảy</td>
+
+                            @foreach (var item in ViewBag.thu7)
+                            {
+                        <tr style="border-bottom: 1px solid #ede8e8;">
+                            <td>@item.ngaythi</td>
+                       
+
+                            <td>@item.monhoc</td>
+                            <td>@item.tiethoc</td>
+                            <td>@item.giangvien</td>
+                            <td>@item.phonghoc</td>
+                        </tr>
+
+                        }
+
+
+
+                            <tr>
+
+                                <td rowspan="@ViewBag.thu8count">Chủ Nhật</td>
+
+                                @foreach (var item in ViewBag.thu8)
+                                {
+                            <tr style="border-bottom: 1px solid #ede8e8;">
+                                <td>@item.ngaythi</td>
+                              
+
+                                <td>@item.monhoc</td>
+                                <td>@item.tiethoc</td>
+                                <td>@item.giangvien</td>
+                                <td>@item.phonghoc</td>
+                            </tr>
+
+                            }
+
+
+
+
+
+                            </table>
+
+
+
+
+
+

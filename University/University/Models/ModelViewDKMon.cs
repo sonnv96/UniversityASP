@@ -24,6 +24,8 @@ namespace University.Models
         public int namhoc { get; set; }
         public int hocki { get; set; }
         public string mamonhoc { get; set; }
+        public string magv { get; set; }
+
 
         public DateTime handk { get; set; }
     }

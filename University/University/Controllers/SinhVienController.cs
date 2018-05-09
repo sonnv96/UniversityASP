@@ -354,14 +354,16 @@ namespace University.Controllers
                     var get2 = listtkb.ToList().Where(x => x.tendangnhap == ten).FirstOrDefault();
                     ViewBag.tensv = get2.tensv;
                     ViewBag.masv = get2.masv;
+                    var masv = get2.masv;
                     ViewBag.hinhanh = get2.hinhanh;
                     var get = listtkb.ToList().Where(x => x.tendangnhap == ten).ToList();
-
+                    var a = db.st_hocky(masv);
+                    var b = db.st_namhoc(masv);
 
 
                     // Tạo SelectList
-                    SelectList cateList = new SelectList(get, "namhoc", "namhoc");
-                    SelectList cateList2 = new SelectList(get, "hocki", "hocki");
+                    SelectList cateList = new SelectList(b, "namHoc", "namHoc");
+                    SelectList cateList2 = new SelectList(a, "hocKy", "hocKy");
 
 
                     // Set vào ViewBag
@@ -422,12 +424,15 @@ namespace University.Controllers
                     ViewBag.masv = get2.masv;
                     ViewBag.hinhanh = get2.hinhanh;
                     var get = listtkb.Where(x => x.masv == id).ToList();
+                    var masv = get2.masv;
+                    var a = db.st_hocky(masv);
+                    var b = db.st_namhoc(masv);
 
 
 
                     // Tạo SelectList
-                    SelectList cateList = new SelectList(get, "namhoc", "namhoc");
-                    SelectList cateList2 = new SelectList(get, "hocki", "hocki");
+                    SelectList cateList = new SelectList(get, "namHoc", "namHoc");
+                    SelectList cateList2 = new SelectList(get, "hocKy", "hocKy");
 
 
                     // Set vào ViewBag
@@ -462,7 +467,20 @@ namespace University.Controllers
 
                     //ViewBag.Day = items;
 
-
+                    ViewBag.thu2 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 2).ToList();
+                    ViewBag.thu3 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 3).ToList();
+                    ViewBag.thu4 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 4).ToList();
+                    ViewBag.thu5 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 5).ToList();
+                    ViewBag.thu6 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 6).ToList();
+                    ViewBag.thu7 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 7).ToList();
+                    ViewBag.thu8 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 8).ToList();
+                    ViewBag.thu2count = ViewBag.thu2.Count + 1;
+                    ViewBag.thu3count = ViewBag.thu3.Count + 1;
+                    ViewBag.thu4count = ViewBag.thu4.Count + 1;
+                    ViewBag.thu5count = ViewBag.thu5.Count + 1;
+                    ViewBag.thu6count = ViewBag.thu6.Count + 1;
+                    ViewBag.thu7count = ViewBag.thu7.Count + 1;
+                    ViewBag.thu8count = ViewBag.thu8.Count + 1;
                     return View(listtkb.ToList().Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki).ToPagedList(page, pageSize));
 
                 }
@@ -660,6 +678,9 @@ namespace University.Controllers
                     string ten = Session["UserName"].ToString();
                     var get2 = listmh.Where(x => x.tendn == ten).FirstOrDefault();
                     var masv1 = get2.masv;
+                    var a2 = db.st_hocky(masv1);
+                    var b2 = db.st_namhoc(masv1);
+
 
                     var b = from mm in lstlmh select mm.mamonhoc;
 
@@ -681,9 +702,9 @@ namespace University.Controllers
                     // join MonHoc mh on lmh.maMonHoc = mh.maMonHoc
                     //)
 
-                    var a = db.MM(masv1, namhoc, hocki);
-                    SelectList cateList = new SelectList(get, "namhoc", "namhoc");
-                    SelectList cateList2 = new SelectList(get, "hocki", "hocki");
+                    var a = db.st_MHChuaDK1(masv1, namhoc, hocki);
+                    SelectList cateList = new SelectList(b2, "namHoc", "namHoc");
+                    SelectList cateList2 = new SelectList(a2, "hocKy", "hocKy");
 
 
 
@@ -697,27 +718,15 @@ namespace University.Controllers
                     }
                     else if (trangthaidk == "hoclai")
                     {
-
+                        return RedirectToAction("DangKiHPSV3");
                     }
 
 
 
-                    //if (trangthaidk == "dkmoi" )
-                    //{
-                    //    return View(lopmh.Where(x => x.namhoc == namhoc && x.hocki == hocki && x.mamonhoc != a || x.malophocphan != b).ToList());
-                    //}
-
-                    //else if (trangthaidk == "hoclai")
-                    //{
-                    //    return View(listmh.ToList().Where(x => x.namhoc == namhoc && x.hocki == hocki && x.mamonhoc != mamonhoctheosv));
-                    //}
-                    //else if (trangthaidk == "caithien")
-                    //{
-                    //    return View(listmh.ToList().Where(x => x.namhoc == namhoc && x.hocki == hocki && x.mamonhoc != mamonhoctheosv));
-                    //}
-
 
                     return View(a);
+
+
                 }
 
 
@@ -725,18 +734,36 @@ namespace University.Controllers
 
                 else
                 {
-                    string id = Session["MaSV"].ToString();
-                    var get2 = listmh.ToList().Where(x => x.masv == id).FirstOrDefault();
-                    //ViewBag.tensv = get2.tensv;
-                    //ViewBag.masv = get2.masv;
-                    //ViewBag.hinhanh = get2.hinhanh;
-                    var get = listmh.Where(x => x.masv == id).ToList();
+                    var lstlmh = listlmh.ToList();
 
 
 
 
-                    SelectList cateList = new SelectList(get, "namhoc", "namhoc");
-                    SelectList cateList2 = new SelectList(get, "hocki", "hocki");
+                    string ten = Session["MaSV"].ToString();
+                    var get2 = listmh.Where(x => x.masv == ten).FirstOrDefault();
+                    var masv1 = get2.masv;
+                    var a2 = db.st_hocky(masv1);
+                    var b2 = db.st_namhoc(masv1);
+
+
+                  
+
+
+
+                    //var mamonhoctheosv = get2.mamonhoc.ToArray();
+
+                    var gett = listmh.ToList();
+
+                    var get = listmh.ToList().Where(x => x.masv == ten).ToList();
+
+
+
+                    var a = db.st_MHChuaDK1(masv1, namhoc, hocki);
+                    var b = db.st_hoclai(masv1, namhoc, hocki);
+                    TempData["b"] = b;
+                    SelectList cateList = new SelectList(b2, "namHoc", "namHoc");
+                    SelectList cateList2 = new SelectList(a2, "hocKy", "hocKy");
+
 
 
 
@@ -744,11 +771,24 @@ namespace University.Controllers
                     ViewBag.hocki = cateList2;
 
 
+                    if (trangthaidk == "dkmoi")
+                    {
+                        return View(a);
+                    }
+                    else if (trangthaidk == "hoclai")
+                    {
+                        return RedirectToAction("DangKiHPSV3");
+                    }
 
-                    return View(listmh.ToList().Where(x => x.masv == id && x.namhoc == namhoc && x.hocki == hocki));
+
+
+
+
+
+                    return View(a);
 
                 }
-
+                
 
             }
 
@@ -756,6 +796,286 @@ namespace University.Controllers
 
 
         }
+        public ActionResult DangKiHPSV3(string trangthaidk, int namhoc = 0, int hocki = 0)
+        {
+            if (Session["UserName"] == null && Session["MaSV"] == null)
+            {
+                return RedirectToAction("DangNhap", "TaiKhoans");
+            }
+            else
+            {
+
+
+                var listmh = from lmh in db.LopMonHocs
+                             join mh in db.MonHocs
+                             on lmh.maMonHoc equals mh.maMonHoc
+                             join gv in db.GiangViens
+                             on lmh.maGiangVien equals gv.maGiangVien
+                             join bd in db.BangDiems
+                             on lmh.maLopMonHoc equals bd.maLopMonHoc
+                             join sv in db.SinhViens
+                             on bd.maSinhVien equals sv.maSinhVien
+                             join tk in db.TaiKhoans
+                             on sv.tenDangNhap equals tk.tenDangNhap
+                             join l in db.Lops
+                             on sv.maLop equals l.maLop
+                             select new ModelViewDKMon()
+                             {
+                                 malophocphan = lmh.maLopMonHoc,
+                                 monhoc = mh.tenMonHoc,
+                                 tinchi = (Int32)mh.soTinChi,
+                                 soluong = (Int32)lmh.soLuongToiDa,
+                                 soluongdangki = (Int32)lmh.soLuongDangKy,
+                                 tinhtrang = lmh.trangThai,
+                                 tengiangvien = gv.tenGiangVien,
+                                 lopdangki = l.tenLop,
+                                 phonghoc = lmh.phongHoc,
+                                 tiethoc = lmh.tietHoc,
+                                 ngayhoc = (Int32)lmh.ngayHoc,
+                                 namhoc = (Int32)lmh.namHoc,
+                                 hocki = (Int32)lmh.hocKy,
+                                 tendn = tk.tenDangNhap,
+                                 masv = sv.maSinhVien,
+                                 mamonhoc = mh.maMonHoc
+
+                             };
+
+
+                var listlmh = from lmh in db.LopMonHocs
+                              join mh in db.MonHocs
+                              on lmh.maMonHoc equals mh.maMonHoc
+                              join gv in db.GiangViens
+                              on lmh.maGiangVien equals gv.maGiangVien
+
+
+
+                              select new ModelViewDSMHDK()
+                              {
+                                  malophocphan = lmh.maLopMonHoc,
+                                  monhoc = mh.tenMonHoc,
+                                  tinchi = (Int32)mh.soTinChi,
+                                  soluong = (Int32)lmh.soLuongToiDa,
+                                  soluongdangki = (Int32)lmh.soLuongDangKy,
+                                  tinhtrang = lmh.trangThai,
+                                  tengiangvien = gv.tenGiangVien,
+                                  mamonhoc = mh.maMonHoc,
+                                  phonghoc = lmh.phongHoc,
+                                  tiethoc = lmh.tietHoc,
+                                  ngayhoc = (Int32)lmh.ngayHoc,
+                                  namhoc = (Int32)lmh.namHoc,
+                                  hocki = (Int32)lmh.hocKy
+                              };
+
+                if (Session["UserName"] != null)
+                {
+                    var lstlmh = listlmh.ToList();
+
+
+
+
+                    string ten = Session["UserName"].ToString();
+                    var get2 = listmh.Where(x => x.tendn == ten).FirstOrDefault();
+                    var masv1 = get2.masv;
+                    var a2 = db.st_hocky(masv1);
+                    var b2 = db.st_namhoc(masv1);
+
+
+                   
+
+
+
+                    //var mamonhoctheosv = get2.mamonhoc.ToArray();
+
+                    var gett = listmh.ToList();
+
+                    var get = listmh.ToList().Where(x => x.tendn == ten).ToList();
+
+
+                    //                    select* from MonHoc t
+                    //where t.maMonHoc not in 
+                    //(
+                    //select distinct mh.maMonHoc from SinhVien sv
+                    // join BangDiem bd on sv.maSinhVien = bd.maSinhVien
+                    // join LopMonHoc lmh on bd.maLopMonHoc = lmh.maLopMonHoc
+                    // join MonHoc mh on lmh.maMonHoc = mh.maMonHoc
+                    //)
+
+                    var a = db.st_MHChuaDK1(masv1, namhoc, hocki);
+                    var b = db.st_hoclai(masv1, namhoc, hocki);
+                    SelectList cateList = new SelectList(b2, "namHoc", "namHoc");
+                    SelectList cateList2 = new SelectList(a2, "hocKy", "hocKy");
+
+
+
+                    ViewBag.namhoc = cateList;
+                    ViewBag.hocki = cateList2;
+
+
+                    if (trangthaidk == "hoclai")
+                    {
+                        return View(b);
+                    }
+                    else if (trangthaidk == "dkmoi")
+                    {
+                        return RedirectToAction("DangKiHPSV2");
+                    }
+
+
+
+
+                    return View(b);
+
+
+                }
+
+
+
+
+                else
+                {
+                    var lstlmh = listlmh.ToList();
+
+
+
+
+                    string ten = Session["MaSV"].ToString();
+                    var get2 = listmh.Where(x => x.masv == ten).FirstOrDefault();
+                    var masv1 = get2.masv;
+                    var a2 = db.st_hocky(masv1);
+                    var b2 = db.st_namhoc(masv1);
+
+
+
+
+
+
+                    //var mamonhoctheosv = get2.mamonhoc.ToArray();
+
+                    var gett = listmh.ToList();
+
+                    var get = listmh.ToList().Where(x => x.masv == ten).ToList();
+
+
+
+                    var a = db.st_MHChuaDK1(masv1, namhoc, hocki);
+                    var b = db.st_hoclai(masv1, namhoc, hocki);
+              
+                    SelectList cateList = new SelectList(b2, "namHoc", "namHoc");
+                    SelectList cateList2 = new SelectList(a2, "hocKy", "hocKy");
+
+
+
+
+                    ViewBag.namhoc = cateList;
+                    ViewBag.hocki = cateList2;
+
+
+                    if (trangthaidk == "hoclai")
+                    {
+                        return View(b);
+                    }
+                    else if (trangthaidk == "dkmoi")
+                    {
+                        return RedirectToAction("DangKiHPSV2");
+                    }
+
+
+
+
+
+
+                    return View(b);
+
+                }
+
+
+            }
+        }
+        //public ActionResult DangKiHPSV3(string trangthaidk, int namhoc = 0, int hocki = 0)
+        //{
+        //    if (Session["UserName"] == null && Session["MaGV"] == null)
+        //    {
+        //        return RedirectToAction("DangNhap", "TaiKhoans");
+        //    }
+        //    else
+        //    {
+
+
+        //        var listmh = from lmh in db.LopMonHocs
+        //                     join mh in db.MonHocs
+        //                     on lmh.maMonHoc equals mh.maMonHoc
+        //                     join gv in db.GiangViens
+        //                     on lmh.maGiangVien equals gv.maGiangVien
+        //                     join bd in db.BangDiems
+        //                     on lmh.maLopMonHoc equals bd.maLopMonHoc
+        //                     join sv in db.SinhViens
+        //                     on bd.maSinhVien equals sv.maSinhVien
+        //                     join tk in db.TaiKhoans
+        //                     on sv.tenDangNhap equals tk.tenDangNhap
+        //                     join l in db.Lops
+        //                     on sv.maLop equals l.maLop
+        //                     select new ModelViewDKMon()
+        //                     {
+        //                         malophocphan = lmh.maLopMonHoc,
+        //                         monhoc = mh.tenMonHoc,
+        //                         tinchi = (Int32)mh.soTinChi,
+        //                         soluong = (Int32)lmh.soLuongToiDa,
+        //                         soluongdangki = (Int32)lmh.soLuongDangKy,
+        //                         tinhtrang = lmh.trangThai,
+        //                         tengiangvien = gv.tenGiangVien,
+        //                         lopdangki = l.tenLop,
+        //                         phonghoc = lmh.phongHoc,
+        //                         tiethoc = lmh.tietHoc,
+        //                         ngayhoc = (Int32)lmh.ngayHoc,
+        //                         namhoc = (Int32)lmh.namHoc,
+        //                         hocki = (Int32)lmh.hocKy,
+        //                         tendn = tk.tenDangNhap,
+        //                         masv = sv.maSinhVien,
+        //                         mamonhoc = mh.maMonHoc,
+        //                         magv = gv.maGiangVien
+
+
+        //                     };
+
+
+        //        var listlmh = from lmh in db.LopMonHocs
+        //                      join mh in db.MonHocs
+        //                      on lmh.maMonHoc equals mh.maMonHoc
+        //                      join gv in db.GiangViens
+        //                      on lmh.maGiangVien equals gv.maGiangVien
+
+
+
+        //                      select new ModelViewDSMHDK()
+        //                      {
+        //                          malophocphan = lmh.maLopMonHoc,
+        //                          monhoc = mh.tenMonHoc,
+        //                          tinchi = (Int32)mh.soTinChi,
+        //                          soluong = (Int32)lmh.soLuongToiDa,
+        //                          soluongdangki = (Int32)lmh.soLuongDangKy,
+        //                          tinhtrang = lmh.trangThai,
+        //                          tengiangvien = gv.tenGiangVien,
+        //                          mamonhoc = mh.maMonHoc,
+        //                          phonghoc = lmh.phongHoc,
+        //                          magv = gv.maGiangVien,
+        //                          tiethoc = lmh.tietHoc,
+        //                          ngayhoc = (Int32)lmh.ngayHoc,
+        //                          namhoc = (Int32)lmh.namHoc,
+        //                          hocki = (Int32)lmh.hocKy
+
+        //                      };
+
+        //        if (Session["MaGV"] != null)
+        //        {
+
+        //        }
+        //        else
+        //        {
+        //            return View();
+        //        }
+
+        //    }
+        //}
         [HttpGet]
         public PartialViewResult DSMonDKPartial(string id)
         {
@@ -942,6 +1262,80 @@ namespace University.Controllers
                     //db.SaveChanges();
 
                 }
+                else
+                {
+                    string ten = Session["MaSV"].ToString();
+                    var get2 = listmh.Where(x => x.masv == ten).FirstOrDefault();
+                    string masv = get2.masv;
+                    LopMonHoc lmonhoc = db.LopMonHocs.Find(id);
+                    BangDiem bangDiem = new BangDiem();
+                    bangDiem.maLopMonHoc = lmonhoc.maLopMonHoc;
+                    bangDiem.maSinhVien = masv;
+                    bangDiem.thucHanh = null;
+                    bangDiem.thuongKy = null;
+                    bangDiem.giuaKy = null;
+                    bangDiem.cuoiKy = null;
+                    bangDiem.trangThai = "";
+                    lmonhoc.soLuongDangKy += 1;
+                    if (DateTime.Now < lmonhoc.hanDangKy)
+                    {
+                        if (lmonhoc.soLuongDangKy >= 20 && lmonhoc.soLuongDangKy < lmonhoc.soLuongToiDa)
+                        {
+                            lmonhoc.trangThai = "Chấp nhận mở lớp";
+                            if (ModelState.IsValid)
+                            {
+
+                                db.BangDiems.Add(bangDiem);
+                                db.SaveChanges();
+                                TempData["dangkitc"] = "sơn";
+                                return RedirectToAction("DangKiHPSV2");
+                            }
+                        }
+                        else if (lmonhoc.soLuongDangKy < lmonhoc.soLuongToiDa)
+                        {
+                            lmonhoc.trangThai = "Chờ Sinh Viên Đăng ký";
+                            if (ModelState.IsValid)
+                            {
+
+                                db.BangDiems.Add(bangDiem);
+                                db.SaveChanges();
+                                TempData["dangkitc"] = "sơn";
+                                return RedirectToAction("DangKiHPSV2");
+                            }
+                        }
+
+
+                    }
+                    else if (DateTime.Now > lmonhoc.hanDangKy)
+                    {
+                        if (lmonhoc.soLuongDangKy < 20)
+                        {
+                            lmonhoc.trangThai = "Hủy Lớp";
+                            if (ModelState.IsValid)
+                            {
+
+
+                                db.SaveChanges();
+                                TempData["dangkitb"] = "sơn";
+                                return RedirectToAction("DangKiHPSV2");
+                            }
+                        }
+                        else if (lmonhoc.soLuongDangKy > 20)
+                        {
+                            lmonhoc.trangThai = "Khóa Lớp";
+                            if (ModelState.IsValid)
+                            {
+
+
+                                db.SaveChanges();
+                                TempData["dangkitb"] = "sơn";
+                                return RedirectToAction("DangKiHPSV2");
+                            }
+                        }
+
+
+                    }
+                }
                 return RedirectToAction("DangKiHPSV2");
 
 
@@ -1066,15 +1460,16 @@ namespace University.Controllers
                                tensv = sv.tenSinhVien,
                                chuyennganh = cn.tenChuyenNganh
                            };
+            var slst = listdssv.Where(x => x.malop == id).ToList();
+         
+          
 
-            var s = listdssv.Where(x => x.malop == id).FirstOrDefault();
-            ViewBag.malop = s.malop;
-
-            if (s == null)
+            if (slst.Count == 0)
             {
-                return HttpNotFound();
+                ViewBag.Thongbao = "Không có sinh viên ở lớp này";
+                return View(slst);
             }
-            return View(s);
+            return View(slst);
         }
         public ActionResult XemLichThi(int nam = 0, int hocki = 0)
         {
@@ -1123,14 +1518,16 @@ namespace University.Controllers
                     var get2 = listtkb.Where(x => x.tendangnhap == ten).FirstOrDefault();
                     ViewBag.tensv = get2.tensv;
                     ViewBag.masv = get2.masv;
+                    var masv1 = get2.masv;
                     ViewBag.hinhanh = get2.hinhanh;
                     var get = listtkb.Where(x => x.tendangnhap == ten).ToList();
+                    var a2 = db.st_hocky(masv1);
+                    var b2 = db.st_namhoc(masv1);
 
 
 
-
-                    SelectList cateList = new SelectList(get, "namhoc", "namhoc");
-                    SelectList cateList2 = new SelectList(get, "hocki", "hocki");
+                    SelectList cateList = new SelectList(b2, "namHoc", "namHoc");
+                    SelectList cateList2 = new SelectList(a2, "hocKy", "hocKy");
 
 
 
@@ -1138,7 +1535,20 @@ namespace University.Controllers
                     ViewBag.hocki = cateList2;
 
 
-
+                    ViewBag.thu2 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 2).ToList();
+                    ViewBag.thu3 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 3).ToList();
+                    ViewBag.thu4 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 4).ToList();
+                    ViewBag.thu5 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 5).ToList();
+                    ViewBag.thu6 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 6).ToList();
+                    ViewBag.thu7 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 7).ToList();
+                    ViewBag.thu8 = listtkb.Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 8).ToList();
+                    ViewBag.thu2count = ViewBag.thu2.Count + 1;
+                    ViewBag.thu3count = ViewBag.thu3.Count + 1;
+                    ViewBag.thu4count = ViewBag.thu4.Count + 1;
+                    ViewBag.thu5count = ViewBag.thu5.Count + 1;
+                    ViewBag.thu6count = ViewBag.thu6.Count + 1;
+                    ViewBag.thu7count = ViewBag.thu7.Count + 1;
+                    ViewBag.thu8count = ViewBag.thu8.Count + 1;
                     return View(listtkb.ToList().Where(x => x.tendangnhap == ten && x.namhoc == nam && x.hocki == hocki));
                 }
                 else
@@ -1147,21 +1557,36 @@ namespace University.Controllers
                     var get2 = listtkb.ToList().Where(x => x.masv == id).FirstOrDefault();
                     ViewBag.tensv = get2.tensv;
                     ViewBag.masv = get2.masv;
+                    var masv1 = get2.masv;
                     ViewBag.hinhanh = get2.hinhanh;
                     var get = listtkb.Where(x => x.masv == id).ToList();
+                    var a2 = db.st_hocky(masv1);
+                    var b2 = db.st_namhoc(masv1);
 
 
 
-
-                    SelectList cateList = new SelectList(get, "namhoc", "namhoc");
-                    SelectList cateList2 = new SelectList(get, "hocki", "hocki");
+                    SelectList cateList = new SelectList(b2, "namHoc", "namHoc");
+                    SelectList cateList2 = new SelectList(a2, "hocKy", "hocKy");
 
 
 
                     ViewBag.namhoc = cateList;
                     ViewBag.hocki = cateList2;
 
-
+                    ViewBag.thu2 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 2).ToList();
+                    ViewBag.thu3 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 3).ToList();
+                    ViewBag.thu4 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 4).ToList();
+                    ViewBag.thu5 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 5).ToList();
+                    ViewBag.thu6 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 6).ToList();
+                    ViewBag.thu7 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 7).ToList();
+                    ViewBag.thu8 = listtkb.Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki && x.ngayhoc == 8).ToList();
+                    ViewBag.thu2count = ViewBag.thu2.Count + 1;
+                    ViewBag.thu3count = ViewBag.thu3.Count + 1;
+                    ViewBag.thu4count = ViewBag.thu4.Count + 1;
+                    ViewBag.thu5count = ViewBag.thu5.Count + 1;
+                    ViewBag.thu6count = ViewBag.thu6.Count + 1;
+                    ViewBag.thu7count = ViewBag.thu7.Count + 1;
+                    ViewBag.thu8count = ViewBag.thu8.Count + 1;
 
                     return View(listtkb.ToList().Where(x => x.masv == id && x.namhoc == nam && x.hocki == hocki));
 
@@ -1175,9 +1600,119 @@ namespace University.Controllers
         }
         public ActionResult DSLopHP()
         {
-            return View(db.LopMonHocs.ToList());
+            if (Session["UserName"] == null && Session["MaGV"] == null)
+            {
+                return RedirectToAction("DangNhap", "TaiKhoans");
+            }
+            else
+            {
+                var listgiangday = from gv in db.GiangViens
+                                   join lmh in db.LopMonHocs
+                                   on gv.maGiangVien equals lmh.maGiangVien
+                                   join tk in db.TaiKhoans
+                                   on gv.tenDangNhap equals tk.tenDangNhap
+
+
+                                   select new ModelViewXemMonHoc()
+                                   {
+                                       tengiangvien = gv.tenGiangVien,
+                                       tendangnhap = tk.tenDangNhap,
+                                       tenlophp = lmh.tenLopMonHoc,
+                                       malopmonhoc = lmh.maLopMonHoc,
+
+
+                                       phonghoc = lmh.phongHoc,
+                                       tiethoc = lmh.tietHoc,
+                                       magv = gv.maGiangVien
+                                   };
+                if (Session["UserName"] != null)
+                {
+                    string tendn = Session["UserName"].ToString();
+                    return View(listgiangday.Where(x => x.tendangnhap == tendn).ToList());
+                }
+                else
+                {
+                    string id = Session["MaGV"].ToString();
+                    return View(listgiangday.Where(x => x.magv == id).ToList());
+                }
+            }
+           
+        }
+        public ActionResult DSLopHP2()
+        {
+            if (Session["UserName"] == null )
+            {
+                return RedirectToAction("DangNhap", "TaiKhoans");
+            }
+            else
+            {
+                var listgiangday = from gv in db.GiangViens
+                                   join lmh in db.LopMonHocs
+                                   on gv.maGiangVien equals lmh.maGiangVien
+                                   join tk in db.TaiKhoans
+                                   on gv.tenDangNhap equals tk.tenDangNhap
+
+
+                                   select new ModelViewXemMonHoc()
+                                   {
+                                       tengiangvien = gv.tenGiangVien,
+                                       tendangnhap = tk.tenDangNhap,
+                                       tenlophp = lmh.tenLopMonHoc,
+                                       malopmonhoc = lmh.maLopMonHoc,
+
+
+                                       phonghoc = lmh.phongHoc,
+                                       tiethoc = lmh.tietHoc,
+                                       magv = gv.maGiangVien
+                                   };
+              
+               
+                    string tendn = Session["UserName"].ToString();
+                    return View(listgiangday.ToList());
+               
+             
+                
+            }
+
         }
         public ActionResult XemSVtheoLopHP(string id, List<BangDiem> lst)
+        {
+            LopMonHoc lopMonHoc = db.LopMonHocs.Find(id);
+            TempData["malmhoc"] = lopMonHoc.maLopMonHoc;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var listdssv = from sv in db.SinhViens
+                           join bd in db.BangDiems
+                           on sv.maSinhVien equals bd.maSinhVien
+                           join lmh in db.LopMonHocs
+                           on bd.maLopMonHoc equals lmh.maLopMonHoc
+                           select new ModelViewDSSV()
+                           {
+                               malmh = lmh.maLopMonHoc,
+                               tenlmh = lmh.tenLopMonHoc,
+                               masv = sv.maSinhVien,
+                               tensv = sv.tenSinhVien,
+                               thuongky = (Decimal?)bd.thuongKy,
+                               giuaky = (Decimal?)bd.giuaKy,
+                               cuoiky = (Decimal?)bd.cuoiKy,
+                               thuchanh = (Decimal?)bd.thucHanh
+
+
+                           };
+
+            var s = listdssv.Where(x => x.malmh == id && x.thuongky == null && x.giuaky == null && x.cuoiky == null && x.thuchanh == null).ToList();
+
+
+
+            if (s == null)
+            {
+                return HttpNotFound();
+            }
+            return View(s);
+        }
+        public ActionResult XemSVtheoLopHP2(string id, List<BangDiem> lst)
         {
             LopMonHoc lopMonHoc = db.LopMonHocs.Find(id);
             TempData["malmhoc"] = lopMonHoc.maLopMonHoc;

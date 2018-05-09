@@ -4,3 +4,31 @@
     border: 1px solid #ede8e8;
 
 }
+.formchon {
+    .a {
+        width: 500px;
+        height: 300px;
+        border: 1px solid #ede8e8;
+        margin-left: 37%;
+        .form-tkb
+            {
+            margin-left:37%;
+            h4{
+                margin-top:25px;
+                text-transform: uppercase;
+            }
+            .drop
+                {
+                margin-bottom:10px;
+                font-size:20px;
+            }
+            button
+                {
+                margin:15px;
+                height:50px;
+                width:  100px;
+            }
+        }
+    }
+}
+

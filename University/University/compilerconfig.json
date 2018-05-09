@@ -22,5 +22,9 @@
   {
     "outputFile": "Content/Sass/xemtkb.css",
     "inputFile": "Content/Sass/xemtkb.scss"
+  },
+  {
+    "outputFile": "Content/Sass/nhapdiem.css",
+    "inputFile": "Content/Sass/nhapdiem.scss"
   }
 ]

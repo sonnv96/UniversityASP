@@ -4,23 +4,35 @@
     Layout = "~/Views/HomePage/Home.cshtml";
 }
 
-<table class="table">
-    <tr>
-        <th>
-            Danh Sách Sinh Viên
-        </th>
 
-        <th></th>
-    </tr>
 
-@foreach(var item in Model) { 
-        <tr>
-            <td>
-                @Html.ActionLink(item.tenLop, "XemSVtheoLop", new { id = item.maLop  })
-            </td>
-            
-        </tr>
-    }
 
-</table>
+    <link rel="stylesheet" href="~/Content/Sass/dkhp.min.css" />
+    <style rel="stylesheet">
+        .col-md-6 {
+            margin-left: 25%;
+        }
 
+        .row ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+
+    <div class="row">
+        <h2 style="margin-left: 35%;">Danh sách lớp học theo niên khóa</h2>
+        <div class="col-md-6">
+            <table class="table">
+                
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(item.tenLop, "XemSVtheoLop", new { id = item.maLop })
+                        </td>
+                        
+
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>

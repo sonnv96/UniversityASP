@@ -22,17 +22,15 @@
 
     </div>
 </div>
-<div class=" formchon row">
-
-    @using (Html.BeginForm("XemThoiKhoaBieu", "SinhVien", FormMethod.Post, new { @style = "width:90%;float:left" }))
+<div class="formchon">
+    <div class="a">
+        @using (Html.BeginForm("XemThoiKhoaBieu", "SinhVien", FormMethod.Post, new { @class = "form-tkb" }))
     {
-        <h4 class="col-md-4">Chọn năm học</h4>
+        <h4 class="">Chọn năm học</h4>
 
-        @Html.DropDownList("nam", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control col-md-5" })
-        <h4 class="col-md-4">Chọn học kì</h4>
-        @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control col-md-5" })
-
-
+        @Html.DropDownList("nam", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control drop col-md-5" })
+        <h4 class="">Chọn học kì</h4>
+        @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control drop col-md-5" })
 
 
 
@@ -40,8 +38,11 @@
 
 
 
-        <button class="btn btn-primary" type="submit">Xem Thời Khóa Biểu</button>
-    }
+
+
+        <button class="btn btn-primary" type="submit">Xem Lịch</button>
+}
+    </div>
 
 </div>
 

@@ -227,5 +227,35 @@ namespace University.Controllers
             }
             return View(s);
         }
+        public ActionResult CreateNewStudent(ModelViewTKSV model)
+        {
+            TaiKhoan tk = new TaiKhoan();
+            SinhVien sv = new SinhVien();
+            sv.maSinhVien = model.masv;
+            sv.tenSinhVien = model.tensv;
+            sv.queQuan = model.quequan;
+            sv.ngaySinh = model.ngaysinh;
+            sv.namNhapHoc = model.namnhaphoc;
+            sv.maChuyenNganh = model.machuyennganh;
+            sv.maLop = "";
+            sv.eMail = model.Email;
+            tk.tenDangNhap = model.tendangnhap;
+            tk.matKhau = model.matkhau;
+            tk.loaiTaiKhoan = model.loaitaikhoan;
+            sv.tenDangNhap = tk.tenDangNhap;
+            sv.gioiTinh = model.gioitinh;
+            sv.eMailPH = model.emailph;
+            if (ModelState.IsValid)
+            {
+                db.TaiKhoans.Add(tk);
+                db.SinhViens.Add(sv);
+
+                db.SaveChanges();
+                return RedirectToAction("TKSinhVien");
+            }
+            return View(model);
+           
+            
+        }
     }
 }

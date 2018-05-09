@@ -259,6 +259,21 @@
     <Compile Include="Models\Data\sp_helpdiagrams_Result.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Data\st_hocky_Result.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Data\st_hoclai_Result.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Data\st_MHChuaDK1_Result.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Data\st_MHChuaDK1_tdn_Result.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Data\st_namhoc_Result.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Data\st_test_Result.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
@@ -311,6 +326,7 @@
     <Content Include="Content\Bootstrap\bootstrap-reset.css" />
     <Content Include="Content\Bootstrap\bootstrap.css" />
     <Content Include="Content\Bootstrap\bootstrap.min.css" />
+    <Content Include="Content\Bootstrap\bootstrap37.min.css" />
     <Content Include="Content\Bootstrap\login-form.css" />
     <Content Include="Content\Bootstrap\owl.carousel.css" />
     <Content Include="Content\Bootstrap\PagedList.css" />
@@ -344,6 +360,7 @@
     <Content Include="Content\js\jquery.nicescroll.js" />
     <Content Include="Content\js\jquery.scrollTo.min.js" />
     <Content Include="Content\js\jquery.sparkline.js" />
+    <Content Include="Content\js\loadPage.js" />
     <Content Include="Content\js\owl.carousel.js" />
     <Content Include="Content\js\respond.min.js" />
     <Content Include="Content\js\slidebars.min.js" />
@@ -366,6 +383,13 @@
     <Content Include="Content\Sass\mycss.min.css">
       <DependentUpon>mycss.css</DependentUpon>
     </Content>
+    <Content Include="Content\Sass\nhapdiem.css">
+      <DependentUpon>nhapdiem.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\Sass\nhapdiem.min.css">
+      <DependentUpon>nhapdiem.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Sass\test.css" />
     <Content Include="Content\Sass\TrangSinhVien.css">
       <DependentUpon>TrangSinhVien.scss</DependentUpon>
     </Content>
@@ -458,6 +482,7 @@
     <Content Include="Content\Sass\dkhp.scss" />
     <Content Include="Content\Sass\dsmondk.scss" />
     <Content Include="Content\Sass\xemtkb.scss" />
+    <Content Include="Content\Sass\nhapdiem.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -610,6 +635,10 @@
     <Content Include="Views\SinhVien\XemSVtheoLopHP.cshtml" />
     <Content Include="Views\SinhVien\DSMonDK2.cshtml" />
     <Content Include="Views\SinhVien\DSMonDK.cshtml" />
+    <Content Include="Views\SinhVien\DSLopHP2.cshtml" />
+    <Content Include="Views\SinhVien\XemSVtheoLopHP2.cshtml" />
+    <Content Include="Views\SinhVien\DangKiHPSV3.cshtml" />
+    <Content Include="Views\QuanTri\CreateNewStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

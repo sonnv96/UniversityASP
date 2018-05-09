@@ -1,6 +1,7 @@
-﻿@model  IEnumerable<University.Models.Data.st_MHChuaDK1_Result>
+﻿
+@model  IEnumerable<University.Models.Data.st_hoclai_Result>
 @{
-    ViewBag.Title = "DangKiHPSV2";
+    ViewBag.Title = "DangKiHPSV3";
     Layout = "~/Views/HomePage/Home.cshtml";
 }
 <script src="~/Scripts/jquery-3.3.1.js"></script>
@@ -34,7 +35,7 @@ else if (TempData["dangkitc"] != null)
 <div class="row">
     <div class="col-md-6" style="overflow:hidden">
         <div class="table" style="height:400px;">
-            @using (Html.BeginForm("DangKiHPSV2", "SinhVien", FormMethod.Get, new { id = "formfilter", @class = "example" }))
+            @using (Html.BeginForm("DangKiHPSV3", "SinhVien", FormMethod.Get, new { id = "formfilter", @class = "example" }))
             {
                 <h4 class="col-md-12">Chọn năm học</h4>
 
@@ -53,12 +54,12 @@ else if (TempData["dangkitc"] != null)
 
                 <div id="rdbtn" class="radio">
                     <label class="radio-inline">
-                        @Html.RadioButton("trangthaidk", "dkmoi", true, new { @class = "radiobutton" })<text>Đăng ký mới</text>
+                        @Html.RadioButton("trangthaidk", "dkmoi", false, new { @class = "radiobutton" })<text>Đăng ký mới</text>
                     </label>
                     <label class="radio-inline">
-                        @Html.RadioButton("trangthaidk", "hoclai", false, new { @class = "radiobutton" })<text>Học Lại</text>
+                        @Html.RadioButton("trangthaidk", "hoclai", true, new { @class = "radiobutton" })<text>Học Lại</text>
                     </label>
-                   
+                  
 
 
                 </div>
@@ -79,7 +80,7 @@ else if (TempData["dangkitc"] != null)
 
 
             </tr>
-          @foreach(var item in Model)
+            @foreach (var item in Model)
             {
 
                 <tr>

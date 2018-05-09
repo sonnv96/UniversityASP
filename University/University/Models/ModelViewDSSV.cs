@@ -15,10 +15,10 @@ namespace University.Models
         public string trangthai { get; set; }
         public string malmh { get; set; }
         public string tenlmh { get; set; }
-        public decimal thuongky { get; set; }
-        public decimal giuaky { get; set; }
-        public decimal cuoiky { get; set; }
-        public decimal thuchanh { get; set; }
+        public decimal? thuongky { get; set; }
+        public decimal? giuaky { get; set; }
+        public decimal? cuoiky { get; set; }
+        public decimal? thuchanh { get; set; }
 
     }
 }

@@ -1,12 +1,42 @@
-﻿@model University.Models.ModelViewDSSV
+﻿@model List<University.Models.ModelViewDSSV>
 @{
     ViewBag.Title = "XemSVtheoLop";
     Layout = "~/Views/HomePage/Home.cshtml";
 }
 
-<h2>XemSVtheoLop</h2>
-<div class="col-md-6">
-    <p class="noidung">Mã số Sinh Viên: <b>@Html.DisplayFor(model => model.masv)</b>(@Html.DisplayFor(model => model.trangthai))</p>
-    <p class="noidung">Họ và Tên: <b>@Html.DisplayFor(model => model.tensv)</b></p>
-    
+
+
+
+<link rel="stylesheet" href="~/Content/Sass/dkhp.min.css" />
+<style rel="stylesheet">
+    .col-md-6 {
+        margin-left: 25%;
+    }
+
+    .row ::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+
+<div class="row">
+    <h2 style="margin-left: 35%;">Danh sách sinh viên theo lớp</h2>
+    <div class="col-md-6">
+        <table class="table">
+            <tr>
+                <td>Mã số </td>
+                <td>Tên sinh viên</td>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.masv</td>
+                    <td>
+                       @item.tensv
+                    </td>
+
+                </tr>
+            }
+        </table>
+    </div>
 </div>
+

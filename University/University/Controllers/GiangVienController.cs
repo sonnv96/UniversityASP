@@ -151,11 +151,11 @@ namespace University.Controllers
         {
 
 
-            if (Session["UserName"] == null && Session["MaGV"] == null)
-            {
-                return RedirectToAction("DangNhap", "TaiKhoans");
-            }
-            else
+                if (Session["UserName"] == null && Session["MaGV"] == null)
+                {
+                    return RedirectToAction("DangNhap", "TaiKhoans");
+                }
+                else
             {
 
                 
@@ -177,7 +177,8 @@ namespace University.Controllers
                                        hocki = (Int32)lmh.hocKy,
                                        ngayhoc = (Int32)lmh.ngayHoc,
                                        phonghoc = lmh.phongHoc,
-                                       tiethoc = lmh.tietHoc
+                                       tiethoc = lmh.tietHoc,
+                                       magv = gv.maGiangVien
                                    };
              
                 if(Session["UserName"] != null)
@@ -198,6 +199,20 @@ namespace University.Controllers
                     ViewBag.hocKi = lstgvhk;
 
 
+                    ViewBag.thu2 = listgiangday.Where(x => x.tendangnhap == ten && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 2).ToList();
+                    ViewBag.thu3 = listgiangday.Where(x => x.tendangnhap == ten && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 3).ToList();
+                    ViewBag.thu4 = listgiangday.Where(x => x.tendangnhap == ten && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 4).ToList();
+                    ViewBag.thu5 = listgiangday.Where(x => x.tendangnhap == ten && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 5).ToList();
+                    ViewBag.thu6 = listgiangday.Where(x => x.tendangnhap == ten && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 6).ToList();
+                    ViewBag.thu7 = listgiangday.Where(x => x.tendangnhap == ten && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 7).ToList();
+                    ViewBag.thu8 = listgiangday.Where(x => x.tendangnhap == ten && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 8).ToList();
+                    ViewBag.thu2count = ViewBag.thu2.Count + 1;
+                    ViewBag.thu3count = ViewBag.thu3.Count + 1;
+                    ViewBag.thu4count = ViewBag.thu4.Count + 1;
+                    ViewBag.thu5count = ViewBag.thu5.Count + 1;
+                    ViewBag.thu6count = ViewBag.thu6.Count + 1;
+                    ViewBag.thu7count = ViewBag.thu7.Count + 1;
+                    ViewBag.thu8count = ViewBag.thu8.Count + 1;
 
                     return View(listgiangday.Where(x => x.namhoc == namhoc && x.hocki == hocKi && x.tendangnhap == ten).ToList());
                 }
@@ -205,7 +220,7 @@ namespace University.Controllers
                 {
 
                     string id = Session["MaGV"].ToString();
-                    var get = listgiangday.Where(x => x.tendangnhap == id).ToList();
+                    var get = listgiangday.Where(x => x.magv == id).ToList();
 
 
 
@@ -218,7 +233,20 @@ namespace University.Controllers
                     ViewBag.nam = lstgvnh;
                     ViewBag.hocKi = lstgvhk;
 
-
+                    ViewBag.thu2 = listgiangday.Where(x => x.magv == id && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 2).ToList();
+                    ViewBag.thu3 = listgiangday.Where(x => x.magv == id && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 3).ToList();
+                    ViewBag.thu4 = listgiangday.Where(x => x.magv == id && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 4).ToList();
+                    ViewBag.thu5 = listgiangday.Where(x => x.magv == id && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 5).ToList();
+                    ViewBag.thu6 = listgiangday.Where(x => x.magv == id && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 6).ToList();
+                    ViewBag.thu7 = listgiangday.Where(x => x.magv == id && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 7).ToList();
+                    ViewBag.thu8 = listgiangday.Where(x => x.magv == id && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 8).ToList();
+                    ViewBag.thu2count = ViewBag.thu2.Count + 1;
+                    ViewBag.thu3count = ViewBag.thu3.Count + 1;
+                    ViewBag.thu4count = ViewBag.thu4.Count + 1;
+                    ViewBag.thu5count = ViewBag.thu5.Count + 1;
+                    ViewBag.thu6count = ViewBag.thu6.Count + 1;
+                    ViewBag.thu7count = ViewBag.thu7.Count + 1;
+                    ViewBag.thu8count = ViewBag.thu8.Count + 1;
 
                     return View(listgiangday.Where(x => x.namhoc == namhoc && x.hocki == hocKi && x.tendangnhap == id).ToList());
                 }

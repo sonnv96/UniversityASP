@@ -17,10 +17,13 @@ namespace University.Models
         public string tenlop { get; set; }
         public string gioitinh { get; set; }
         public string trangthai { get; set; }
+        public string machuyennganh { get; set; }
         public int namnhaphoc { get; set; }
         public string Email { get; set; }
         public string hinhanh { get; set; }
         public string tennganh { get; set; }
+        public string emailph { get; set; }
+
 
     }
 }

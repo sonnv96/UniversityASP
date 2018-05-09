@@ -1,15 +1,27 @@
 ﻿@model List<University.Models.ModelViewXemMonHoc>
-
 @{
-    ViewBag.Title = "DSLopHP";
-    Layout = "~/Views/HomePage/Home.cshtml";
+    ViewBag.Title = "DSLopHP2";
+    Layout = "~/Views/HomePage/Admin.cshtml";
 }
+
+
+
+
+
+
 
 <link rel="stylesheet" href="~/Content/Sass/dkhp.min.css" />
 <style rel="stylesheet">
-    .col-md-6{
+    .col-md-6 {
+        overflow-y:scroll;
         margin-left: 25%;
+        height:400px;
     }
+    .row
+    {
+        overflow:hidden;
+    }
+
     .row ::-webkit-scrollbar {
         display: none;
     }
@@ -28,7 +40,7 @@
                 <tr>
                     <td>@item.malopmonhoc</td>
                     <td>
-                        @Html.ActionLink(item.tenlophp, "XemSVtheoLopHP", new { id = item.malopmonhoc })
+                        @Html.ActionLink(item.tenlophp, "XemSVtheoLopHP2", new { id = item.malopmonhoc })
                     </td>
 
                 </tr>
@@ -36,8 +48,6 @@
         </table>
     </div>
 </div>
-
-
 
 
 
