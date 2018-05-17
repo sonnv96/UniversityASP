@@ -322,27 +322,26 @@ namespace University.Controllers
                            };
             return View(listtkgv.ToList());
         }
-        public ActionResult CreateNewTeacher(ModelViewTKSV2 model)
+        public ActionResult CreateNewTeacher(ModelViewTKGV2 model)
         {
 
 
 
             TaiKhoan tk = new TaiKhoan();
-            SinhVien sv = new SinhVien();
-            sv.maSinhVien = model.masv;
-            sv.tenSinhVien = model.tensv;
-            sv.queQuan = model.quequan;
-            sv.ngaySinh = model.ngaysinh;
-            sv.namNhapHoc = model.namnhaphoc;
-            sv.maChuyenNganh = model.machuyennganh;
-            ViewBag.maLop = new SelectList(db.Lops, "maLop", "tenLop", sv.maLop);
-            sv.eMail = model.Email;
+            GiangVien gv = new GiangVien();
+            gv.maGiangVien = model.magv;
+            gv.tenGiangVien = model.tengv;
+            gv.queQuan = model.quequan;
+            gv.ngaySinh = model.ngaysinh;
+            gv.namBatDau = model.nambatdau;
+            gv.trangThai = model.trangthai;
+          
+            gv.eMail = model.Email;
             tk.tenDangNhap = model.tendangnhap;
             tk.matKhau = model.matkhau;
             tk.loaiTaiKhoan = model.loaitaikhoan;
-            sv.tenDangNhap = tk.tenDangNhap;
-            sv.gioiTinh = model.gioitinh;
-            sv.eMailPH = model.emailph;
+            gv.tenDangNhap = tk.tenDangNhap;
+          
 
             //thư mục lưu trữ hình ở server
             var uploadDir = "~/Images/";
@@ -353,16 +352,16 @@ namespace University.Controllers
 
             model.hinhanh.SaveAs(imagePath);
 
-            sv.hinhAnh = imageUrl;
+            gv.hinhAnh = imageUrl;
 
 
             if (ModelState.IsValid)
             {
                 db.TaiKhoans.Add(tk);
-                db.SinhViens.Add(sv);
+                db.GiangViens.Add(gv);
 
                 db.SaveChanges();
-                return RedirectToAction("TKSinhVien");
+                return RedirectToAction("TKGiangVien");
             }
 
             return View(model);

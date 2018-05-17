@@ -677,6 +677,7 @@
     <Content Include="Views\BangDiem\Edit.cshtml" />
     <Content Include="Views\BangDiem\Index.cshtml" />
     <Content Include="Views\QuanTri\TKGiangVien.cshtml" />
+    <Content Include="Views\QuanTri\CreateNewTeacher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
