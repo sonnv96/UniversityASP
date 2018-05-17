@@ -251,7 +251,7 @@ namespace University.Controllers
             sv.eMail = model.Email;
             tk.tenDangNhap = model.tendangnhap;
             tk.matKhau = model.matkhau;
-            tk.loaiTaiKhoan = model.loaitaikhoan;
+            tk.loaiTaiKhoan = "SinhVien";
             sv.tenDangNhap = tk.tenDangNhap;
             sv.gioiTinh = model.gioitinh;
             sv.eMailPH = model.emailph;
@@ -339,7 +339,7 @@ namespace University.Controllers
             gv.eMail = model.Email;
             tk.tenDangNhap = model.tendangnhap;
             tk.matKhau = model.matkhau;
-            tk.loaiTaiKhoan = model.loaitaikhoan;
+            tk.loaiTaiKhoan = "GiangVien";
             gv.tenDangNhap = tk.tenDangNhap;
           
 
