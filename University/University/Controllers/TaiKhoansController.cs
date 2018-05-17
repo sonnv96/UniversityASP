@@ -185,7 +185,7 @@ namespace University.Controllers
                         }
                         else if (obj.loaiTaiKhoan == "Admin")
                         {
-                            return RedirectToAction("TKSinhVien", "QuanTri");
+                            return RedirectToAction("Index", "MonHoc");
                         }
 
 

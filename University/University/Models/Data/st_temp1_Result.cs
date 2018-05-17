@@ -15,5 +15,7 @@ namespace University.Models.Data
     {
         public string tenMonHoc { get; set; }
         public string maMonHoc { get; set; }
+        public string maLopMonHoc { get; set; }
+        public string tenLopMonHoc { get; set; }
     }
 }

@@ -132,7 +132,7 @@ namespace University.Controllers
         public ActionResult MoLop(string mamon)
         {
             var a = db.MonHocs.Where(x => x.maMonHoc == mamon).FirstOrDefault();
-            
+
             TempData["tenmonhoc"] = a.tenMonHoc;
 
             return RedirectToAction("MoDKMon", "MonHoc");
@@ -172,12 +172,13 @@ namespace University.Controllers
                              tiethoc = lmh.tietHoc,
                              ngayhoc = (Int32)lmh.ngayHoc,
                              namhoc = (Int32)lmh.namHoc,
-                             hocki = (Int32)lmh.hocKy
+                             hocki = (Int32)lmh.hocKy,
+                             magv = gv.maGiangVien
 
                          };
-            var lst = listmh.FirstOrDefault();
-            
-            
+
+
+
 
 
             MonHoc monHoc = db.MonHocs.Find(id);
@@ -192,7 +193,7 @@ namespace University.Controllers
             lopmonhoc.soLuongDangKy = 0;
 
             lopmonhoc.namHoc = model.namhoc;
-            lopmonhoc.hocKy = model.hocki; 
+            lopmonhoc.hocKy = model.hocki;
             lopmonhoc.tietHoc = model.tiethoc;
             lopmonhoc.phongHoc = model.phonghoc;
             lopmonhoc.maGiangVien = model.magiangvien;
@@ -201,25 +202,41 @@ namespace University.Controllers
             lopmonhoc.ngayHoc = model.ngayhoc;
             lopmonhoc.ngayThi = null;
             lopmonhoc.hanDangKy = DateTime.Now.AddDays(30);
-       
-            var test2 = listmh.ToList().Where(x => x.magv == "GV0001").ToList();
+
+            var test2 = listmh.ToList().Where(x => x.magv == model.magiangvien).ToList();
+
             if (test2 != null)
             {
 
-                var test = listmh.ToList().Where(x => x.magv == lopmonhoc.maGiangVien).FirstOrDefault();
 
-                var namhocgv = test.namhoc;
-                var hockigv = test.hocki;
-                var tiethoc = test.tiethoc;
-                var ngayhoc = test.ngayhoc;
-
-
-                if (lopmonhoc.namHoc == namhocgv && lopmonhoc.hocKy == hockigv && lopmonhoc.ngayHoc == ngayhoc && lopmonhoc.tietHoc == tiethoc)
+                foreach (var test in test2)
                 {
-                    ViewBag.trunggioday = "Giảng viên này đã bị trùng lịch";
-                    return View("MoDKMon");
+                    //var test = listmh.ToList().Where(x => x.magv == model.magiangvien).FirstOrDefault();
+
+                    var namhocgv = test.namhoc;
+                    var hockigv = test.hocki;
+                    var tiethoc = test.tiethoc;
+                    var ngayhoc = test.ngayhoc;
+
+
+                    if (lopmonhoc.namHoc == namhocgv && lopmonhoc.hocKy == hockigv && lopmonhoc.ngayHoc == ngayhoc && lopmonhoc.tietHoc == tiethoc)
+                    {
+                        ViewBag.trunggioday = "Giảng viên này đã bị trùng lịch";
+                        return View("MoDKMon");
+                        break;
+                 
+                    }
+                    
                 }
+            
+                    db.LopMonHocs.Add(lopmonhoc);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                
+
             }
+
+
             else
             {
 
@@ -231,74 +248,12 @@ namespace University.Controllers
                     return RedirectToAction("Index");
                 }
             }
-
-            //var listmh = from lmh in db.LopMonHocs
-            //             join mh in db.MonHocs
-            //             on lmh.maMonHoc equals mh.maMonHoc
-            //             join gv in db.GiangViens
-            //             on lmh.maGiangVien equals gv.maGiangVien
-            //             join bd in db.BangDiems
-            //             on lmh.maLopMonHoc equals bd.maLopMonHoc
-            //             join sv in db.SinhViens
-            //             on bd.maSinhVien equals sv.maSinhVien
-            //             join l in db.Lops
-            //             on sv.maLop equals l.maLop
-            //             select new ModelViewDKMon()
-            //             {
-            //                 malophocphan = lmh.maLopMonHoc,
-            //                 monhoc = mh.tenMonHoc,
-            //                 tinchi = (Int32)mh.soTinChi,
-            //                 soluong = (Int32)lmh.soLuongToiDa,
-            //                 soluongdangki = (Int32)lmh.soLuongDangKy,
-            //                 tinhtrang = lmh.trangThai,
-            //                 tengiangvien = gv.tenGiangVien,
-            //                 lopdangki = l.tenLop,
-            //                 phonghoc = lmh.phongHoc,
-            //                 tiethoc = lmh.tietHoc,
-            //                 ngayhoc = (Int32)lmh.ngayHoc,
-            //                 namhoc = (Int32)lmh.namHoc,
-            //                 hocki = (Int32)lmh.hocKy
-
-            //             };
-
-            //SinhVien sv = new SinhVien();
-            //sv.BangDiems = new List<BangDiem> {
-            //    new BangDiem {giuaKy = 4},
-            //};
-            ////sv.
-            //db.SinhViens.
-
-
-            //lopmonhoc.malophocphan = "P" + rd.Next(100000).ToString();
-            //lopmonhoc.monhoc = a.tenMonHoc;
-            //lopmonhoc.tinchi = (Int32)a.soTinChi;
-            //lopmonhoc.soluong = 40;
-            //lopmonhoc.soluongdangki = 0;
-            //lopmonhoc.tinhtrang = "Dangchodangki";
-            //lopmonhoc.tengiangvien = c.tenGiangVien;
-
-            //lopmonhoc.phonghoc = b.phongHoc;
-            ////xử lí sau
-            //lopmonhoc.tiethoc = b.tietHoc;
-            //lopmonhoc.ngayhoc =(Int32)b.ngayHoc;
-            //lopmonhoc.namhoc = nam;
-            //lopmonhoc.hocki = hocki;
-            //mdkm.Add(lopmonhoc);+
-
-
-
-
-
-
-
-
-
-
-
-
-
             return View(model);
         }
+        
+
+       
+
         public ActionResult DKiMon(int hocki, int nam)
         {
             var listmh = from lmh in db.LopMonHocs

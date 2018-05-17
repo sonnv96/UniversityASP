@@ -955,6 +955,8 @@
         <ComplexType Name="st_temp1_Result">
           <Property Type="String" Name="tenMonHoc" Nullable="true" MaxLength="128" />
           <Property Type="String" Name="maMonHoc" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="maLopMonHoc" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="tenLopMonHoc" Nullable="true" MaxLength="128" />
         </ComplexType>
         <ComplexType Name="st_hocky1_Result">
           <Property Type="Int32" Name="hocKy" Nullable="true" />
@@ -1219,6 +1221,8 @@
               <ComplexTypeMapping TypeName="UniversityModel.st_temp1_Result">
                 <ScalarProperty Name="tenMonHoc" ColumnName="tenMonHoc" />
                 <ScalarProperty Name="maMonHoc" ColumnName="maMonHoc" />
+                <ScalarProperty Name="maLopMonHoc" ColumnName="maLopMonHoc" />
+                <ScalarProperty Name="tenLopMonHoc" ColumnName="tenLopMonHoc" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

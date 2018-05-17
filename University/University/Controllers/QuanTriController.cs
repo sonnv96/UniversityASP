@@ -322,6 +322,13 @@ namespace University.Controllers
                            };
             return View(listtkgv.ToList());
         }
+        public ActionResult CreateNewTeacher()
+        {
+       
+
+            return View();
+        }
+        [HttpPost]
         public ActionResult CreateNewTeacher(ModelViewTKGV2 model)
         {
 
