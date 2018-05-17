@@ -7,13 +7,8 @@ using System.Web;
 
 namespace University.Models
 {
-    public class ModelViewTKSV
+    public class ModelViewTKSV2
     {
-      
-        
-      
-
-
 
         [Required(ErrorMessage = "Trường này bắt buộc nhập")]
         [DisplayName("Tên Đăng Nhập")]
@@ -54,15 +49,13 @@ namespace University.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [DisplayName("Hình Ảnh")]
-     
-        public string hinhAnh { get; set; }
+        public HttpPostedFileBase hinhanh { get; set; }
+       
         [DisplayName("Tên Ngành")]
         public string tennganh { get; set; }
         [DisplayName("Email Phụ Huynh")]
         [DataType(DataType.EmailAddress)]
         public string emailph { get; set; }
-
-
 
     }
 }

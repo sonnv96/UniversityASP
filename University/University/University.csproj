@@ -212,6 +212,7 @@
     <Compile Include="App_Start\SetTime.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BangDiemController.cs" />
     <Compile Include="Controllers\GiangVienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -272,6 +273,9 @@
     <Compile Include="Models\Data\sp_helpdiagrams_Result.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Data\st_hocky1_Result.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Data\st_hocky_Result.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
@@ -284,7 +288,13 @@
     <Compile Include="Models\Data\st_MHChuaDK1_tdn_Result.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Data\st_namhoc1_Result.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Data\st_namhoc_Result.cs">
+      <DependentUpon>University.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Data\st_temp1_Result.cs">
       <DependentUpon>University.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Data\st_test_Result.cs">
@@ -321,7 +331,9 @@
     <Compile Include="Models\ModelViewMoLop.cs" />
     <Compile Include="Models\ModelviewSinhVien.cs" />
     <Compile Include="Models\ModelViewTaiKhoan.cs" />
+    <Compile Include="Models\ModelViewTKGV.cs" />
     <Compile Include="Models\ModelViewTKSV.cs" />
+    <Compile Include="Models\ModelViewTKSV2.cs" />
     <Compile Include="Models\ModelViewXemMonHoc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -427,6 +439,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\daihoccongnghiepthcm.jpg" />
     <Content Include="Images\download-tn.jpg" />
     <Content Include="Images\download.jpg" />
     <Content Include="Images\images %281%29-tn.jpg" />
@@ -496,6 +509,7 @@
     <Content Include="Content\Sass\dsmondk.scss" />
     <Content Include="Content\Sass\xemtkb.scss" />
     <Content Include="Content\Sass\nhapdiem.scss" />
+    <Content Include="Content\Sass\xemdiem.scss" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -655,6 +669,13 @@
     <Content Include="Views\SinhVien\XemSVtheoLopHP2.cshtml" />
     <Content Include="Views\SinhVien\DangKiHPSV3.cshtml" />
     <Content Include="Views\QuanTri\CreateNewStudent.cshtml" />
+    <Content Include="Views\SinhVien\HuyHP.cshtml" />
+    <Content Include="Views\BangDiem\Create.cshtml" />
+    <Content Include="Views\BangDiem\Delete.cshtml" />
+    <Content Include="Views\BangDiem\Details.cshtml" />
+    <Content Include="Views\BangDiem\Edit.cshtml" />
+    <Content Include="Views\BangDiem\Index.cshtml" />
+    <Content Include="Views\QuanTri\TKGiangVien.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

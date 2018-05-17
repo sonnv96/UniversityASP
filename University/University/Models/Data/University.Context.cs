@@ -295,5 +295,40 @@ namespace University.Models.Data
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_hoclai_Result>("st_hoclai", masvParameter, namhocParameter, hockyParameter);
         }
+    
+        public virtual ObjectResult<st_temp1_Result> st_temp1(string masv, Nullable<int> namhoc, Nullable<int> hocky)
+        {
+            var masvParameter = masv != null ?
+                new ObjectParameter("masv", masv) :
+                new ObjectParameter("masv", typeof(string));
+    
+            var namhocParameter = namhoc.HasValue ?
+                new ObjectParameter("namhoc", namhoc) :
+                new ObjectParameter("namhoc", typeof(int));
+    
+            var hockyParameter = hocky.HasValue ?
+                new ObjectParameter("hocky", hocky) :
+                new ObjectParameter("hocky", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_temp1_Result>("st_temp1", masvParameter, namhocParameter, hockyParameter);
+        }
+    
+        public virtual ObjectResult<st_hocky1_Result> st_hocky1(string masv)
+        {
+            var masvParameter = masv != null ?
+                new ObjectParameter("masv", masv) :
+                new ObjectParameter("masv", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_hocky1_Result>("st_hocky1", masvParameter);
+        }
+    
+        public virtual ObjectResult<st_namhoc1_Result> st_namhoc1(string masv)
+        {
+            var masvParameter = masv != null ?
+                new ObjectParameter("masv", masv) :
+                new ObjectParameter("masv", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<st_namhoc1_Result>("st_namhoc1", masvParameter);
+        }
     }
 }

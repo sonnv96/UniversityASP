@@ -332,6 +332,9 @@
         <Function Name="st_hocky" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masv" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="st_hocky1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masv" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="st_hoclai" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masv" Type="varchar" Mode="In" />
           <Parameter Name="namhoc" Type="int" Mode="In" />
@@ -354,6 +357,14 @@
         </Function>
         <Function Name="st_namhoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masv" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_namhoc1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masv" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="st_temp1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="masv" Type="varchar" Mode="In" />
+          <Parameter Name="namhoc" Type="int" Mode="In" />
+          <Parameter Name="hocky" Type="int" Mode="In" />
         </Function>
         <Function Name="st_test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="masv" Type="varchar" Mode="In" />
@@ -560,6 +571,17 @@
             <Parameter Name="masv" Mode="In" Type="String" />
             <Parameter Name="namhoc" Mode="In" Type="Int32" />
             <Parameter Name="hocky" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="st_temp1" ReturnType="Collection(UniversityModel.st_temp1_Result)">
+            <Parameter Name="masv" Mode="In" Type="String" />
+            <Parameter Name="namhoc" Mode="In" Type="Int32" />
+            <Parameter Name="hocky" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="st_hocky1" ReturnType="Collection(UniversityModel.st_hocky1_Result)">
+            <Parameter Name="masv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="st_namhoc1" ReturnType="Collection(UniversityModel.st_namhoc1_Result)">
+            <Parameter Name="masv" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -930,6 +952,16 @@
           <Property Type="String" Name="maMonHoc" Nullable="false" MaxLength="16" />
           <Property Type="String" Name="tenMonHoc" Nullable="true" MaxLength="128" />
         </ComplexType>
+        <ComplexType Name="st_temp1_Result">
+          <Property Type="String" Name="tenMonHoc" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="maMonHoc" Nullable="false" MaxLength="16" />
+        </ComplexType>
+        <ComplexType Name="st_hocky1_Result">
+          <Property Type="Int32" Name="hocKy" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="st_namhoc1_Result">
+          <Property Type="Int32" Name="namHoc" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1179,6 +1211,28 @@
               <ComplexTypeMapping TypeName="UniversityModel.st_hoclai_Result">
                 <ScalarProperty Name="maMonHoc" ColumnName="maMonHoc" />
                 <ScalarProperty Name="tenMonHoc" ColumnName="tenMonHoc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_temp1" FunctionName="UniversityModel.Store.st_temp1" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.st_temp1_Result">
+                <ScalarProperty Name="tenMonHoc" ColumnName="tenMonHoc" />
+                <ScalarProperty Name="maMonHoc" ColumnName="maMonHoc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_hocky1" FunctionName="UniversityModel.Store.st_hocky1" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.st_hocky1_Result">
+                <ScalarProperty Name="hocKy" ColumnName="hocKy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="st_namhoc1" FunctionName="UniversityModel.Store.st_namhoc1" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.st_namhoc1_Result">
+                <ScalarProperty Name="namHoc" ColumnName="namHoc" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

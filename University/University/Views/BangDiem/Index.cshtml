@@ -1,0 +1,70 @@
+﻿@model IEnumerable<University.Models.Data.BangDiem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.trangThai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.thucHanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.giuaKy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cuoiKy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.thuongKy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LopMonHoc.tenLopMonHoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SinhVien.tenSinhVien)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.trangThai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.thucHanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.giuaKy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cuoiKy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.thuongKy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LopMonHoc.tenLopMonHoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SinhVien.tenSinhVien)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

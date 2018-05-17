@@ -185,18 +185,24 @@ namespace University.Controllers
                 {
 
                     string ten = Session["UserName"].ToString();
-                    var get = listgiangday.Where(x => x.tendangnhap == ten).ToList();
+                    var get = listgiangday.Where(x => x.tendangnhap == ten).FirstOrDefault();
+                    var masv1 = get.magv;
 
 
 
-                    // Tạo SelectList
-                    SelectList lstgvnh = new SelectList(get, "namhoc", "namhoc");
-                    SelectList lstgvhk = new SelectList(get, "hocki", "hocki");
+                    var a2 = db.st_hocky1(masv1);
+                    var b2 = db.st_namhoc1(masv1);
+
+
+
+                    SelectList cateList = new SelectList(b2, "namHoc", "namHoc");
+                    SelectList cateList2 = new SelectList(a2, "hocKy", "hocKy");
+
 
 
                     // Set vào ViewBag
-                    ViewBag.nam = lstgvnh;
-                    ViewBag.hocKi = lstgvhk;
+                    ViewBag.nam = cateList;
+                    ViewBag.hocKi = cateList2;
 
 
                     ViewBag.thu2 = listgiangday.Where(x => x.tendangnhap == ten && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 2).ToList();
@@ -220,18 +226,24 @@ namespace University.Controllers
                 {
 
                     string id = Session["MaGV"].ToString();
-                    var get = listgiangday.Where(x => x.magv == id).ToList();
+                    var get = listgiangday.Where(x => x.magv == id).FirstOrDefault();
+                    var masv1 = get.magv;
 
 
 
-                    // Tạo SelectList
-                    SelectList lstgvnh = new SelectList(get, "namhoc", "namhoc");
-                    SelectList lstgvhk = new SelectList(get, "hocki", "hocki");
+                    var a2 = db.st_hocky1(masv1);
+                    var b2 = db.st_namhoc1(masv1);
+
+
+
+                    SelectList cateList = new SelectList(b2, "namHoc", "namHoc");
+                    SelectList cateList2 = new SelectList(a2, "hocKy", "hocKy");
+
 
 
                     // Set vào ViewBag
-                    ViewBag.nam = lstgvnh;
-                    ViewBag.hocKi = lstgvhk;
+                    ViewBag.nam = cateList;
+                    ViewBag.hocKi = cateList2;
 
                     ViewBag.thu2 = listgiangday.Where(x => x.magv == id && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 2).ToList();
                     ViewBag.thu3 = listgiangday.Where(x => x.magv == id && x.namhoc == namhoc && x.hocki == hocKi && x.ngayhoc == 3).ToList();

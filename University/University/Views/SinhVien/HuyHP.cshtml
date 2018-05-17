@@ -1,0 +1,81 @@
+﻿@model IEnumerable<University.Models.Data.st_temp1_Result>
+@{
+    ViewBag.Title = "HuyHP";
+    Layout = "~/Views/HomePage/Home.cshtml";
+}
+
+<h2>Hủy Học Phần</h2>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="~/Content/Sass/TrangXemTKB.min.css" />
+<link rel="stylesheet" href="~/Content/Sass/xemtkb.min.css" />
+
+
+
+<div class="formchon">
+    <div class="a">
+        @using (Html.BeginForm("HuyHP", "SinhVien", FormMethod.Post, new { @class = "form-tkb" }))
+        {
+            <h4 class="">Chọn năm học</h4>
+
+            @Html.DropDownList("namhoc", (IEnumerable<SelectListItem>)ViewBag.namhoc, new { @class = "form-control drop col-md-5" })
+            <h4 class="">Chọn học kì</h4>
+            @Html.DropDownList("hocki", (IEnumerable<SelectListItem>)ViewBag.hocki, new { @class = "form-control drop col-md-5" })
+
+
+
+
+
+
+
+
+
+            <button class="btn btn-primary" type="submit">Xem</button>
+        }
+    </div>
+
+</div>
+
+
+
+<table class="table">
+    <tr>
+
+
+        
+        <th>Môn</th>
+        <th></th>
+
+
+    </tr>
+
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.tenMonHoc</td>
+            <td><a href="@Url.Action("Delete", "BangDiem", new {id = item.maMonHoc }) ">Hủy học phần</a></td>
+        </tr>
+    }
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+

@@ -6,45 +6,320 @@
 
 <h2>Xemdiem</h2>
 
+<div class="ttsv">
+    <p class="noidung">Mã số Sinh Viên: <b>@ViewBag.masv</b></p>
+    <p class="noidung">Họ và Tên: <b>@ViewBag.tensv</b></p>
+    <p class="noidung">Email: <b>@ViewBag.email</b></p>
+    <p class="noidung">Giới Tính: <b>@ViewBag.gioitinh</b></p>
+    <p class="noidung">Ngày Sinh: <b>@ViewBag.ngaysinh</b></p>
+
+</div>
 
 
-<p class="noidung">Mã số Sinh Viên: <b>@ViewBag.masv</b></p>
-<p class="noidung">Họ và Tên: <b>@ViewBag.tensv</b></p>
-<p class="noidung">Email: <b>@ViewBag.email</b></p>
-<p class="noidung">Giới Tính: <b>@ViewBag.gioitinh</b></p>
-<p class="noidung">Ngày Sinh: <b>@ViewBag.ngaysinh</b></p>
 <table class="table " style="width:95%">
-    <tr style="background:orange">
-
-
-        <th>Mã Môn học</th>
-        <th>Môn học</th>
-        <th>Giữa kỳ</th>
-        <th>Cuối kỳ</th>
-        <th>Thực hành</th>
-        <th>Năm học</th>
-        <th>Học kì</th>
-
+    <tr>
+        <th colspan="7">Năm hoc @ViewBag.namnhat- Học Kì 1</th>
     </tr>
-@foreach(var item in Model)
-    {
-
     <tr>
 
 
+        <td>Mã Môn học</td>
+        <td>Môn học</td>
+        <td>Thường kỳ</td>
+        <td>Giữa kỳ</td>
+        <td>Cuối kỳ</td>
+        <td>Thực hành</td>
+        <td>Tổng điểm</td>
 
-        <td>@item.mamonhoc</td>
-        <td>@item.tenmonhoc</td>
+    </tr>
+    @foreach (var item in ViewBag.namnhathk1)
+    {
 
-        <td>@item.giuaki</td>
-        <td>@item.cuoiki</td>
-        <td>@item.thuhanh</td>
-        <td>@item.nam</td>
-        <td>@item.hocki</td>
+        <tr>
 
+
+
+            <td>@item.mamonhoc</td>
+            <td>@item.tenmonhoc</td>
+            <td>@item.thuongki</td>
+
+            <td>@item.giuaki</td>
+            <td>@item.cuoiki</td>
+            <td>@item.thuhanh</td>
+        
+            <td>@ViewBag.diemtk</td>
+
+
+
+
+        </tr>
+    }
+
+    <tr>
+        <th colspan="7">Năm hoc @ViewBag.namnhat- Học Kì 2</th>
+    </tr>
+    <tr>
+
+        <td>Mã Môn học</td>
+        <td>Môn học</td>
+        <td>Thường kỳ</td>
+        <td>Giữa kỳ</td>
+        <td>Cuối kỳ</td>
+        <td>Thực hành</td>
+        <td>Tổng điểm</td>
 
 
     </tr>
+    @foreach (var item in ViewBag.namnhathk2)
+    {
+
+        <tr>
+
+
+
+            <td>@item.mamonhoc</td>
+            <td>@item.tenmonhoc</td>
+            <td>@item.thuongki</td>
+
+            <td>@item.giuaki</td>
+            <td>@item.cuoiki</td>
+            <td>@item.thuhanh</td>
+         
+            <td>@ViewBag.diemtk</td>
+
+
+
+
+        </tr>
+    }
+    <tr>
+        <th colspan="7">Năm hoc @ViewBag.namhai- Học Kì 1</th>
+    </tr>
+    <tr>
+
+
+        <td>Mã Môn học</td>
+        <td>Môn học</td>
+        <td>Thường kỳ</td>
+        <td>Giữa kỳ</td>
+        <td>Cuối kỳ</td>
+        <td>Thực hành</td>
+        <td>Tổng điểm</td>
+
+    </tr>
+    @foreach (var item in ViewBag.namhaihk1)
+    {
+
+        <tr>
+
+
+
+            <td>@item.mamonhoc</td>
+            <td>@item.tenmonhoc</td>
+            <td>@item.thuongki</td>
+
+            <td>@item.giuaki</td>
+            <td>@item.cuoiki</td>
+            <td>@item.thuhanh</td>
+           
+            <td>@ViewBag.diemtk</td>
+
+
+
+
+        </tr>
+    }
+
+    <tr>
+        <th colspan="7">Năm hoc @ViewBag.namhai- Học Kì 2</th>
+    </tr>
+    <tr>
+
+        <td>Mã Môn học</td>
+        <td>Môn học</td>
+        <td>Thường kỳ</td>
+        <td>Giữa kỳ</td>
+        <td>Cuối kỳ</td>
+        <td>Thực hành</td>
+        <td>Tổng điểm</td>
+
+    </tr>
+    @foreach (var item in ViewBag.namhaihk2)
+    {
+
+        <tr>
+
+
+
+            <td>@item.mamonhoc</td>
+            <td>@item.tenmonhoc</td>
+            <td>@item.thuongki</td>
+
+            <td>@item.giuaki</td>
+            <td>@item.cuoiki</td>
+            <td>@item.thuhanh</td>
+       
+            <td>@ViewBag.diemtk</td>
+
+
+
+
+        </tr>
+    }
+
+    <tr>
+        <th colspan="7">Năm hoc @ViewBag.namba- Học Kì 1</th>
+    </tr>
+    <tr>
+
+
+        <td>Mã Môn học</td>
+        <td>Môn học</td>
+        <td>Thường kỳ</td>
+        <td>Giữa kỳ</td>
+        <td>Cuối kỳ</td>
+        <td>Thực hành</td>
+        <td>Tổng điểm</td>
+
+
+    </tr>
+    @foreach (var item in ViewBag.nambahk1)
+    {
+
+        <tr>
+
+
+
+            <td>@item.mamonhoc</td>
+            <td>@item.tenmonhoc</td>
+            <td>@item.thuongki</td>
+
+            <td>@item.giuaki</td>
+            <td>@item.cuoiki</td>
+            <td>@item.thuhanh</td>
+        
+            <td>@ViewBag.diemtk</td>
+
+
+
+
+        </tr>
+    }
+    <tr>
+        <th colspan="7">Năm học @ViewBag.namba- Học Kì 2</th>
+    </tr>
+    <tr>
+
+
+        <td>Mã Môn học</td>
+        <td>Môn học</td>
+        <td>Thường kỳ</td>
+        <td>Giữa kỳ</td>
+        <td>Cuối kỳ</td>
+        <td>Thực hành</td>
+        <td>Tổng điểm</td>
+
+
+    </tr>
+    @foreach (var item in ViewBag.nambahk2)
+    {
+
+        <tr>
+
+
+
+            <td>@item.mamonhoc</td>
+            <td>@item.tenmonhoc</td>
+            <td>@item.thuongki</td>
+
+            <td>@item.giuaki</td>
+            <td>@item.cuoiki</td>
+            <td>@item.thuhanh</td>
+            
+            <td>@ViewBag.diemtk</td>
+
+
+
+
+        </tr>
+    }
+
+
+    <tr>
+        <th colspan="7">Năm hoc @ViewBag.namtu- Học Kì 1</th>
+    </tr>
+    <tr>
+
+
+        <td>Mã Môn học</td>
+        <td>Môn học</td>
+        <td>Thường kỳ</td>
+        <td>Giữa kỳ</td>
+        <td>Cuối kỳ</td>
+        <td>Thực hành</td>
+        <td>Tổng điểm</td>
+
+    </tr>
+    @foreach (var item in ViewBag.namtuhk1)
+    {
+
+        <tr>
+
+
+
+            <td>@item.mamonhoc</td>
+            <td>@item.tenmonhoc</td>
+            <td>@item.thuongki</td>
+
+            <td>@item.giuaki</td>
+            <td>@item.cuoiki</td>
+            <td>@item.thuhanh</td>
+        
+            <td>@ViewBag.diemtk</td>
+
+
+
+
+        </tr>
+    }
+
+    <tr>
+        <th colspan="7">Năm hoc @ViewBag.namtu- Học Kì 2</th>
+    </tr>
+    <tr>
+
+
+        <td>Mã Môn học</td>
+        <td>Môn học</td>
+        <td>Thường kỳ</td>
+        <td>Giữa kỳ</td>
+        <td>Cuối kỳ</td>
+        <td>Thực hành</td>
+        <td>Tổng điểm</td>
+
+
+    </tr>
+    @foreach (var item in ViewBag.namtuhk2)
+    {
+
+        <tr>
+
+
+
+            <td>@item.mamonhoc</td>
+            <td>@item.tenmonhoc</td>
+            <td>@item.thuongki</td>
+
+            <td>@item.giuaki</td>
+            <td>@item.cuoiki</td>
+            <td>@item.thuhanh</td>
+          
+            <td>@ViewBag.diemtk</td>
+
+
+
+
+        </tr>
     }
 </table>
 

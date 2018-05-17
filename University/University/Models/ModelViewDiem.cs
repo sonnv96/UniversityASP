@@ -24,6 +24,7 @@ namespace University.Models
         public decimal? cuoiki { get; set; }
         public string mamonhoc { get; set; }
         public string tenmonhoc { get; set; }
+        public int namnhaphoc { get; set; }
 
     }
 }

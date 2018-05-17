@@ -147,7 +147,39 @@ namespace University.Controllers
         public ActionResult MoDKMon(string id, ModelViewMoLop model)
         {
 
-           
+            var listmh = from lmh in db.LopMonHocs
+                         join mh in db.MonHocs
+                         on lmh.maMonHoc equals mh.maMonHoc
+                         join gv in db.GiangViens
+                         on lmh.maGiangVien equals gv.maGiangVien
+                         join bd in db.BangDiems
+                         on lmh.maLopMonHoc equals bd.maLopMonHoc
+                         join sv in db.SinhViens
+                         on bd.maSinhVien equals sv.maSinhVien
+                         join l in db.Lops
+                         on sv.maLop equals l.maLop
+                         select new ModelViewDKMon()
+                         {
+                             malophocphan = lmh.maLopMonHoc,
+                             monhoc = mh.tenMonHoc,
+                             tinchi = (Int32)mh.soTinChi,
+                             soluong = (Int32)lmh.soLuongToiDa,
+                             soluongdangki = (Int32)lmh.soLuongDangKy,
+                             tinhtrang = lmh.trangThai,
+                             tengiangvien = gv.tenGiangVien,
+                             lopdangki = l.tenLop,
+                             phonghoc = lmh.phongHoc,
+                             tiethoc = lmh.tietHoc,
+                             ngayhoc = (Int32)lmh.ngayHoc,
+                             namhoc = (Int32)lmh.namHoc,
+                             hocki = (Int32)lmh.hocKy
+
+                         };
+            var lst = listmh.FirstOrDefault();
+            
+            
+
+
             MonHoc monHoc = db.MonHocs.Find(id);
             LopMonHoc lopmonhoc = new LopMonHoc();
             lopmonhoc.maMonHoc = monHoc.maMonHoc;
@@ -169,15 +201,36 @@ namespace University.Controllers
             lopmonhoc.ngayHoc = model.ngayhoc;
             lopmonhoc.ngayThi = null;
             lopmonhoc.hanDangKy = DateTime.Now.AddDays(30);
-
-            if (ModelState.IsValid)
+       
+            var test2 = listmh.ToList().Where(x => x.magv == "GV0001").ToList();
+            if (test2 != null)
             {
 
-                db.LopMonHocs.Add(lopmonhoc);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                var test = listmh.ToList().Where(x => x.magv == lopmonhoc.maGiangVien).FirstOrDefault();
 
+                var namhocgv = test.namhoc;
+                var hockigv = test.hocki;
+                var tiethoc = test.tiethoc;
+                var ngayhoc = test.ngayhoc;
+
+
+                if (lopmonhoc.namHoc == namhocgv && lopmonhoc.hocKy == hockigv && lopmonhoc.ngayHoc == ngayhoc && lopmonhoc.tietHoc == tiethoc)
+                {
+                    ViewBag.trunggioday = "Giảng viên này đã bị trùng lịch";
+                    return View("MoDKMon");
+                }
+            }
+            else
+            {
+
+                if (ModelState.IsValid)
+                {
+
+                    db.LopMonHocs.Add(lopmonhoc);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
 
             //var listmh = from lmh in db.LopMonHocs
             //             join mh in db.MonHocs

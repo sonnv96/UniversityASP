@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using University.Models.Data;
 using University.Models;
+using System.IO;
 
 namespace University.Controllers
 {
@@ -156,10 +157,7 @@ namespace University.Controllers
             var listtksv = from tk in db.TaiKhoans
                            join sv in db.SinhViens
                            on tk.tenDangNhap equals sv.tenDangNhap
-                           join l in db.Lops
-                           on sv.maLop equals l.maLop
-                           join cn in db.ChuyenNganhs
-                           on sv.maChuyenNganh equals cn.maChuyenNganh
+                       
 
 
                            select new ModelViewTKSV()
@@ -171,13 +169,13 @@ namespace University.Controllers
 
                                quequan = sv.queQuan,
                                ngaysinh = (DateTime)sv.ngaySinh,
-                               tenlop = l.tenLop,
+                     
                                gioitinh = sv.gioiTinh,
-                               tennganh = cn.tenChuyenNganh,
+                             
                                Email = sv.eMail,
                                trangthai = sv.trangThai,
                                namnhaphoc = (Int32)sv.namNhapHoc,
-                               hinhanh = sv.hinhAnh
+                               hinhAnh = sv.hinhAnh
 
 
 
@@ -214,7 +212,7 @@ namespace University.Controllers
                                Email = sv.eMail,
                                trangthai = sv.trangThai,
                                namnhaphoc = (Int32)sv.namNhapHoc,
-                               hinhanh = sv.hinhAnh
+                               hinhAnh = sv.hinhAnh
 
 
 
@@ -234,9 +232,13 @@ namespace University.Controllers
 
             return View();
         }
+
         [HttpPost]
-        public ActionResult CreateNewStudent(ModelViewTKSV model)
+        public ActionResult CreateNewStudent(ModelViewTKSV2 model)
         {
+
+           
+          
             TaiKhoan tk = new TaiKhoan();
             SinhVien sv = new SinhVien();
             sv.maSinhVien = model.masv;
@@ -253,6 +255,19 @@ namespace University.Controllers
             sv.tenDangNhap = tk.tenDangNhap;
             sv.gioiTinh = model.gioitinh;
             sv.eMailPH = model.emailph;
+
+            //thư mục lưu trữ hình ở server
+            var uploadDir = "~/Images/";
+
+            var imageUrl = System.IO.Path.GetFileName(model.hinhanh.FileName);
+
+            var imagePath = Path.Combine(Server.MapPath(uploadDir), imageUrl);
+
+            model.hinhanh.SaveAs(imagePath);
+
+            sv.hinhAnh = imageUrl;
+
+
             if (ModelState.IsValid)
             {
                 db.TaiKhoans.Add(tk);
@@ -261,9 +276,53 @@ namespace University.Controllers
                 db.SaveChanges();
                 return RedirectToAction("TKSinhVien");
             }
+
             return View(model);
            
             
         }
+        public ActionResult TKGiangVien()
+        {
+            if (Session["UserName"] == null)
+            {
+                return RedirectToAction("DangNhap", "TaiKhoans");
+            }
+            else if ((string)Session["loaiTaiKhoan"] != "Admin")
+            {
+                TempData["phanquyen"] = "sondep";
+                return RedirectToAction("Home", "TaiKhoans");
+            }
+
+
+            var listtkgv = from tk in db.TaiKhoans
+                           join gv in db.GiangViens
+                           on tk.tenDangNhap equals gv.tenDangNhap
+
+
+
+                           select new ModelViewTKGV()
+                           {
+                               magv = gv.maGiangVien,
+                               tengv = gv.tenGiangVien,
+                               tendangnhap = tk.tenDangNhap,
+                               loaitaikhoan = tk.loaiTaiKhoan,
+
+                               quequan = gv.queQuan,
+                               ngaysinh = (DateTime)gv.ngaySinh,
+
+                               nambatdau = (Int32)gv.namBatDau,
+
+                               Email = gv.eMail,
+                               trangthai = gv.trangThai,
+                           
+                               hinhAnh = gv.hinhAnh
+
+
+
+                           };
+            return View(listtkgv.ToList());
+        }
+
+
     }
 }
