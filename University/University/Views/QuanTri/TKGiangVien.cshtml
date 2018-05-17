@@ -4,5 +4,33 @@
     Layout = "~/Views/HomePage/Admin.cshtml";
 }
 
-<h2>TKGiangVien</h2>
 
+
+@model IEnumerable<University.Models.ModelViewTKGV>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Danh Sách Giảng Viên
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.tengv, "CTTK", new { id = item.magv })
+            </td>
+            <td>
+                @Html.ActionLink("Create", "CreateNewTeacher") |
+                @Html.ActionLink("Details", "Details", new { id = item.magv }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.magv })
+            </td>
+        </tr>
+    }
+
+</table>

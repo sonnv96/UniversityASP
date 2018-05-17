@@ -322,6 +322,53 @@ namespace University.Controllers
                            };
             return View(listtkgv.ToList());
         }
+        public ActionResult CreateNewTeacher(ModelViewTKSV2 model)
+        {
+
+
+
+            TaiKhoan tk = new TaiKhoan();
+            SinhVien sv = new SinhVien();
+            sv.maSinhVien = model.masv;
+            sv.tenSinhVien = model.tensv;
+            sv.queQuan = model.quequan;
+            sv.ngaySinh = model.ngaysinh;
+            sv.namNhapHoc = model.namnhaphoc;
+            sv.maChuyenNganh = model.machuyennganh;
+            ViewBag.maLop = new SelectList(db.Lops, "maLop", "tenLop", sv.maLop);
+            sv.eMail = model.Email;
+            tk.tenDangNhap = model.tendangnhap;
+            tk.matKhau = model.matkhau;
+            tk.loaiTaiKhoan = model.loaitaikhoan;
+            sv.tenDangNhap = tk.tenDangNhap;
+            sv.gioiTinh = model.gioitinh;
+            sv.eMailPH = model.emailph;
+
+            //thư mục lưu trữ hình ở server
+            var uploadDir = "~/Images/";
+
+            var imageUrl = System.IO.Path.GetFileName(model.hinhanh.FileName);
+
+            var imagePath = Path.Combine(Server.MapPath(uploadDir), imageUrl);
+
+            model.hinhanh.SaveAs(imagePath);
+
+            sv.hinhAnh = imageUrl;
+
+
+            if (ModelState.IsValid)
+            {
+                db.TaiKhoans.Add(tk);
+                db.SinhViens.Add(sv);
+
+                db.SaveChanges();
+                return RedirectToAction("TKSinhVien");
+            }
+
+            return View(model);
+
+
+        }
 
 
     }
