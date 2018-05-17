@@ -332,6 +332,7 @@
     <Compile Include="Models\ModelviewSinhVien.cs" />
     <Compile Include="Models\ModelViewTaiKhoan.cs" />
     <Compile Include="Models\ModelViewTKGV.cs" />
+    <Compile Include="Models\ModelViewTKGV2.cs" />
     <Compile Include="Models\ModelViewTKSV.cs" />
     <Compile Include="Models\ModelViewTKSV2.cs" />
     <Compile Include="Models\ModelViewXemMonHoc.cs" />
